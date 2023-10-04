@@ -4,17 +4,21 @@
  */
 package inmobiliaria;
 
-/**
- *
- * @author Ian
- */
+import Inmobiliaria.AccesoDatos.Conectar;
+import inmobiliaria.Vistas.Login;
+import inmobiliaria.Vistas.MenuPrincipal;
+
+
 public class Inmobiliaria {
 
-    /**
-     * @param args the command line arguments
-     */
+  
     public static void main(String[] args) {
-        // TODO code application logic here
+        Conectar.getConectar();
+        //Login log = new Login();
+        //log.setVisible(true);
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
+        
     }
     
 }
