@@ -4,6 +4,12 @@
  */
 package Inmobiliaria.AccesoDatos;
 
+import inmobiliaria.Propietario;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -24,4 +30,22 @@ public class PropietarioData {
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
+    
+public static void agregarPropietario(Propietario propietario){
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        String sql = "INSERT INTO `propietario  `(`apellidoPropietario`, `nombrePropietario`, `domicilio`, `dni`, `telefono`) VALUES ('" + propietario.getApellidoPropietario() + "','" + propietario.getNombrePropietario() + "','" + propietario.getDomicilio() + "','" + propietario.getDni() + "','" + propietario.getTelefono() + "')";
+        con = Conectar.getConectar();
+
+        try {
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+
+        } catch (SQLException x) {
+            System.out.println("Error " + x.getMessage());
+        }
+         mostrarMensaje("Alta exitosa.","Creacion de propietario","info");
+}
 }
