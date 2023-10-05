@@ -7,14 +7,12 @@ package inmobiliaria.Vistas;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
-/**
- *
- * @author Ian
- */
+
 public class MenuPrincipal extends javax.swing.JFrame {
 
     public MenuPrincipal() {
@@ -23,7 +21,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
     
 
-
+    public void nuevaVentana(JInternalFrame v){
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        v.setVisible(true);
+        escritorio.add(v);
+        escritorio.moveToFront(v);
+    }
+    public static JInternalFrame vent(JInternalFrame v){
+        
+        return v;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -206,7 +215,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane escritorio;
+    public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
