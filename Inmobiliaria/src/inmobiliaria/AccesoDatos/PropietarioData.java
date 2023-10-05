@@ -35,7 +35,7 @@ public static void agregarPropietario(Propietario propietario){
         Connection con = null;
         PreparedStatement ps = null;
 
-        String sql = "INSERT INTO `propietario  `(`apellidoPropietario`, `nombrePropietario`, `domicilio`, `dni`, `telefono`) VALUES ('" + propietario.getApellidoPropietario() + "','" + propietario.getNombrePropietario() + "','" + propietario.getDomicilio() + "','" + propietario.getDni() + "','" + propietario.getTelefono() + "')";
+        String sql = "INSERT INTO propietario (`apellidoPropietario`, `nombrePropietario`, `domicilio`, `dni`, `telefono`) VALUES ('" + propietario.getApellidoPropietario() + "','" + propietario.getNombrePropietario() + "','" + propietario.getDomicilio() + "','" + propietario.getDni() + "','" + propietario.getTelefono() + "')";
         con = Conectar.getConectar();
 
         try {
@@ -48,4 +48,36 @@ public static void agregarPropietario(Propietario propietario){
         }
          mostrarMensaje("Alta exitosa.","Creacion de propietario","info");
 }
+
+public static Propietario buscarPropietarioPorDni(int dni, int nuevo) {
+        Propietario p = null;
+        String sql = "SELECT id_propietario, apellidoPropietario, nombrePropietario,domicilio, dni, telefono FROM propietario WHERE dni=?";
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        try {
+
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                p = new Propietario();
+                p.setIdPropietario(rs.getInt("idAlumno"));
+                p.setApellidoPropietario(rs.getString("apellidoPropietario"));
+                p.setNombrePropietario(rs.getString("nombrePropietario"));
+                p.setDomicilio(rs.getString("domicilio"));
+                p.setDni(rs.getInt("dni"));
+                p.setTelefono(rs.getInt("telefono"));
+            } else if (nuevo!=1){
+                mostrarMensaje("No existe el Propietario ","Error al buscar","error");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
+        }
+
+        return p;
+
+    }
 }

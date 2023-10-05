@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class Propietario {
-    private int idPropietarip;
+    private int idPropietario;
     private String apellidoPropietario,nombrePropietario,domicilio;
     private int dni;
     private int telefono;
@@ -22,9 +22,17 @@ public class Propietario {
         this.telefono = telefono;
         this.propiedadesPropias = propiedadesPropias;
     }
-
-    public Propietario(int idPropietarip, String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono, ArrayList propiedadesPropias) {
-        this.idPropietarip = idPropietarip;
+    public Propietario(String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono) {
+        this.apellidoPropietario = apellidoPropietario;
+        this.nombrePropietario = nombrePropietario;
+        this.domicilio = domicilio;
+        this.dni = dni;
+        this.telefono = telefono;
+        
+    }
+    
+    public Propietario(int idPropietario, String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono, ArrayList propiedadesPropias) {
+        this.idPropietario = idPropietario;
         this.apellidoPropietario = apellidoPropietario;
         this.nombrePropietario = nombrePropietario;
         this.domicilio = domicilio;
@@ -33,12 +41,12 @@ public class Propietario {
         this.propiedadesPropias = propiedadesPropias;
     }
 
-    public int getIdPropietarip() {
-        return idPropietarip;
+    public int getIdPropietario() {
+        return idPropietario;
     }
 
-    public void setIdPropietarip(int idPropietarip) {
-        this.idPropietarip = idPropietarip;
+    public void setIdPropietario(int idPropietarip) {
+        this.idPropietario = idPropietarip;
     }
 
     public String getApellidoPropietario() {
