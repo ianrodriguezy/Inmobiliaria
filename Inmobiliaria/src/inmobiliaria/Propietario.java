@@ -31,14 +31,13 @@ public class Propietario {
         
     }
     
-    public Propietario(int idPropietario, String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono, ArrayList propiedadesPropias) {
+    public Propietario(int idPropietario, String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono) {
         this.idPropietario = idPropietario;
         this.apellidoPropietario = apellidoPropietario;
         this.nombrePropietario = nombrePropietario;
         this.domicilio = domicilio;
         this.dni = dni;
         this.telefono = telefono;
-        this.propiedadesPropias = propiedadesPropias;
     }
 
     public int getIdPropietario() {
