@@ -67,11 +67,21 @@ public class ventanaPropietarios extends javax.swing.JInternalFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/buscar persona.png"))); // NOI18N
         jLabel4.setText("jLabel2");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 240, 220));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(35, 76, 139));
         jLabel5.setText("  BUSCAR PROPIETARIO");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 290, 90));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -86,11 +96,21 @@ public class ventanaPropietarios extends javax.swing.JInternalFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/EDITAR PERSONA.png"))); // NOI18N
         jLabel6.setText("jLabel2");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 240, 220));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
         jLabel7.setText("  EDITAR PROPIETARIO");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 550, 290, 90));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -129,6 +149,42 @@ public class ventanaPropietarios extends javax.swing.JInternalFrame {
         escritorio.add(ap);
         escritorio.moveToFront(ap);
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        ModificarPropietario mp=new ModificarPropietario();
+        escritorio.removeAll();
+        escritorio.repaint();
+        mp.setVisible(true);
+        escritorio.add(mp);
+        escritorio.moveToFront(mp);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        ModificarPropietario mp=new ModificarPropietario();
+        escritorio.removeAll();
+        escritorio.repaint();
+        mp.setVisible(true);
+        escritorio.add(mp);
+        escritorio.moveToFront(mp);
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        BuscarPropietario bp=new BuscarPropietario();
+        escritorio.removeAll();
+        escritorio.repaint();
+        bp.setVisible(true);
+        escritorio.add(bp);
+        escritorio.moveToFront(bp);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+       BuscarPropietario bp=new BuscarPropietario();
+        escritorio.removeAll();
+        escritorio.repaint();
+        bp.setVisible(true);
+        escritorio.add(bp);
+        escritorio.moveToFront(bp);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
