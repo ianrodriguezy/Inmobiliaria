@@ -107,6 +107,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setFocusable(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 210, 50));
 
         jButton5.setBackground(new java.awt.Color(35, 76, 139));
@@ -180,6 +185,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ventanaInquilinos vi = new ventanaInquilinos("",false,false,false,false);
+        vi.setVisible(true);
+        escritorio.add(vi);
+        escritorio.moveToFront(vi);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     
     public static void main(String args[]) {
