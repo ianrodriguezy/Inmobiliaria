@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -107,5 +109,32 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo) {
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
         }
+    }
+    
+    public static List<Propietario> listarAlumno() {
+        List<Propietario> propietarios=new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        try{
+            String sql= "SELECT * FROM `propietario` ";
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Propietario p= new Propietario();
+                p.setIdPropietario(rs.getInt("id_propietario"));
+                p.setApellidoPropietario(rs.getString("apellidoPropietario"));
+                p.setNombrePropietario(rs.getString("nombrePropietario"));
+                p.setDomicilio(rs.getString("domicilio"));
+                p.setDni(rs.getInt("dni"));
+                p.setTelefono(rs.getInt("telefono")); 
+                propietarios.add(p);
+            }
+            ps.close();
+        }catch(SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
+            
+        }
+        return propietarios;
     }
 }

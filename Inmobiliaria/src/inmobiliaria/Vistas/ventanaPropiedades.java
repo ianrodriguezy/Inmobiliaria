@@ -59,7 +59,7 @@ public class ventanaPropiedades extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 240, 220));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/buscar persona.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/buscarProp.png"))); // NOI18N
         jLabel4.setText("jLabel2");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,14 +88,14 @@ public class ventanaPropiedades extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 290, 90));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/EDITAR PERSONA.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/editarProp.png"))); // NOI18N
         jLabel6.setText("jLabel2");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 240, 220));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 240, 220));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
@@ -127,7 +127,7 @@ public class ventanaPropiedades extends javax.swing.JInternalFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         
-        AgregarPropietario ap=new AgregarPropietario();
+        AgregarPropiedad ap=new AgregarPropiedad();
         escritorio.removeAll();
         escritorio.repaint();
         ap.setVisible(true);
