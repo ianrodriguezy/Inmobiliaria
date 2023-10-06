@@ -261,6 +261,7 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
             jtDomicilio.setEnabled(false);;
             jtTelefono.setEnabled(false);;
             limpiar();
+            
         }     
     }//GEN-LAST:event_jbGuardarActionPerformed
 
