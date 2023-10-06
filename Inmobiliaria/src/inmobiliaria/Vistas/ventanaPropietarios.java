@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package inmobiliaria.Vistas;
 import inmobiliaria.Vistas.MenuPrincipal;
 import static inmobiliaria.Vistas.MenuPrincipal.escritorio;
@@ -9,10 +6,7 @@ import static inmobiliaria.Vistas.MenuPrincipal.escritorio;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Ian
- */
+
 public class ventanaPropietarios extends javax.swing.JInternalFrame {
 
     /**

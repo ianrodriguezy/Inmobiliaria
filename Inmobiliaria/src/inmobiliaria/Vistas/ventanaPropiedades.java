@@ -1,16 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package inmobiliaria.Vistas;
+import inmobiliaria.Vistas.MenuPrincipal;
+import static inmobiliaria.Vistas.MenuPrincipal.escritorio;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Ian
- */
+
 public class ventanaPropiedades extends javax.swing.JInternalFrame {
 
     /**
@@ -40,12 +36,76 @@ public class ventanaPropiedades extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
+        setBorder(null);
         setMinimumSize(new java.awt.Dimension(1030, 790));
         setPreferredSize(new java.awt.Dimension(1030, 795));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/agregarProp.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 240, 220));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/buscar persona.png"))); // NOI18N
+        jLabel4.setText("jLabel2");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 240, 220));
+
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(35, 76, 139));
+        jLabel5.setText("  BUSCAR PROPIEDAD");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 290, 90));
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(35, 76, 139));
+        jLabel3.setText("AGREGAR PROPIEDAD");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 290, 90));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/EDITAR PERSONA.png"))); // NOI18N
+        jLabel6.setText("jLabel2");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 240, 220));
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(35, 76, 139));
+        jLabel7.setText("  EDITAR PROPIEDAD");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 550, 290, 90));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -65,9 +125,70 @@ public class ventanaPropiedades extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        
+        AgregarPropietario ap=new AgregarPropietario();
+        escritorio.removeAll();
+        escritorio.repaint();
+        ap.setVisible(true);
+        escritorio.add(ap);
+        escritorio.moveToFront(ap);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        AgregarPropietario ap=new AgregarPropietario();
+        escritorio.removeAll();
+        escritorio.repaint();
+        ap.setVisible(true);
+        escritorio.add(ap);
+        escritorio.moveToFront(ap);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        ModificarPropietario mp=new ModificarPropietario();
+        escritorio.removeAll();
+        escritorio.repaint();
+        mp.setVisible(true);
+        escritorio.add(mp);
+        escritorio.moveToFront(mp);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        ModificarPropietario mp=new ModificarPropietario();
+        escritorio.removeAll();
+        escritorio.repaint();
+        mp.setVisible(true);
+        escritorio.add(mp);
+        escritorio.moveToFront(mp);
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        BuscarPropietario bp=new BuscarPropietario();
+        escritorio.removeAll();
+        escritorio.repaint();
+        bp.setVisible(true);
+        escritorio.add(bp);
+        escritorio.moveToFront(bp);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+       BuscarPropietario bp=new BuscarPropietario();
+        escritorio.removeAll();
+        escritorio.repaint();
+        bp.setVisible(true);
+        escritorio.add(bp);
+        escritorio.moveToFront(bp);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
