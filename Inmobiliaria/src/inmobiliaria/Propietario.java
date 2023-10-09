@@ -95,6 +95,11 @@ public class Propietario {
     public void setPropiedadesPropias(ArrayList propiedadesPropias) {
         this.propiedadesPropias = propiedadesPropias;
     }
+
+    @Override
+    public String toString() {
+        return  apellidoPropietario + ", " + nombrePropietario +  ", " + dni ;
+    }
     
     
     

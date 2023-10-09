@@ -117,5 +117,32 @@ public class InquilinoData {
             mostrarMensaje("Error al acceder a la tabla Inquilino","Error al conectar","error");
         }
     }
+    
+    public static List<Inquilino> listarInquilinos() {
+        List<Inquilino> inquilinos=new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        try{
+            String sql= "SELECT * FROM `inquilino` ";
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Inquilino i= new Inquilino();
+                i.setIdInquilino(rs.getInt("id_inquilino"));
+                i.setApellido(rs.getString("apellido"));
+                i.setNombre(rs.getString("nombre"));
+                i.setDni(rs.getInt("dni"));
+                i.setTipo(rs.getObject("tipo", char.class));
+                i.setDetalle(rs.getObject("detalle", char.class)); 
+                inquilinos.add(i);
+            }
+            ps.close();
+        }catch(SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
+            
+        }
+        return inquilinos;
+    }
 }
 	

@@ -111,7 +111,7 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo) {
         }
     }
     
-    public static List<Propietario> listarAlumno() {
+    public static List<Propietario> listarPropietario() {
         List<Propietario> propietarios=new ArrayList<>();
         Connection con = null;
         PreparedStatement ps = null;

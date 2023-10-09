@@ -10,6 +10,9 @@ import inmobiliaria.Propietario;
 import static inmobiliaria.Vistas.MenuPrincipal.escritorio;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -19,14 +22,15 @@ import javax.swing.JPanel;
  */
 public class AgregarPropiedad extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ventanaPropietarios
-     */
+    List propietarios=new ArrayList<>();
+    List inquilinos=new ArrayList<>();
+    List revisores=new ArrayList<>();
+    
     public AgregarPropiedad() {
         super("",false,false,false,false);
-        
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        propietarios=PropietarioData.listarPropietario();
     }
 
 
@@ -34,8 +38,19 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         super(title, resizable, closable, maximizable, iconifiable);
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        propietarios=PropietarioData.listarPropietario();
     }
+    private void cargarCombop() {
 
+        DefaultComboBoxModel<Propietario> modeloCombo = new DefaultComboBoxModel<>();
+
+        modeloCombo.addElement((Propietario) null);
+        for (Object propietario : propietarios) {
+            modeloCombo.addElement((Propietario) propietario);
+        }
+        jcbPropietarios.setModel(modeloCombo);
+    }
+    
     private void limpiar(){
         jtAccesibilidad.setText("");
         jtDireccion.setText("");
@@ -71,9 +86,9 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jcbRevisores = new javax.swing.JComboBox<>();
+        jcbPropietarios = new javax.swing.JComboBox<>();
+        jcbInquilinos = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -212,14 +227,14 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 670, 120, 40));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 410, -1));
+        jcbRevisores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jcbRevisores, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 410, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 410, 30));
+        jcbPropietarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jcbPropietarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 410, 30));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 410, -1));
+        jcbInquilinos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jcbInquilinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 410, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
@@ -369,9 +384,6 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -387,6 +399,9 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> jcbInquilinos;
+    private javax.swing.JComboBox<String> jcbPropietarios;
+    private javax.swing.JComboBox<String> jcbRevisores;
     private javax.swing.JTextField jtAccesibilidad;
     private javax.swing.JTextField jtCaracteristicas;
     private javax.swing.JTextField jtDireccion;
