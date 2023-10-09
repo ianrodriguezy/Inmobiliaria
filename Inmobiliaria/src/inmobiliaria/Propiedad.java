@@ -6,7 +6,7 @@ public class Propiedad {
     private int idPropiedad;
     private String accesibilidad, caracteristica, direccion, forma, zona;
     private Propietario dueño;
-    private char estadoPropiedad,tipoPropiedad;
+    private String estadoPropiedad,tipoPropiedad;
     private Inquilino ocupante;
     private float precioTasado;
     private Inspector revisor;
@@ -15,7 +15,7 @@ public class Propiedad {
     public Propiedad() {
     }
 
-    public Propiedad(int idPropiedad, String accesibilidad, String caracteristica, String direccion, String forma, String zona, Propietario dueño, char estadoPropiedad, char tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieMinima) {
+    public Propiedad(int idPropiedad, String accesibilidad, String caracteristica, String direccion, String forma, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieMinima) {
         this.idPropiedad = idPropiedad;
         this.accesibilidad = accesibilidad;
         this.caracteristica = caracteristica;
@@ -31,7 +31,7 @@ public class Propiedad {
         this.superficieMinima = superficieMinima;
     }
 
-    public Propiedad(String accesibilidad, String caracteristica, String direccion, String forma, String zona, Propietario dueño, char estadoPropiedad, char tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieMinima) {
+    public Propiedad(String accesibilidad, String caracteristica, String direccion, String forma, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieMinima) {
         this.accesibilidad = accesibilidad;
         this.caracteristica = caracteristica;
         this.direccion = direccion;
@@ -46,7 +46,7 @@ public class Propiedad {
         this.superficieMinima = superficieMinima;
     }
 
-    public Propiedad(int idPropiedad, String accesibilidad, String caracteristica, String direccion, String forma, String zona, Propietario dueño, char estadoPropiedad, char tipoPropiedad, float precioTasado, Inspector revisor, int superficieMinima) {
+    public Propiedad(int idPropiedad, String accesibilidad, String caracteristica, String direccion, String forma, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, float precioTasado, Inspector revisor, int superficieMinima) {
         this.idPropiedad = idPropiedad;
         this.accesibilidad = accesibilidad;
         this.caracteristica = caracteristica;
@@ -117,19 +117,19 @@ public class Propiedad {
         this.dueño = dueño;
     }
 
-    public char getEstadoPropiedad() {
+    public String getEstadoPropiedad() {
         return estadoPropiedad;
     }
 
-    public void setEstadoPropiedad(char estadoPropiedad) {
+    public void setEstadoPropiedad(String estadoPropiedad) {
         this.estadoPropiedad = estadoPropiedad;
     }
 
-    public char getTipoPropiedad() {
+    public String getTipoPropiedad() {
         return tipoPropiedad;
     }
 
-    public void setTipoPropiedad(char tipoPropiedad) {
+    public void setTipoPropiedad(String tipoPropiedad) {
         this.tipoPropiedad = tipoPropiedad;
     }
 

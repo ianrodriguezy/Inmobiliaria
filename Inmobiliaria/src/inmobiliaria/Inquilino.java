@@ -88,5 +88,10 @@ public class Inquilino {
         this.propiedades = propiedades;
     }
 
+    @Override
+    public String toString() {
+        return  idInquilino + ", " + apellido + ", " + nombre ;
+    }
+
     
 }

@@ -38,6 +38,11 @@ public class Vendedor {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
+    @Override
+    public String toString() {
+        return  idVendedor + ", " + nombre + ", " + apellido;
+    }
     
 
 }

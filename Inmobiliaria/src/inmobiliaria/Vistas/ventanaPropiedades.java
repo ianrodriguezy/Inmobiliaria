@@ -163,7 +163,7 @@ public class ventanaPropiedades extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        BuscarPropietario bp=new BuscarPropietario();
+        BuscarPropiedad bp=new BuscarPropiedad();
         escritorio.removeAll();
         escritorio.repaint();
         bp.setVisible(true);

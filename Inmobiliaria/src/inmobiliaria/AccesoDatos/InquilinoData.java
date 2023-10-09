@@ -133,13 +133,14 @@ public class InquilinoData {
                 i.setApellido(rs.getString("apellido"));
                 i.setNombre(rs.getString("nombre"));
                 i.setDni(rs.getInt("dni"));
-                i.setTipo(rs.getObject("tipo", char.class));
-                i.setDetalle(rs.getObject("detalle", char.class)); 
+                
+               // i.setTipo(rs.getObject("tipo", char.class));
+               // i.setDetalle(rs.getObject("detalle", char.class));
                 inquilinos.add(i);
             }
             ps.close();
         }catch(SQLException ex) {
-            mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
+            mostrarMensaje("Error al acceder a la tabla Inquilino, " + ex.getMessage(),"Error de conexión","error");
             
         }
         return inquilinos;
