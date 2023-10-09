@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="inmobiliariaUML">
+  <ClassDiagramComponents>
+    <Class name="Inquilino" package="" visibility="public" xPosition="25.0" yPosition="147.0">
+      <Fields>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="detalle" type="char" visibility="private"/>
+        <Field name="dni" type="int" visibility="private"/>
+        <Field name="id_inquilino" type="int" visibility="private"/>
+        <Field name="nombre" type="string" visibility="private"/>
+        <Field name="ArrayList" type="Propiedades" visibility="private"/>
+        <Field name="tipo" type="Char" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="inquilino" returnType="void" visibility="private"/>
+        <Method name="AgregarInquilino" returnType="void" visibility="public"/>
+        <Method name="Bajainquilino" returnType="void" visibility="public"/>
+        <Method name="BuscarInquilino" returnType="void" visibility="public"/>
+        <Method name="ModificarDatos" returnType="void" visibility="public"/>
+        <Method name="MultarInquilino" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Propiedad Inmueble" package="" visibility="public" xPosition="327.0" yPosition="81.0">
+      <Fields>
+        <Field name="accesibilidad" type="String" visibility="private"/>
+        <Field name="caracteristicas" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="duenio" type="Propietario" visibility="private"/>
+        <Field name="estadoLocal" type="char" visibility="private"/>
+        <Field name="forma" type="String" visibility="private"/>
+        <Field name="id_Local" type="int" visibility="private"/>
+        <Field name="ocupante" type="inquilino" visibility="private"/>
+        <Field name="precioTazado" type="float" visibility="private"/>
+        <Field name="revisor" type="inspector" visibility="private"/>
+        <Field name="superficieMinima" type="int" visibility="private"/>
+        <Field name="tipodeLocal" type="char" visibility="private"/>
+        <Field name="zona" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="inmueble" returnType="Propiedad" visibility="public"/>
+        <Method name="AlquilarLocal" returnType="void" visibility="public"/>
+        <Method name="CompletarLocal" returnType="void" visibility="public"/>
+        <Method name="EnviarRequisitos" returnType="void" visibility="public"/>
+        <Method name="FijarPrecios" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Propietario" package="" visibility="public" xPosition="691.0" yPosition="185.0">
+      <Fields>
+        <Field name="apellidoPropietario" type="String" visibility="private"/>
+        <Field name="dni" type="Int" visibility="private"/>
+        <Field name="domicilio" type="String" visibility="private"/>
+        <Field name="id_Propietario" type="int" visibility="private"/>
+        <Field name="ArrayList" type="localesPropios" visibility="private"/>
+        <Field name="nombrePropietario" type="String" visibility="private"/>
+        <Field name="telefono" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Propietario" returnType="void" visibility="public"/>
+        <Method name="AgregarPropietario" returnType="void" visibility="public"/>
+        <Method name="BuscarPropietario" returnType="void" visibility="public"/>
+        <Method name="ModificarPropietario" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Contrato Alquiler" package="" visibility="public" xPosition="309.0" yPosition="555.0">
+      <Fields>
+        <Field name="codCotrato" type="int" visibility="private"/>
+        <Field name="elinquilino" type="inquilino" visibility="private"/>
+        <Field name="fecha_Inicio" type="DateTime" visibility="private"/>
+        <Field name="fecha_Final" type="DateTime" visibility="private"/>
+        <Field name="fecha_Realizacion" type="DateTime" visibility="private"/>
+        <Field name="marca" type="char" visibility="private"/>
+        <Field name="propiedad" type="Propiedadinmueble" visibility="private"/>
+        <Field name="vendedor" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Alquiler" returnType="Contrato" visibility="public"/>
+        <Method name="BuscarContrato" returnType="void" visibility="public"/>
+        <Method name="Cancelacion" returnType="void" visibility="public"/>
+        <Method name="CrearContrato" returnType="void" visibility="public"/>
+        <Method name="Renovacion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Alquila" source="Inquilino" target="Propiedad Inmueble" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="realiza un" source="Inquilino" target="Contrato Alquiler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ofrece" source="Propietario" target="Propiedad Inmueble" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene un" source="Propiedad Inmueble" target="Inquilino" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="esta en un" source="Propiedad Inmueble" target="Contrato Alquiler" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
