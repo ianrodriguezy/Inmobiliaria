@@ -111,9 +111,9 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         jtTipo = new javax.swing.JTextField();
         jtEstado = new javax.swing.JTextField();
         jtCaracteristicas = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jbVolver = new javax.swing.JButton();
+        jbAgregar = new javax.swing.JButton();
+        jbLimpiar = new javax.swing.JButton();
         jcbRevisores = new javax.swing.JComboBox<>();
         jcbPropietarios = new javax.swing.JComboBox<>();
         jcbInquilinos = new javax.swing.JComboBox<>();
@@ -238,32 +238,32 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jtCaracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 640, 30));
 
-        jButton1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbVolver.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbVolver.setText("Volver");
+        jbVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 660, 120, 40));
+        jPanel1.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 660, 120, 40));
 
-        jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton2.setText("Agregar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbAgregar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbAgregar.setText("Agregar");
+        jbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 670, 120, 40));
+        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 670, 120, 40));
 
-        jButton3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton3.setText("Limpiar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jbLimpiar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbLimpiar.setText("Limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jbLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 670, 120, 40));
+        jPanel1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 670, 120, 40));
 
         jPanel1.add(jcbRevisores, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 410, -1));
 
@@ -329,14 +329,14 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         ventanaPropiedades vp = new ventanaPropiedades("",false,false,false,false);
         vp.setVisible(true);
         escritorio.add(vp);
         escritorio.moveToFront(vp);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbVolverActionPerformed
 
     private void jtSupTotalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtSupTotalKeyTyped
          int key=evt.getKeyChar();
@@ -370,25 +370,25 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jtFormaKeyTyped
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         limpiar();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jbLimpiarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (jtSupTotal.getText().isEmpty() || jtAccesibilidad.getText().isEmpty() || jtDireccion.getText().isEmpty() || jtForma.getText().isEmpty()||jtTipo.getText().isEmpty()) {
-            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Propietario", "error");
-        } else {
-            if(PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtSupTotal.getText()),1)!=null){
-                mostrarMensaje("El Propietario que desea agregar ya existe.", "Error al crear Propietario", "error");
-            }else{
-            
-            Propietario p = new Propietario(jtAccesibilidad.getText(), jtDireccion.getText(), jtTipo.getText(), Integer.parseInt(jtSupTotal.getText()), Integer.parseInt(jtForma.getText()));
-            PropietarioData.agregarPropietario(p);
-            
-            limpiar();
-
-        }   }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
+//        if (jtSupTotal.getText().isEmpty() || jtAccesibilidad.getText().isEmpty() || jtDireccion.getText().isEmpty() || jtForma.getText().isEmpty()||jtTipo.getText().isEmpty()) {
+//            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Propietario", "error");
+//        } else {
+//            if(PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtSupTotal.getText()),1,0)!=null){
+//                mostrarMensaje("El Propietario que desea agregar ya existe.", "Error al crear Propietario", "error");
+//            }else{
+//            
+//            Propietario p = new Propietario(jtAccesibilidad.getText(), jtDireccion.getText(), jtTipo.getText(), Integer.parseInt(jtSupTotal.getText()), Integer.parseInt(jtForma.getText()));
+//            PropietarioData.agregarPropietario(p);
+//            
+//            limpiar();
+//
+//        }   }
+    }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jtZonaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtZonaKeyTyped
         // TODO add your handling code here:
@@ -437,9 +437,6 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -455,6 +452,9 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbAgregar;
+    private javax.swing.JButton jbLimpiar;
+    private javax.swing.JButton jbVolver;
     private javax.swing.JComboBox<Inquilino> jcbInquilinos;
     private javax.swing.JComboBox<Propietario> jcbPropietarios;
     private javax.swing.JComboBox<Inspector> jcbRevisores;

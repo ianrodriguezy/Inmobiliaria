@@ -291,8 +291,8 @@ public class BuscarPropietario extends javax.swing.JInternalFrame {
         } else {
             
             boolean aux;
-            if(PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtDni.getText()),0)!=null){
-                p=PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtDni.getText()),0);
+            if(PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtDni.getText()),0,0)!=null){
+                p=PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtDni.getText()),0,0);
                
             jtDni.setText(p.getDni() + "");
             jtApellido.setText(p.getApellidoPropietario());

@@ -28,34 +28,34 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
         propietarios=PropietarioData.listarPropietario();
         cargarCombop();
         cargarComboTipo();
-        cargarModelo();
+        texto.setText("Hola mundo");
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
     }
 
-    private DefaultTableModel modelo = new DefaultTableModel() {
-        public boolean isCellEditable(int f, int c) {
-            return false;
-        }
-    };
+//    private DefaultTableModel modelo = new DefaultTableModel() {
+//        public boolean isCellEditable(int f, int c) {
+//            return false;
+//        }
+//    };
     
-    private void cargarModelo (){
-        modelo.addColumn("ID Propiedad");
-        modelo.addColumn("Accesibilidad");
-        modelo.addColumn("Características");
-        modelo.addColumn("Dirección");
-        modelo.addColumn("Estado");
-        modelo.addColumn("Servicios");
-        modelo.addColumn("Precio tasado");
-        modelo.addColumn("Sup cubierta");
-        modelo.addColumn("Sup total");
-        modelo.addColumn("Tipo");
-        modelo.addColumn("Zona");
-        modelo.addColumn("Propietario");
-        modelo.addColumn("Inquilino");
-        
-        jtablaPropiedades.setModel(modelo);
-        
-    }
+//    private void cargarModelo (){
+//        modelo.addColumn("ID Propiedad");
+//        modelo.addColumn("Accesibilidad");
+//        modelo.addColumn("Características");
+//        modelo.addColumn("Dirección");
+//        modelo.addColumn("Estado");
+//        modelo.addColumn("Servicios");
+//        modelo.addColumn("Precio tasado");
+//        modelo.addColumn("Sup cubierta");
+//        modelo.addColumn("Sup total");
+//        modelo.addColumn("Tipo");
+//        modelo.addColumn("Zona");
+//        modelo.addColumn("Propietario");
+//        modelo.addColumn("Inquilino");
+//        
+//        jtablaPropiedades.setModel(modelo);
+//        
+//    }
 
     public BuscarPropiedad( String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
@@ -64,6 +64,7 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
         propietarios=PropietarioData.listarPropietario();
         cargarCombop();
         cargarComboTipo();
+        texto.setText("Hola mundo");
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
     }
     
@@ -103,12 +104,15 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
         jbVolver = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jtablaPropiedades = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jcbPropietarios = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jcbTipo = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jTextField1 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        texto = new javax.swing.JEditorPane();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -140,21 +144,6 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
         jLabel7.setText("Buscar por propietario :");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 190, -1));
 
-        jtablaPropiedades.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jtablaPropiedades);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 990, 300));
-
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(35, 76, 139));
         jLabel9.setText("Listado de propiedades");
@@ -168,6 +157,23 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 190, -1));
 
         jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 190, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 390, 90));
+
+        jTextField1.setText("jTextField1");
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 460, 80));
+
+        texto.setCaretColor(new java.awt.Color(0, 0, 0));
+        texto.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        texto.setEnabled(false);
+        texto.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jScrollPane3.setViewportView(texto);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 550, 370, 70));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -208,10 +214,13 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
     private javax.swing.JComboBox<Propietario> jcbPropietarios;
     private javax.swing.JComboBox<String> jcbTipo;
-    private javax.swing.JTable jtablaPropiedades;
+    private javax.swing.JEditorPane texto;
     // End of variables declaration//GEN-END:variables
 }

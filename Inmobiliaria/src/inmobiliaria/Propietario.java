@@ -10,34 +10,45 @@ public class Propietario {
     private int dni;
     private int telefono;
     private ArrayList propiedadesPropias;
-
+    private int estado;
+    
     public Propietario() {
     }
 
-    public Propietario(String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono, ArrayList propiedadesPropias) {
+    public Propietario(String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono, int estado, ArrayList propiedadesPropias) {
         this.apellidoPropietario = apellidoPropietario;
         this.nombrePropietario = nombrePropietario;
         this.domicilio = domicilio;
         this.dni = dni;
         this.telefono = telefono;
+        this.estado=estado;
         this.propiedadesPropias = propiedadesPropias;
     }
-    public Propietario(String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono) {
+    public Propietario(String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono,int estado) {
         this.apellidoPropietario = apellidoPropietario;
         this.nombrePropietario = nombrePropietario;
         this.domicilio = domicilio;
         this.dni = dni;
         this.telefono = telefono;
-        
+        this.estado=estado;
     }
     
-    public Propietario(int idPropietario, String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono) {
+    public Propietario(int idPropietario, String apellidoPropietario, String nombrePropietario, String domicilio, int dni, int telefono,int estado) {
         this.idPropietario = idPropietario;
         this.apellidoPropietario = apellidoPropietario;
         this.nombrePropietario = nombrePropietario;
         this.domicilio = domicilio;
         this.dni = dni;
         this.telefono = telefono;
+        this.estado=estado;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
     public int getIdPropietario() {

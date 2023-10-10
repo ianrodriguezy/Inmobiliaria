@@ -51,9 +51,15 @@ public static void agregarPropietario(Propietario propietario){
          mostrarMensaje("Alta exitosa.","Creacion de propietario","info");
 }
 
-public static Propietario buscarPropietarioPorDni(int dni, int nuevo) {
+public static Propietario buscarPropietarioPorDni(int dni, int nuevo,int mod) {
         Propietario p = null;
-        String sql = "SELECT id_propietario, apellidoPropietario, nombrePropietario,domicilio, dni, telefono FROM propietario WHERE dni=?";
+        String sql;
+        if(mod==1){
+             sql = "SELECT id_propietario, apellidoPropietario, nombrePropietario,domicilio, dni, telefono,estado FROM propietario WHERE dni=? ";
+        }else{
+             sql = "SELECT id_propietario, apellidoPropietario, nombrePropietario,domicilio, dni, telefono,estado FROM propietario WHERE dni=? AND estado=1";
+        }
+        
         Connection con = null;
         PreparedStatement ps = null;
         con = Conectar.getConectar();
@@ -71,6 +77,8 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo) {
                 p.setDomicilio(rs.getString("domicilio"));
                 p.setDni(rs.getInt("dni"));
                 p.setTelefono(rs.getInt("telefono"));
+                p.setEstado(rs.getInt("estado"));
+                
             } else if (nuevo!=1){
                 mostrarMensaje("No existe el Propietario ","Error al buscar","error");
             }
@@ -84,7 +92,7 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo) {
     }
 
     public static void modificarPropietario(Propietario p){
-        String sql = "UPDATE propietario SET apellidoPropietario = ?, nombrePropietario = ?, domicilio = ?, dni = ?, telefono = ? WHERE id_propietario="+p.getIdPropietario();
+        String sql = "UPDATE propietario SET apellidoPropietario = ?, nombrePropietario = ?, domicilio = ?, dni = ?, telefono = ?, estado=? WHERE id_propietario="+p.getIdPropietario();
         Connection con = null;
         PreparedStatement ps = null;
         con = Conectar.getConectar();
@@ -96,7 +104,7 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo) {
             ps.setString(3, p.getDomicilio());
             ps.setInt(4, p.getDni());
             ps.setInt(5, p.getTelefono());
-            
+            ps.setInt(6, p.getEstado());
             
 
             int exito = ps.executeUpdate();

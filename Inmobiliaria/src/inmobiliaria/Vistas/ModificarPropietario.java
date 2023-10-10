@@ -37,6 +37,7 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
         jtDni.setText("");
         jtTelefono.setText("");
         jtDomicilio.setText("");
+        jcbEstado.setSelectedIndex(0);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +64,8 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
         jbLimpiar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jbBuscar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jcbEstado = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -73,8 +76,8 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel2.setText("Telefono   :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 100, -1));
+        jLabel2.setText("Estado       :");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 100, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(35, 76, 139));
@@ -142,7 +145,7 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
                 jbVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 530, 120, 40));
+        jPanel1.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 570, 120, 40));
 
         jbGuardar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jbGuardar.setText("Guardar");
@@ -152,7 +155,7 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
                 jbGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, 120, 40));
+        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 570, 120, 40));
 
         jbLimpiar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jbLimpiar.setText("Limpiar");
@@ -161,7 +164,7 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
                 jbLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, 120, 40));
+        jPanel1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 570, 120, 40));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
@@ -176,6 +179,19 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 50, 50));
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(35, 76, 139));
+        jLabel8.setText("Telefono   :");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 100, -1));
+
+        jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        jcbEstado.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbEstadoItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 80, -1));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -249,11 +265,16 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-
+        int aux;
         if (jtDni.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jtDomicilio.getText().isEmpty() || jtTelefono.getText().isEmpty()) {
             mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al modificar Propietario", "error");
         }else{
-            Propietario p=new Propietario(auxid, jtApellido.getText(), jtNombre.getText(), jtDomicilio.getText(), Integer.parseInt(jtDni.getText()), Integer.parseInt(jtTelefono.getText()));
+            if(jcbEstado.getSelectedIndex()==0){
+                aux=1;
+            } else {
+                aux=0;
+            }
+            Propietario p=new Propietario(auxid, jtApellido.getText(), jtNombre.getText(), jtDomicilio.getText(), Integer.parseInt(jtDni.getText()), Integer.parseInt(jtTelefono.getText()),aux);
             PropietarioData.modificarPropietario(p);
             jbGuardar.setEnabled(false);
             jtApellido.setEnabled(false);;
@@ -261,41 +282,49 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
             jtDomicilio.setEnabled(false);;
             jtTelefono.setEnabled(false);;
             limpiar();
-            
+            System.out.println(aux);
         }     
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         Propietario p = new Propietario();
-        
+        int auxEstado;
         if (jtDni.getText().isEmpty()) {
             mostrarMensaje("Ingrese un dni para buscar al Propietario.", "Error al buscar", "error");
         } else {
-            
+
             boolean aux;
-            if(PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtDni.getText()),0)!=null){
-                p=PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtDni.getText()),0);
-               
-            jtDni.setText(p.getDni() + "");
-            jtApellido.setText(p.getApellidoPropietario());
-            jtNombre.setText(p.getNombrePropietario());
-            jtDomicilio.setText(p.getDomicilio());
-            jtTelefono.setText(p.getTelefono()+"");
-            
-            if(!p.getApellidoPropietario().isEmpty()){
-                jbGuardar.setEnabled(true);
-                this.auxid=p.getIdPropietario();
-                jtApellido.setEnabled(true);;
-                jtNombre.setEnabled(true);;
-                jtDomicilio.setEnabled(true);;
-                jtTelefono.setEnabled(true);;
+            if (PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtDni.getText()), 0, 1) != null) {
+                p = PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtDni.getText()), 0, 1);
+
+                jtDni.setText(p.getDni() + "");
+                jtApellido.setText(p.getApellidoPropietario());
+                jtNombre.setText(p.getNombrePropietario());
+                jtDomicilio.setText(p.getDomicilio());
+                jtTelefono.setText(p.getTelefono() + "");
+                if (p.getEstado() == 1) {
+                    jcbEstado.setSelectedIndex(0);
+                } else {
+                    jcbEstado.setSelectedIndex(1);
+                }
+                if (!p.getApellidoPropietario().isEmpty()) {
+                    jbGuardar.setEnabled(true);
+                    this.auxid = p.getIdPropietario();
+                    jtApellido.setEnabled(true);;
+                    jtNombre.setEnabled(true);;
+                    jtDomicilio.setEnabled(true);;
+                    jtTelefono.setEnabled(true);;
+                    
+                }
             }
-            }
-            
-            
+
         }
 
     }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jcbEstadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbEstadoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbEstadoItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -306,11 +335,13 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
+    private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtDni;
     private javax.swing.JTextField jtDomicilio;
