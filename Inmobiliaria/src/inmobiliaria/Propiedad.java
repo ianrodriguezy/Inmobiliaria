@@ -4,23 +4,24 @@ package inmobiliaria;
 
 public class Propiedad {
     private int idPropiedad;
-    private String accesibilidad, caracteristica, direccion, forma, zona;
+    private String accesibilidad, caracteristicas, direccion, servicios, zona, titulo;
     private Propietario dueño;
     private String estadoPropiedad,tipoPropiedad;
     private Inquilino ocupante;
     private float precioTasado;
     private Inspector revisor;
-    private int superficieMinima;
+    private int superficieCub, superficieTotal;
 
     public Propiedad() {
     }
 
-    public Propiedad(int idPropiedad, String accesibilidad, String caracteristica, String direccion, String forma, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieMinima) {
+    public Propiedad(int idPropiedad,String titulo, String accesibilidad, String caracteristicas, String direccion, String servicios, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieCub, int superficieTotal) {
         this.idPropiedad = idPropiedad;
+        this.titulo=titulo;
         this.accesibilidad = accesibilidad;
-        this.caracteristica = caracteristica;
+        this.caracteristicas = caracteristicas;
         this.direccion = direccion;
-        this.forma = forma;
+        this.servicios = servicios;
         this.zona = zona;
         this.dueño = dueño;
         this.estadoPropiedad = estadoPropiedad;
@@ -28,14 +29,17 @@ public class Propiedad {
         this.ocupante = ocupante;
         this.precioTasado = precioTasado;
         this.revisor = revisor;
-        this.superficieMinima = superficieMinima;
+        this.superficieCub= superficieCub;
+        this.superficieTotal=superficieTotal;
+        
     }
 
-    public Propiedad(String accesibilidad, String caracteristica, String direccion, String forma, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieMinima) {
+    public Propiedad(String titulo, String accesibilidad, String caracteristicas, String direccion, String servicios, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieCub, int superficieTotal) {
+        this.titulo=titulo;
         this.accesibilidad = accesibilidad;
-        this.caracteristica = caracteristica;
+        this.caracteristicas = caracteristicas;
         this.direccion = direccion;
-        this.forma = forma;
+        this.servicios = servicios;
         this.zona = zona;
         this.dueño = dueño;
         this.estadoPropiedad = estadoPropiedad;
@@ -43,22 +47,25 @@ public class Propiedad {
         this.ocupante = ocupante;
         this.precioTasado = precioTasado;
         this.revisor = revisor;
-        this.superficieMinima = superficieMinima;
+        this.superficieCub= superficieCub;
+        this.superficieTotal=superficieTotal;
     }
 
-    public Propiedad(int idPropiedad, String accesibilidad, String caracteristica, String direccion, String forma, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, float precioTasado, Inspector revisor, int superficieMinima) {
+    public Propiedad(int idPropiedad, String titulo,String accesibilidad, String caracteristicas, String direccion, String servicios, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, float precioTasado, Inspector revisor,int superficieCub, int superficieTotal) {
         this.idPropiedad = idPropiedad;
+        this.titulo=titulo;
         this.accesibilidad = accesibilidad;
-        this.caracteristica = caracteristica;
+        this.caracteristicas = caracteristicas;
         this.direccion = direccion;
-        this.forma = forma;
+        this.servicios = servicios;
         this.zona = zona;
         this.dueño = dueño;
         this.estadoPropiedad = estadoPropiedad;
         this.tipoPropiedad = tipoPropiedad;
         this.precioTasado = precioTasado;
         this.revisor = revisor;
-        this.superficieMinima = superficieMinima;
+        this.superficieCub= superficieCub;
+        this.superficieTotal=superficieTotal;
     }
 
     public int getIdPropiedad() {
@@ -77,12 +84,12 @@ public class Propiedad {
         this.accesibilidad = accesibilidad;
     }
 
-    public String getCaracteristica() {
-        return caracteristica;
+    public String getCaracteristicas() {
+        return caracteristicas;
     }
 
-    public void setCaracteristica(String caracteristica) {
-        this.caracteristica = caracteristica;
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
     }
 
     public String getDireccion() {
@@ -93,12 +100,12 @@ public class Propiedad {
         this.direccion = direccion;
     }
 
-    public String getForma() {
-        return forma;
+    public String getServicios() {
+        return servicios;
     }
 
-    public void setForma(String forma) {
-        this.forma = forma;
+    public void setServicios(String servicios) {
+        this.servicios = servicios;
     }
 
     public String getZona() {
@@ -157,13 +164,31 @@ public class Propiedad {
         this.revisor = revisor;
     }
 
-    public int getSuperficieMinima() {
-        return superficieMinima;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setSuperficieMinima(int superficieMinima) {
-        this.superficieMinima = superficieMinima;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
+
+    public int getSuperficieCub() {
+        return superficieCub;
+    }
+
+    public void setSuperficieCub(int superficieCub) {
+        this.superficieCub = superficieCub;
+    }
+
+    public int getSuperficieTotal() {
+        return superficieTotal;
+    }
+
+    public void setSuperficieTotal(int superficieTotal) {
+        this.superficieTotal = superficieTotal;
+    }
+
+    
     
     
     

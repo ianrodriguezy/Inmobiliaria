@@ -37,7 +37,30 @@ public class InquilinoData {
         }
          mostrarMensaje("Alta exitosa.","Creacion de propietario","info");
     }
-    
+    public static Inquilino buscarInquilinoPorId(int id){
+        Inquilino i = null;
+        String sql = "SELECT id_inquilino, apellido, nombre, dni FROM inquilino WHERE id_inquilino="+id;
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        try {
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                i = new Inquilino();
+                i.setIdInquilino(rs.getInt("id_inquilino"));
+                i.setApellido(rs.getString("apellido"));
+                i.setNombre(rs.getString("nombre"));                
+                i.setDni(rs.getInt("dni"));                
+            } 
+            ps.close();
+        } catch (SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Inquilino, " + ex.getMessage(),"Error de conexión","error");
+        }
+
+        return i;
+    }
     
     public static Inquilino buscarInquilinoPorDni(int dni, int nuevo) {
         Inquilino i = null;
