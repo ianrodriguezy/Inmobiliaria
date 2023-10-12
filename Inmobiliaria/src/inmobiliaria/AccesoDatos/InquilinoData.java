@@ -20,26 +20,41 @@ import javax.swing.JOptionPane;
 public class InquilinoData {
     
     
-    public static void agregarInquilino(Inquilino inquilino){ //Agregué los atributos basicos, hay que ver que mas tenemos en cuenta
+    public static void agregarInquilino(Inquilino i){ //Agregué los atributos basicos, hay que ver que mas tenemos en cuenta
         Connection con = null;
         PreparedStatement ps = null;
 
-        String sql = "INSERT INTO inquilino (`apellido`, `nombre`, `dni`) VALUES ('" + inquilino.getApellido() + "','" + inquilino.getNombre() + "','" + inquilino.getDni() + "')";
+        String sql = "INSERT INTO inquilino ( `apellido`, `nombre`, `dni`, `cuit`, `tipo`, `telefono`, `lugarTrabajo`, `dniGarante`, `nombreGarante`, `supMinima`, `precioAprox`, `estado`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         con = Conectar.getConectar();
 
         try {
+            
+            
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, i.getApellido());
+            ps.setString(2, i.getNombre());
+            ps.setInt(3, i.getDni());  
+            ps.setInt(4, i.getCuit());
+            ps.setString(5, i.getTipo());
+            ps.setInt(6, i.getTelefono());
+            ps.setString(7, i.getLugarTrabajo());
+            ps.setInt(8, i.getDniGarante());
+            ps.setString(9, i.getNombreGarante());
+            ps.setInt(10, i.getSupMin());
+            ps.setInt(11, i.getPrecioAprox());
+            ps.setInt(12, 1);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-
+            
         } catch (SQLException x) {
             System.out.println("Error " + x.getMessage());
         }
          mostrarMensaje("Alta exitosa.","Creacion de propietario","info");
     }
+    
     public static Inquilino buscarInquilinoPorId(int id){
         Inquilino i = null;
-        String sql = "SELECT id_inquilino, apellido, nombre, dni FROM inquilino WHERE id_inquilino="+id;
+        String sql = "SELECT `id_inquilino`, `apellido`, `nombre`, `dni`, `cuit`, `tipo`, `telefono`, `lugarTrabajo`, `dniGarante`, `nombreGarante`, `supMinima`, `precioAprox`, `estado` FROM `inquilino` WHERE id_inquilino="+id;
         Connection con = null;
         PreparedStatement ps = null;
         con = Conectar.getConectar();
@@ -52,7 +67,16 @@ public class InquilinoData {
                 i.setIdInquilino(rs.getInt("id_inquilino"));
                 i.setApellido(rs.getString("apellido"));
                 i.setNombre(rs.getString("nombre"));                
-                i.setDni(rs.getInt("dni"));                
+                i.setDni(rs.getInt("dni"));     
+                i.setCuit(rs.getInt("cuit"));  
+                i.setTipo(rs.getString("tipo")); 
+                i.setTelefono(rs.getInt("telefono"));
+                i.setLugarTrabajo(rs.getString("lugarTrabajo")); 
+                i.setDniGarante(rs.getInt("dniGarante"));
+                i.setNombreGarante(rs.getString("nombreGarante"));
+                i.setSupMin(rs.getInt("supMinima"));
+                i.setPrecioAprox(rs.getInt("p´recioAprox"));
+                i.setEstado(rs.getInt("estado"));
             } 
             ps.close();
         } catch (SQLException ex) {
@@ -62,9 +86,14 @@ public class InquilinoData {
         return i;
     }
     
-    public static Inquilino buscarInquilinoPorDni(int dni, int nuevo) {
+    public static Inquilino buscarInquilinoPorDni(int dni, int nuevo, int mod) {
         Inquilino i = null;
-        String sql = "SELECT id_inquilino, apellido, nombre, dni FROM inquilino WHERE dni=?";
+        String sql;
+        if(mod==1){
+        sql = "SELECT `id_inquilino`, `apellido`, `nombre`, `dni`, `cuit`, `tipo`, `telefono`, `lugarTrabajo`, `dniGarante`, `nombreGarante`, `supMinima`, `precioAprox`, `estado` FROM `inquilino` WHERE dni=?";
+        }else{
+            sql = "SELECT `id_inquilino`, `apellido`, `nombre`, `dni`, `cuit`, `tipo`, `telefono`, `lugarTrabajo`, `dniGarante`, `nombreGarante`, `supMinima`, `precioAprox`, `estado` FROM `inquilino` WHERE dni=? AND estado=1";
+        }
         Connection con = null;
         PreparedStatement ps = null;
         con = Conectar.getConectar();
@@ -79,7 +108,16 @@ public class InquilinoData {
                 i.setIdInquilino(rs.getInt("id_inquilino"));
                 i.setApellido(rs.getString("apellido"));
                 i.setNombre(rs.getString("nombre"));                
-                i.setDni(rs.getInt("dni"));                
+                i.setDni(rs.getInt("dni"));   
+                i.setCuit(rs.getInt("cuit"));  
+                i.setTipo(rs.getString("tipo")); 
+                i.setTelefono(rs.getInt("telefono"));
+                i.setLugarTrabajo(rs.getString("lugarTrabajo")); 
+                i.setDniGarante(rs.getInt("dniGarante"));
+                i.setNombreGarante(rs.getString("nombreGarante"));
+                i.setSupMin(rs.getInt("supMinima"));
+                i.setPrecioAprox(rs.getInt("p´recioAprox"));
+                i.setEstado(rs.getInt("estado"));
             } else if (nuevo!=1){
                 mostrarMensaje("No existe el Inquilino ","Error al buscar","error");
             }
@@ -93,7 +131,7 @@ public class InquilinoData {
     }
     
     public static void modificarInquilino(Inquilino i){
-        String sql = "UPDATE inquilino SET apellido = ?, nombre = ?, dni = ? WHERE id_inquilino="+i.getIdInquilino();
+        String sql = "UPDATE `inquilino` SET `apellido`=?,`nombre`=?,`dni`=?,`cuit`=?,`tipo`=?,`telefono`=?,`lugarTrabajo`=?,`dniGarante`=?,`nombreGarante`=?,`supMinima`=?,`precioAprox`=?,`estado`=? WHERE id_inquilino="+i.getIdInquilino();
         Connection con = null;
         PreparedStatement ps = null;
         con = Conectar.getConectar();
@@ -102,7 +140,15 @@ public class InquilinoData {
             ps = con.prepareStatement(sql);
             ps.setString(1, i.getApellido());
             ps.setString(2, i.getNombre());
-            ps.setInt(3, i.getDni());           
+            ps.setInt(3, i.getDni());  
+            ps.setInt(4, i.getCuit());
+            ps.setString(5, i.getTipo());
+            ps.setInt(6, i.getTelefono());
+            ps.setString(7, i.getLugarTrabajo());
+            ps.setInt(8, i.getDniGarante());
+            ps.setString(9, i.getNombreGarante());
+            ps.setInt(10, i.getSupMin());
+            ps.setInt(11, i.getPrecioAprox());
             
 
             int exito = ps.executeUpdate();
@@ -156,9 +202,15 @@ public class InquilinoData {
                 i.setApellido(rs.getString("apellido"));
                 i.setNombre(rs.getString("nombre"));
                 i.setDni(rs.getInt("dni"));
-                
-               // i.setTipo(rs.getObject("tipo", char.class));
-               // i.setDetalle(rs.getObject("detalle", char.class));
+                i.setCuit(rs.getInt("cuit"));  
+                i.setTipo(rs.getString("tipo")); 
+                i.setTelefono(rs.getInt("telefono"));
+                i.setLugarTrabajo(rs.getString("lugarTrabajo")); 
+                i.setDniGarante(rs.getInt("dniGarante"));
+                i.setNombreGarante(rs.getString("nombreGarante"));
+                i.setSupMin(rs.getInt("supMinima"));
+                i.setPrecioAprox(rs.getInt("p´recioAprox"));
+                i.setEstado(rs.getInt("estado"));
                 inquilinos.add(i);
             }
             ps.close();
