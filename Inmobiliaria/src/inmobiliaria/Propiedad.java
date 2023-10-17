@@ -4,7 +4,7 @@ package inmobiliaria;
 
 public class Propiedad {
     private int idPropiedad;
-    private String accesibilidad, caracteristicas, direccion, servicios, zona, titulo;
+    private String accesibilidad, caracteristicas, direccion, servicios, localidad, titulo;
     private Propietario dueño;
     private String estadoPropiedad,tipoPropiedad;
     private Inquilino ocupante;
@@ -15,14 +15,14 @@ public class Propiedad {
     public Propiedad() {
     }
 
-    public Propiedad(int idPropiedad,String titulo, String accesibilidad, String caracteristicas, String direccion, String servicios, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieCub, int superficieTotal) {
+    public Propiedad(int idPropiedad,String titulo, String accesibilidad, String caracteristicas, String direccion, String servicios, String localidad, Propietario dueño, String estadoPropiedad, String tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieCub, int superficieTotal) {
         this.idPropiedad = idPropiedad;
         this.titulo=titulo;
         this.accesibilidad = accesibilidad;
         this.caracteristicas = caracteristicas;
         this.direccion = direccion;
         this.servicios = servicios;
-        this.zona = zona;
+        this.localidad = localidad;
         this.dueño = dueño;
         this.estadoPropiedad = estadoPropiedad;
         this.tipoPropiedad = tipoPropiedad;
@@ -34,13 +34,13 @@ public class Propiedad {
         
     }
 
-    public Propiedad(String titulo, String accesibilidad, String caracteristicas, String direccion, String servicios, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieCub, int superficieTotal) {
+    public Propiedad(String titulo, String accesibilidad, String caracteristicas, String direccion, String servicios, String localidad, Propietario dueño, String estadoPropiedad, String tipoPropiedad, Inquilino ocupante, float precioTasado, Inspector revisor, int superficieCub, int superficieTotal) {
         this.titulo=titulo;
         this.accesibilidad = accesibilidad;
         this.caracteristicas = caracteristicas;
         this.direccion = direccion;
         this.servicios = servicios;
-        this.zona = zona;
+        this.localidad = localidad;
         this.dueño = dueño;
         this.estadoPropiedad = estadoPropiedad;
         this.tipoPropiedad = tipoPropiedad;
@@ -51,14 +51,14 @@ public class Propiedad {
         this.superficieTotal=superficieTotal;
     }
 
-    public Propiedad(int idPropiedad, String titulo,String accesibilidad, String caracteristicas, String direccion, String servicios, String zona, Propietario dueño, String estadoPropiedad, String tipoPropiedad, float precioTasado, Inspector revisor,int superficieCub, int superficieTotal) {
+    public Propiedad(int idPropiedad, String titulo,String accesibilidad, String caracteristicas, String direccion, String servicios, String localidad, Propietario dueño, String estadoPropiedad, String tipoPropiedad, float precioTasado, Inspector revisor,int superficieCub, int superficieTotal) {
         this.idPropiedad = idPropiedad;
         this.titulo=titulo;
         this.accesibilidad = accesibilidad;
         this.caracteristicas = caracteristicas;
         this.direccion = direccion;
         this.servicios = servicios;
-        this.zona = zona;
+        this.localidad = localidad;
         this.dueño = dueño;
         this.estadoPropiedad = estadoPropiedad;
         this.tipoPropiedad = tipoPropiedad;
@@ -108,12 +108,12 @@ public class Propiedad {
         this.servicios = servicios;
     }
 
-    public String getZona() {
-        return zona;
+    public String getLocalidad() {
+        return localidad;
     }
 
-    public void setZona(String zona) {
-        this.zona = zona;
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;;
     }
 
     public Propietario getDueño() {
@@ -186,6 +186,11 @@ public class Propiedad {
 
     public void setSuperficieTotal(int superficieTotal) {
         this.superficieTotal = superficieTotal;
+    }
+
+    @Override
+    public String toString() {
+        return idPropiedad + ", " + titulo ;
     }
 
     

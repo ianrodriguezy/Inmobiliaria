@@ -2,11 +2,13 @@
 package inmobiliaria.Vistas;
 
 import Inmobiliaria.AccesoDatos.InquilinoData;
+import Inmobiliaria.AccesoDatos.PropiedadData;
 import Inmobiliaria.AccesoDatos.PropietarioData;
 import static Inmobiliaria.AccesoDatos.PropietarioData.mostrarMensaje;
 import inmobiliaria.AccesoDatos.InspectorData;
 import inmobiliaria.Inquilino;
 import inmobiliaria.Inspector;
+import inmobiliaria.Propiedad;
 import inmobiliaria.Propietario;
 import static inmobiliaria.Vistas.MenuPrincipal.escritorio;
 import java.util.ArrayList;
@@ -84,11 +86,20 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
     }
     
     private void limpiar(){
+        jtTitulo.setText("");
         jtAccesibilidad.setText("");
         jtDireccion.setText("");
         jtSupTotal.setText("");
-        jtForma.setText("");
+        jtServicios.setText("");
         jtTipo.setText("");
+        jtCaracteristicas.setText("");
+        jtEstado.setText("");
+        jtPrecio.setText("");
+        jtSupCub.setText("");
+        jtLocalidad.setText("");
+        jcbInquilinos.setSelectedIndex(0);
+        jcbPropietarios.setSelectedIndex(0);
+        jcbRevisores.setSelectedIndex(0);
     }
     
     @SuppressWarnings("unchecked")
@@ -101,10 +112,10 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jtForma = new javax.swing.JTextField();
+        jtServicios = new javax.swing.JTextField();
         jtAccesibilidad = new javax.swing.JTextField();
         jtDireccion = new javax.swing.JTextField();
-        jtZona = new javax.swing.JTextField();
+        jtLocalidad = new javax.swing.JTextField();
         jtSupTotal = new javax.swing.JTextField();
         jtPrecio = new javax.swing.JTextField();
         jtSupCub = new javax.swing.JTextField();
@@ -125,6 +136,9 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jtTitulo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -136,35 +150,35 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(35, 76, 139));
         jLabel2.setText("Revisor                        :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 170, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 630, 170, -1));
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel3.setText("Accesibilidad             :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 170, -1));
+        jLabel3.setText("Agregar Propiedad");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 250, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(35, 76, 139));
         jLabel4.setText("Caraterísticas            :");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 180, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 180, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(35, 76, 139));
         jLabel5.setText("Direccion                     :");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 190, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 190, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(35, 76, 139));
         jLabel6.setText("Estado                           :");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 170, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 170, -1));
 
-        jtForma.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jtForma.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtServicios.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtServicios.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtFormaKeyTyped(evt);
+                jtServiciosKeyTyped(evt);
             }
         });
-        jPanel1.add(jtForma, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 640, 30));
+        jPanel1.add(jtServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 640, 30));
 
         jtAccesibilidad.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtAccesibilidad.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -172,7 +186,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jtAccesibilidadKeyTyped(evt);
             }
         });
-        jPanel1.add(jtAccesibilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 640, 30));
+        jPanel1.add(jtAccesibilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 640, 30));
 
         jtDireccion.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -180,15 +194,15 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jtDireccionKeyTyped(evt);
             }
         });
-        jPanel1.add(jtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 640, 30));
+        jPanel1.add(jtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 640, 30));
 
-        jtZona.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jtZona.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtLocalidad.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtLocalidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtZonaKeyTyped(evt);
+                jtLocalidadKeyTyped(evt);
             }
         });
-        jPanel1.add(jtZona, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 640, 30));
+        jPanel1.add(jtLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 640, 30));
 
         jtSupTotal.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtSupTotal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -196,7 +210,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jtSupTotalKeyTyped(evt);
             }
         });
-        jPanel1.add(jtSupTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 110, 30));
+        jPanel1.add(jtSupTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 130, 30));
 
         jtPrecio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -204,7 +218,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jtPrecioKeyTyped(evt);
             }
         });
-        jPanel1.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 640, 30));
+        jPanel1.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 640, 30));
 
         jtSupCub.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtSupCub.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -212,7 +226,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jtSupCubKeyTyped(evt);
             }
         });
-        jPanel1.add(jtSupCub, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 110, 30));
+        jPanel1.add(jtSupCub, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 130, 30));
 
         jtTipo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtTipo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -220,7 +234,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jtTipoKeyTyped(evt);
             }
         });
-        jPanel1.add(jtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 90, 30));
+        jPanel1.add(jtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 130, 30));
 
         jtEstado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtEstado.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -228,7 +242,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jtEstadoKeyTyped(evt);
             }
         });
-        jPanel1.add(jtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 90, 30));
+        jPanel1.add(jtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 130, 30));
 
         jtCaracteristicas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtCaracteristicas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -236,7 +250,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jtCaracteristicasKeyTyped(evt);
             }
         });
-        jPanel1.add(jtCaracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 640, 30));
+        jPanel1.add(jtCaracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 640, 30));
 
         jbVolver.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jbVolver.setText("Volver");
@@ -245,7 +259,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jbVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 660, 120, 40));
+        jPanel1.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 710, 120, 40));
 
         jbAgregar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jbAgregar.setText("Agregar");
@@ -254,7 +268,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jbAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 670, 120, 40));
+        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 710, 120, 40));
 
         jbLimpiar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jbLimpiar.setText("Limpiar");
@@ -263,53 +277,71 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                 jbLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 670, 120, 40));
+        jPanel1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 710, 120, 40));
 
-        jPanel1.add(jcbRevisores, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 410, -1));
+        jPanel1.add(jcbRevisores, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 630, 410, -1));
 
-        jPanel1.add(jcbPropietarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 410, 30));
+        jPanel1.add(jcbPropietarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, 410, 30));
 
-        jPanel1.add(jcbInquilinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 410, -1));
+        jPanel1.add(jcbInquilinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 580, 410, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
         jLabel7.setText("Servicios                     :");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 180, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 180, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(35, 76, 139));
         jLabel8.setText("Precio tasado            :");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 180, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 180, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(35, 76, 139));
         jLabel9.setText("Superficie cubierta :");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 170, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 170, -1));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(35, 76, 139));
         jLabel10.setText("Superficie total         :");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 190, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 190, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(35, 76, 139));
         jLabel11.setText("Tipo propiedad         :");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 180, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 180, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel12.setText("Zona                             :");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 170, -1));
+        jLabel12.setText("Localidad                    :");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 170, -1));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(35, 76, 139));
         jLabel13.setText("Propietario                :");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 190, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 190, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(35, 76, 139));
         jLabel14.setText("Inquilino                      :");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 170, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 170, -1));
+
+        jLabel15.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(35, 76, 139));
+        jLabel15.setText("Accesibilidad             :");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 170, -1));
+
+        jLabel16.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(35, 76, 139));
+        jLabel16.setText("Título                             :");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 170, -1));
+
+        jtTitulo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtTitulo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtTituloKeyTyped(evt);
+            }
+        });
+        jPanel1.add(jtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 640, 30));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -366,33 +398,42 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtDireccionKeyTyped
 
-    private void jtFormaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtFormaKeyTyped
+    private void jtServiciosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtServiciosKeyTyped
         
-    }//GEN-LAST:event_jtFormaKeyTyped
+    }//GEN-LAST:event_jtServiciosKeyTyped
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         limpiar();
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-//        if (jtSupTotal.getText().isEmpty() || jtAccesibilidad.getText().isEmpty() || jtDireccion.getText().isEmpty() || jtForma.getText().isEmpty()||jtTipo.getText().isEmpty()) {
-//            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Propietario", "error");
-//        } else {
-//            if(PropietarioData.buscarPropietarioPorDni(Integer.parseInt(jtSupTotal.getText()),1,0)!=null){
-//                mostrarMensaje("El Propietario que desea agregar ya existe.", "Error al crear Propietario", "error");
-//            }else{
-//            
-//            Propietario p = new Propietario(jtAccesibilidad.getText(), jtDireccion.getText(), jtTipo.getText(), Integer.parseInt(jtSupTotal.getText()), Integer.parseInt(jtForma.getText()));
-//            PropietarioData.agregarPropietario(p);
-//            
-//            limpiar();
-//
-//        }   }
+          if(jtTitulo.getText().isEmpty()||jtAccesibilidad.getText().isEmpty()|| jtDireccion.getText().isEmpty()|| jtSupTotal.getText().isEmpty()|| jtServicios.getText().isEmpty()|| jtTipo.getText().isEmpty()||
+                jtCaracteristicas.getText().isEmpty()||jtEstado.getText().isEmpty()||jtPrecio.getText().isEmpty()||jtSupCub.getText().isEmpty()||jtLocalidad.getText().isEmpty()|| jcbRevisores.getSelectedIndex()==0||jcbPropietarios.getSelectedIndex()==0){
+               mostrarMensaje("Todos o alguno de los campos se encuentran vacios.", "Error al crear Propiedad", "error");
+          }else{
+              if(PropiedadData.buscarPropiedadPorDireccion(jtDireccion.getText().toUpperCase()).getTitulo()!=null){
+                  mostrarMensaje("La Propiedad que desea agregar ya existe, o esta utilizando la misma dirección.", "Error al crear Propiedad", "error");
+              }else{
+                  Inquilino inquilino=new Inquilino();  
+                  if(jcbInquilinos.getSelectedIndex()!=-1){
+                      inquilino=(Inquilino) inquilinos.get(jcbInquilinos.getSelectedIndex()-1);
+                  }else{
+                      inquilino.setIdInquilino(1);
+                  }
+                  Propietario propietario = new Propietario();
+                  propietario=(Propietario) propietarios.get(jcbPropietarios.getSelectedIndex()-1);
+                  Inspector revisor=new Inspector();
+                  revisor=(Inspector)revisores.get(jcbRevisores.getSelectedIndex()-1);
+                  Propiedad p=new Propiedad(jtTitulo.getText().toUpperCase(), jtAccesibilidad.getText(), jtCaracteristicas.getText(), jtDireccion.getText().toUpperCase(),jtServicios.getText(), jtLocalidad.getText(), propietario,jtEstado.getText() ,jtTipo.getText() , inquilino, Float.parseFloat(jtPrecio.getText()), revisor, Integer.parseInt(jtSupCub.getText()), Integer.parseInt(jtSupTotal.getText()));
+                  PropiedadData.agregarPropiedad(p);
+                  limpiar();
+              }
+          }
     }//GEN-LAST:event_jbAgregarActionPerformed
 
-    private void jtZonaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtZonaKeyTyped
+    private void jtLocalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtLocalidadKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtZonaKeyTyped
+    }//GEN-LAST:event_jtLocalidadKeyTyped
 
     private void jtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioKeyTyped
         int key=evt.getKeyChar();
@@ -435,6 +476,10 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
        }
     }//GEN-LAST:event_jtTipoKeyTyped
 
+    private void jtTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtTituloKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtTituloKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -443,6 +488,8 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -462,11 +509,12 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtCaracteristicas;
     private javax.swing.JTextField jtDireccion;
     private javax.swing.JTextField jtEstado;
-    private javax.swing.JTextField jtForma;
+    private javax.swing.JTextField jtLocalidad;
     private javax.swing.JTextField jtPrecio;
+    private javax.swing.JTextField jtServicios;
     private javax.swing.JTextField jtSupCub;
     private javax.swing.JTextField jtSupTotal;
     private javax.swing.JTextField jtTipo;
-    private javax.swing.JTextField jtZona;
+    private javax.swing.JTextField jtTitulo;
     // End of variables declaration//GEN-END:variables
 }

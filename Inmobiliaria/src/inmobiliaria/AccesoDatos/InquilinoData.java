@@ -209,7 +209,7 @@ public class InquilinoData {
                 i.setDniGarante(rs.getInt("dniGarante"));
                 i.setNombreGarante(rs.getString("nombreGarante"));
                 i.setSupMin(rs.getInt("supMinima"));
-                i.setPrecioAprox(rs.getInt("p´recioAprox"));
+                i.setPrecioAprox(rs.getInt("precioAprox"));
                 i.setEstado(rs.getInt("estado"));
                 inquilinos.add(i);
             }
