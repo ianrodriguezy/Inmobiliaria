@@ -145,7 +145,7 @@ public class ventanaPropiedades extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        ModificarPropietario mp=new ModificarPropietario();
+        ModificarPropiedad mp=new ModificarPropiedad();
         escritorio.removeAll();
         escritorio.repaint();
         mp.setVisible(true);
@@ -154,7 +154,7 @@ public class ventanaPropiedades extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        ModificarPropietario mp=new ModificarPropietario();
+        ModificarPropiedad mp=new ModificarPropiedad();
         escritorio.removeAll();
         escritorio.repaint();
         mp.setVisible(true);
