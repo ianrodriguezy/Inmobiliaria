@@ -166,7 +166,7 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jbVolver = new javax.swing.JButton();
-        jbLimpiar = new javax.swing.JButton();
+        jbEditar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jcbPropietarios = new javax.swing.JComboBox<>();
@@ -189,6 +189,7 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         jpLocalidad = new javax.swing.JEditorPane();
         jLabel15 = new javax.swing.JLabel();
+        jbLimpiar1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -206,14 +207,15 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 700, 120, 40));
 
-        jbLimpiar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jbLimpiar.setText("Limpiar");
-        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        jbEditar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbEditar.setText("Editar");
+        jbEditar.setEnabled(false);
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLimpiarActionPerformed(evt);
+                jbEditarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 700, 120, 40));
+        jPanel1.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 700, 120, 40));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
@@ -319,6 +321,15 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
         jLabel15.setText("Servicios  :");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 110, 20));
 
+        jbLimpiar1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbLimpiar1.setText("Limpiar");
+        jbLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 700, 120, 40));
+
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 790));
@@ -346,32 +357,41 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
         escritorio.moveToFront(vp);
     }//GEN-LAST:event_jbVolverActionPerformed
 
-    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        limpiarTodo();
-        jcbPropietarios.setSelectedIndex(-1);
-        jcbTipo.setSelectedIndex(0);
-    }//GEN-LAST:event_jbLimpiarActionPerformed
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        
+        ModificarPropiedad mp=new ModificarPropiedad((int)jtablaPropiedades.getValueAt(jtablaPropiedades.getSelectedRow(), 0));
+        escritorio.removeAll();
+        escritorio.repaint();
+        mp.setVisible(true);
+        escritorio.add(mp);
+        escritorio.moveToFront(mp);
+    }//GEN-LAST:event_jbEditarActionPerformed
 
     private void jcbTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbTipoItemStateChanged
         if(jcbTipo.getSelectedIndex()==0){
             limpiarTodo();
             jcbPropietarios.setSelectedIndex(-1);
+            jbEditar.setEnabled(false);
         }else{
+            limpiarTodo();
             String tipo=jcbTipo.getSelectedItem().toString();
             cargarTablaP(PropiedadData.buscarPropiedadPorTipo(tipo));
             jcbPropietarios.setSelectedIndex(-1);
+            jbEditar.setEnabled(false);
         }
     }//GEN-LAST:event_jcbTipoItemStateChanged
 
     private void jcbPropietariosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbPropietariosItemStateChanged
         if(jcbPropietarios.getSelectedIndex()==-1){
             limpiarTodo();
+            jbEditar.setEnabled(false);
             //jcbTipo.setSelectedIndex(0);
         }else{
             limpiarTodo();
             Propietario p=(Propietario)jcbPropietarios.getSelectedItem();
             cargarTablaP(PropiedadData.buscarPropiedadPorPropietario(p.getIdPropietario()));
             jcbTipo.setSelectedIndex(0);
+            jbEditar.setEnabled(false);
         }
     }//GEN-LAST:event_jcbPropietariosItemStateChanged
 
@@ -385,8 +405,13 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
             jpLocalidad.setText(p.getLocalidad());
             jpServicios.setText(p.getServicios());
             jpRevisor.setText(InspectorData.buscarInspectorPorId(p.getRevisor().getIdInspector()).getApellido() + ", " + InspectorData.buscarInspectorPorId(p.getRevisor().getIdInspector()).getNombre());
+            jbEditar.setEnabled(true);
         }
     }//GEN-LAST:event_jtablaPropiedadesMouseClicked
+
+    private void jbLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbLimpiar1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -406,7 +431,8 @@ public class BuscarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JButton jbLimpiar;
+    private javax.swing.JButton jbEditar;
+    private javax.swing.JButton jbLimpiar1;
     private javax.swing.JButton jbVolver;
     private javax.swing.JComboBox<Propietario> jcbPropietarios;
     private javax.swing.JComboBox<String> jcbTipo;

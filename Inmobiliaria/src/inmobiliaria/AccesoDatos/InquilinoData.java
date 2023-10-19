@@ -149,6 +149,7 @@ public class InquilinoData {
             ps.setString(9, i.getNombreGarante());
             ps.setInt(10, i.getSupMin());
             ps.setInt(11, i.getPrecioAprox());
+            ps.setInt(12, i.getEstado());
             
 
             int exito = ps.executeUpdate();

@@ -151,12 +151,12 @@ public class ventanaInquilinos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        ModificarPropietario mp=new ModificarPropietario();
+        ModificarInquilino mi=new ModificarInquilino();
         escritorio.removeAll();
         escritorio.repaint();
-        mp.setVisible(true);
-        escritorio.add(mp);
-        escritorio.moveToFront(mp);
+        mi.setVisible(true);
+        escritorio.add(mi);
+        escritorio.moveToFront(mi);
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked

@@ -51,6 +51,53 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
         cargarComboi();
         cargarCombor();
         jtId.setText(id+"");
+        
+        editar(true);
+        Propiedad p=PropiedadData.buscarPropiedadPorId(id);
+        jtId.setEnabled(false);
+                jtTitulo.setText(p.getTitulo());
+                jtAccesibilidad.setText(p.getAccesibilidad());
+                jtCaracteristicas.setText(p.getCaracteristicas());
+                jtDireccion.setText(p.getDireccion());
+                jtSupTotal.setText(p.getSuperficieTotal()+"");
+                jtSupCubierta.setText(p.getSuperficieCub()+"");
+                jtServicios.setText(p.getServicios());
+                jcbTipo.setSelectedItem(p.getTipoPropiedad());
+                jtEstado.setText(p.getEstadoPropiedad());
+                jtPrecio.setText(p.getPrecioTasado()+"");
+                jtLocalidad.setText(p.getLocalidad());
+                int auxInq=0;
+                Inquilino inquilino=new Inquilino();
+                for(Object inq:inquilinos){
+                    inquilino= (Inquilino)inq;
+                    auxInq++;
+                    if(inquilino.getIdInquilino()==p.getOcupante().getIdInquilino()){
+                        break;
+                    }
+                }
+                jcbInquilinos.setSelectedIndex(auxInq);
+                //jcbInquilinos.setSelectedIndex(0);
+                int auxProp=0;
+                Propietario propietario=new Propietario();
+                for(Object prop:propietarios){
+                    propietario= (Propietario)prop;
+                    auxProp++;
+                    if(propietario.getIdPropietario()==p.getDueño().getIdPropietario()){
+                        break;
+                    }
+                }
+                jcbPropietarios.setSelectedIndex(auxProp);
+                //jcbPropietarios.setSelectedIndex(0);
+                int auxRevi=0;
+                Inspector revisor=new Inspector();
+                for(Object revi:revisores){
+                    revisor= (Inspector)revi;
+                    auxRevi++;
+                    if(revisor.getIdInspector()==p.getRevisor().getIdInspector()){
+                        break;
+                    }
+                }
+                jcbRevisores.setSelectedIndex(auxRevi);
     }
 
 
