@@ -88,6 +88,7 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
         jtSupMin = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jtPrecio = new javax.swing.JTextField();
+        jcbTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -271,6 +272,9 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, 300, 30));
 
+        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 190, 30));
+
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 790));
@@ -290,12 +294,12 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
-        ventanaPropietarios vp=new ventanaPropietarios();
+        ventanaInquilinos vi=new ventanaInquilinos();
         escritorio.removeAll();
         escritorio.repaint();
-        vp.setVisible(true);
-        escritorio.add(vp);
-        escritorio.moveToFront(vp);
+        vi.setVisible(true);
+        escritorio.add(vi);
+        escritorio.moveToFront(vi);
     }//GEN-LAST:event_jbVolverActionPerformed
 
     private void jtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDniKeyTyped
@@ -447,6 +451,7 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
+    private javax.swing.JComboBox<String> jcbTipo;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtCuit;
     private javax.swing.JTextField jtDni;

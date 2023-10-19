@@ -93,7 +93,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         jtServicios.setText("");
         jcbTipo.setSelectedIndex(0);
         jtCaracteristicas.setText("");
-        jtEstado.setText("");
+        jcbEstado.setSelectedIndex(0);
         jtPrecio.setText("");
         jtSupCub.setText("");
         jtLocalidad.setText("");
@@ -119,7 +119,6 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         jtSupTotal = new javax.swing.JTextField();
         jtPrecio = new javax.swing.JTextField();
         jtSupCub = new javax.swing.JTextField();
-        jtEstado = new javax.swing.JTextField();
         jtCaracteristicas = new javax.swing.JTextField();
         jbVolver = new javax.swing.JButton();
         jbAgregar = new javax.swing.JButton();
@@ -140,6 +139,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         jtTitulo = new javax.swing.JTextField();
         jcbPropietarios1 = new javax.swing.JComboBox<>();
         jcbTipo = new javax.swing.JComboBox<>();
+        jcbEstado = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -228,14 +228,6 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtSupCub, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 130, 30));
-
-        jtEstado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jtEstado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtEstadoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(jtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 130, 30));
 
         jtCaracteristicas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtCaracteristicas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -341,6 +333,9 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo", "Casa", "Departamento", "Local", "Chalet", "Galpon", "Quinta", "Lote" }));
         jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 160, 30));
 
+        jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un estado", "Disponible", "Reservada", "Alquilada", "No disponible" }));
+        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 160, 30));
+
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 790));
@@ -406,7 +401,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
           if(jtTitulo.getText().isEmpty()||jtAccesibilidad.getText().isEmpty()|| jtDireccion.getText().isEmpty()|| jtSupTotal.getText().isEmpty()|| jtServicios.getText().isEmpty()|| jcbTipo.getSelectedIndex()==0||
-                jtCaracteristicas.getText().isEmpty()||jtEstado.getText().isEmpty()||jtPrecio.getText().isEmpty()||jtSupCub.getText().isEmpty()||jtLocalidad.getText().isEmpty()|| jcbRevisores.getSelectedIndex()==0||jcbPropietarios.getSelectedIndex()==0){
+                jtCaracteristicas.getText().isEmpty()||jcbEstado.getSelectedIndex()==0||jtPrecio.getText().isEmpty()||jtSupCub.getText().isEmpty()||jtLocalidad.getText().isEmpty()|| jcbRevisores.getSelectedIndex()==0||jcbPropietarios.getSelectedIndex()==0){
                mostrarMensaje("Todos o alguno de los campos se encuentran vacios.", "Error al crear Propiedad", "error");
           }else{
               if(PropiedadData.buscarPropiedadPorDireccion(jtDireccion.getText().toUpperCase()).getTitulo()!=null){
@@ -426,7 +421,8 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
                       mostrarMensaje("Debe seleccionar un tipo de propiedad", "Error al crear Propiedad", "error");
                   }else{
                       String auxTipo= jcbTipo.getSelectedItem().toString();
-                      Propiedad p=new Propiedad(jtTitulo.getText().toUpperCase(), jtAccesibilidad.getText(), jtCaracteristicas.getText(), jtDireccion.getText().toUpperCase(),jtServicios.getText(), jtLocalidad.getText(), propietario,jtEstado.getText() ,auxTipo , inquilino, Float.parseFloat(jtPrecio.getText()), revisor, Integer.parseInt(jtSupCub.getText()), Integer.parseInt(jtSupTotal.getText()));
+                      String auxEstado=jcbEstado.getSelectedItem().toString();
+                      Propiedad p=new Propiedad(jtTitulo.getText().toUpperCase(), jtAccesibilidad.getText(), jtCaracteristicas.getText(), jtDireccion.getText().toUpperCase(),jtServicios.getText(), jtLocalidad.getText(), propietario,auxEstado ,auxTipo , inquilino, Float.parseFloat(jtPrecio.getText()), revisor, Integer.parseInt(jtSupCub.getText()), Integer.parseInt(jtSupTotal.getText()));
                       PropiedadData.agregarPropiedad(p);
                       limpiar();
                   }
@@ -468,13 +464,6 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtCaracteristicasKeyTyped
 
-    private void jtEstadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtEstadoKeyTyped
-
-        if(jtEstado.getText().length()>=10){
-           evt.consume();
-       }
-    }//GEN-LAST:event_jtEstadoKeyTyped
-
     private void jtTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtTituloKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_jtTituloKeyTyped
@@ -501,6 +490,7 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
+    private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JComboBox<Inquilino> jcbInquilinos;
     private javax.swing.JComboBox<Propietario> jcbPropietarios;
     private javax.swing.JComboBox<Propietario> jcbPropietarios1;
@@ -509,7 +499,6 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtAccesibilidad;
     private javax.swing.JTextField jtCaracteristicas;
     private javax.swing.JTextField jtDireccion;
-    private javax.swing.JTextField jtEstado;
     private javax.swing.JTextField jtLocalidad;
     private javax.swing.JTextField jtPrecio;
     private javax.swing.JTextField jtServicios;

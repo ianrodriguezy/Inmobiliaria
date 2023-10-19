@@ -50,6 +50,40 @@ public class PropiedadData {
          mostrarMensaje("Alta exitosa.","Creacion de propiedad","info");
         
     }
+    
+    public static void modificarPropiedad(Propiedad p){
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        String sql = "UPDATE propiedad_inmueble SET titulo=?,accesibilidad=?,caracteristicas=?,direccion=?,estadoProp=?,servicios=?,precioTasado=?,superficie_cubierta=?,superficie_total=?,tipoProp=?,localidad=?,propietario=?,inquilino=?,revisor=? WHERE id_prop="+p.getIdPropiedad();
+        con = Conectar.getConectar();
+
+        try {
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, p.getTitulo());
+            ps.setString(2,p.getAccesibilidad());
+            ps.setString(3, p.getCaracteristicas());
+            ps.setString(4, p.getDireccion());
+            ps.setString(5, p.getEstadoPropiedad());
+            ps.setString(6, p.getServicios());
+            ps.setFloat(7,p.getPrecioTasado());
+            ps.setInt(8, p.getSuperficieCub());
+            ps.setInt(9,p.getSuperficieTotal());
+            ps.setString(10,p.getTipoPropiedad());
+            ps.setString(11,p.getLocalidad());
+            ps.setInt(12, p.getDueño().getIdPropietario());
+            ps.setInt(13, p.getOcupante().getIdInquilino());
+            ps.setInt(14, p.getRevisor().getIdInspector());
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+
+        } catch (SQLException x) {
+            System.out.println("Error " + x.getMessage());
+        }
+         mostrarMensaje("Modificación exitosa.","Modificación de propiedad","info");
+        
+    }
+    
     public static List<String> listarTipos() {
         List<String> tipos=new ArrayList<>();
         Connection con = null;

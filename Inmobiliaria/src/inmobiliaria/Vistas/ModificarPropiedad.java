@@ -27,6 +27,7 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
     List propietarios=new ArrayList<>();
     List inquilinos=new ArrayList<>();
     List revisores=new ArrayList<>();
+    int auxIdPropiedad;
     
     public ModificarPropiedad() {
         super("",false,false,false,false);
@@ -63,7 +64,7 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
                 jtSupCubierta.setText(p.getSuperficieCub()+"");
                 jtServicios.setText(p.getServicios());
                 jcbTipo.setSelectedItem(p.getTipoPropiedad());
-                jtEstado.setText(p.getEstadoPropiedad());
+                jcbEstado.setSelectedItem(p.getEstadoPropiedad());
                 jtPrecio.setText(p.getPrecioTasado()+"");
                 jtLocalidad.setText(p.getLocalidad());
                 int auxInq=0;
@@ -152,13 +153,14 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
         jtServicios.setEnabled(v);
         jcbTipo.setEnabled(v);
         jtCaracteristicas.setEnabled(v);
-        jtEstado.setEnabled(v);
+        jcbEstado.setEnabled(v);
         jtPrecio.setEnabled(v);
-        jtId.setEnabled(v);
+        jtId.setEnabled(!v);
         jtLocalidad.setEnabled(v);
         jcbInquilinos.setEnabled(v);
         jcbPropietarios.setEnabled(v);
         jcbRevisores.setEnabled(v);
+        jbGuardar.setEnabled(v);
     }
     private void limpiar(){
         jtId.setText("");
@@ -170,7 +172,7 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
         jtServicios.setText("");
         jcbTipo.setSelectedIndex(0);
         jtCaracteristicas.setText("");
-        jtEstado.setText("");
+        jcbEstado.setSelectedIndex(0);
         jtPrecio.setText("");
         jtLocalidad.setText("");
         jcbInquilinos.setSelectedIndex(0);
@@ -195,10 +197,9 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
         jtSupTotal = new javax.swing.JTextField();
         jtPrecio = new javax.swing.JTextField();
         jtId = new javax.swing.JTextField();
-        jtEstado = new javax.swing.JTextField();
         jtCaracteristicas = new javax.swing.JTextField();
         jbVolver = new javax.swing.JButton();
-        jbAgregar = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
         jcbRevisores = new javax.swing.JComboBox<>();
         jcbPropietarios = new javax.swing.JComboBox<>();
@@ -218,6 +219,7 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
         jLabel17 = new javax.swing.JLabel();
         jtSupCubierta = new javax.swing.JTextField();
         jbBuscar = new javax.swing.JButton();
+        jcbEstado = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -313,15 +315,6 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 130, 30));
 
-        jtEstado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jtEstado.setEnabled(false);
-        jtEstado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtEstadoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(jtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 130, 30));
-
         jtCaracteristicas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtCaracteristicas.setEnabled(false);
         jtCaracteristicas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -340,14 +333,15 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 730, 120, 40));
 
-        jbAgregar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jbAgregar.setText("Guardar");
-        jbAgregar.addActionListener(new java.awt.event.ActionListener() {
+        jbGuardar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbGuardar.setText("Guardar");
+        jbGuardar.setEnabled(false);
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAgregarActionPerformed(evt);
+                jbGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 730, 120, 40));
+        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 730, 120, 40));
 
         jbLimpiar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jbLimpiar.setText("Limpiar");
@@ -453,6 +447,10 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 50, 50));
 
+        jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un estado", "Disponible", "Reservada", "Alquilada", "No disponible" }));
+        jcbEstado.setEnabled(false);
+        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 160, 30));
+
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 790));
@@ -515,17 +513,14 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         limpiar();
         editar(false);
-        jtId.setEnabled(true);
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
-    private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
           if(jtTitulo.getText().isEmpty()||jtAccesibilidad.getText().isEmpty()|| jtDireccion.getText().isEmpty()|| jtSupTotal.getText().isEmpty()|| jtServicios.getText().isEmpty()|| jcbTipo.getSelectedIndex()==0||
-                jtCaracteristicas.getText().isEmpty()||jtEstado.getText().isEmpty()||jtPrecio.getText().isEmpty()||jtId.getText().isEmpty()||jtLocalidad.getText().isEmpty()|| jcbRevisores.getSelectedIndex()==0||jcbPropietarios.getSelectedIndex()==0){
+                jtCaracteristicas.getText().isEmpty()||jcbEstado.getSelectedIndex()==0||jtPrecio.getText().isEmpty()||jtId.getText().isEmpty()||jtLocalidad.getText().isEmpty()|| jcbRevisores.getSelectedIndex()==0||jcbPropietarios.getSelectedIndex()==0){
                mostrarMensaje("Todos o alguno de los campos se encuentran vacios.", "Error al crear Propiedad", "error");
           }else{
-              if(PropiedadData.buscarPropiedadPorDireccion(jtDireccion.getText().toUpperCase()).getTitulo()!=null){
-                  mostrarMensaje("La Propiedad que desea agregar ya existe, o esta utilizando la misma dirección.", "Error al crear Propiedad", "error");
-              }else{
+              
                   Inquilino inquilino=new Inquilino();  
                   if(jcbInquilinos.getSelectedIndex()!=-1){
                       inquilino=(Inquilino) inquilinos.get(jcbInquilinos.getSelectedIndex()-1);
@@ -540,15 +535,17 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
                       mostrarMensaje("Debe seleccionar un tipo de propiedad", "Error al crear Propiedad", "error");
                   }else{
                       String auxTipo= jcbTipo.getSelectedItem().toString();
-                      Propiedad p=new Propiedad(jtTitulo.getText().toUpperCase(), jtAccesibilidad.getText(), jtCaracteristicas.getText(), jtDireccion.getText().toUpperCase(),jtServicios.getText(), jtLocalidad.getText(), propietario,jtEstado.getText() ,auxTipo , inquilino, Float.parseFloat(jtPrecio.getText()), revisor, Integer.parseInt(jtId.getText()), Integer.parseInt(jtSupTotal.getText()));
-                      PropiedadData.agregarPropiedad(p);
+                      String auxEstado= jcbEstado.getSelectedItem().toString();
+                      Propiedad p=new Propiedad(auxIdPropiedad,jtTitulo.getText().toUpperCase(), jtAccesibilidad.getText(), jtCaracteristicas.getText(), jtDireccion.getText().toUpperCase(),jtServicios.getText(), jtLocalidad.getText(), propietario,auxEstado ,auxTipo , inquilino, Float.parseFloat(jtPrecio.getText()), revisor, Integer.parseInt(jtId.getText()), Integer.parseInt(jtSupTotal.getText()));
+                      PropiedadData.modificarPropiedad(p);
                       limpiar();
                   }
                   
                   
-              }
+           editar(false);   
           }
-    }//GEN-LAST:event_jbAgregarActionPerformed
+          
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jtLocalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtLocalidadKeyTyped
         // TODO add your handling code here:
@@ -582,13 +579,6 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtCaracteristicasKeyTyped
 
-    private void jtEstadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtEstadoKeyTyped
-
-        if(jtEstado.getText().length()>=10){
-           evt.consume();
-       }
-    }//GEN-LAST:event_jtEstadoKeyTyped
-
     private void jtTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtTituloKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_jtTituloKeyTyped
@@ -603,8 +593,8 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
         }else{
             Propiedad p=PropiedadData.buscarPropiedadPorId(Integer.parseInt(jtId.getText()));
             if(p!=null){
+                auxIdPropiedad=Integer.parseInt(jtId.getText());
                 editar(true);
-                jtId.setEnabled(false);
                 jtTitulo.setText(p.getTitulo());
                 jtAccesibilidad.setText(p.getAccesibilidad());
                 jtCaracteristicas.setText(p.getCaracteristicas());
@@ -613,7 +603,7 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
                 jtSupCubierta.setText(p.getSuperficieCub()+"");
                 jtServicios.setText(p.getServicios());
                 jcbTipo.setSelectedItem(p.getTipoPropiedad());
-                jtEstado.setText(p.getEstadoPropiedad());
+                jcbEstado.setSelectedItem(p.getEstadoPropiedad());
                 jtPrecio.setText(p.getPrecioTasado()+"");
                 jtLocalidad.setText(p.getLocalidad());
                 int auxInq=0;
@@ -675,10 +665,11 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
+    private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JComboBox<Inquilino> jcbInquilinos;
     private javax.swing.JComboBox<Propietario> jcbPropietarios;
     private javax.swing.JComboBox<Inspector> jcbRevisores;
@@ -686,7 +677,6 @@ public class ModificarPropiedad extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtAccesibilidad;
     private javax.swing.JTextField jtCaracteristicas;
     private javax.swing.JTextField jtDireccion;
-    private javax.swing.JTextField jtEstado;
     private javax.swing.JTextField jtId;
     private javax.swing.JTextField jtLocalidad;
     private javax.swing.JTextField jtPrecio;

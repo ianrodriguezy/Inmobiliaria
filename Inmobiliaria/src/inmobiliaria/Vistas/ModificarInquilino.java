@@ -35,13 +35,25 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
     }
-
+    private void editar(boolean v){
+        jtApellido.setEnabled(v);
+        jtNombre.setEnabled(v); 
+        jtTelefono.setEnabled(v);
+        jcbTipo.setEnabled(v);
+        jtCuit.setEnabled(v);
+        jtLugarTrabajo.setEnabled(v);
+        jtDniGar.setEnabled(v);
+        jtNombreGar.setEnabled(v);
+        jtSupMin.setEnabled(v);
+        jtPrecio.setEnabled(v);
+        jcbEstado.setEnabled(v);
+    }
     private void limpiar(){
         jtApellido.setText("");
         jtNombre.setText("");
         jtDni.setText("");
         jtTelefono.setText("");
-        jtTipo.setText("");
+        jcbTipo.setSelectedIndex(0);
         jtCuit.setText("");
         jtLugarTrabajo.setText("");
         jtDniGar.setText("");
@@ -70,7 +82,6 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jtApellido = new javax.swing.JTextField();
         jtNombre = new javax.swing.JTextField();
         jtDni = new javax.swing.JTextField();
-        jtTipo = new javax.swing.JTextField();
         jbVolver = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
@@ -90,6 +101,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jbBuscar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jcbEstado = new javax.swing.JComboBox<>();
+        jcbTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -124,6 +136,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 100, -1));
 
         jtTelefono.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtTelefono.setEnabled(false);
         jtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtTelefonoKeyTyped(evt);
@@ -132,6 +145,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jPanel1.add(jtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 300, 30));
 
         jtApellido.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtApellido.setEnabled(false);
         jtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtApellidoKeyTyped(evt);
@@ -140,6 +154,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jPanel1.add(jtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 300, 30));
 
         jtNombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtNombre.setEnabled(false);
         jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtNombreKeyTyped(evt);
@@ -154,14 +169,6 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 300, 30));
-
-        jtTipo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jtTipo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtTipoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(jtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 300, 30));
 
         jbVolver.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jbVolver.setText("Volver");
@@ -197,6 +204,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 100, -1));
 
         jtCuit.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtCuit.setEnabled(false);
         jtCuit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtCuitKeyTyped(evt);
@@ -210,6 +218,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 100, -1));
 
         jtLugarTrabajo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtLugarTrabajo.setEnabled(false);
         jtLugarTrabajo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtLugarTrabajoKeyTyped(evt);
@@ -218,6 +227,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jPanel1.add(jtLugarTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 300, 30));
 
         jtDniGar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtDniGar.setEnabled(false);
         jtDniGar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtDniGarKeyTyped(evt);
@@ -241,6 +251,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 150, -1));
 
         jtNombreGar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtNombreGar.setEnabled(false);
         jtNombreGar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtNombreGarKeyTyped(evt);
@@ -254,6 +265,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 120, -1));
 
         jtSupMin.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtSupMin.setEnabled(false);
         jtSupMin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtSupMinKeyTyped(evt);
@@ -267,6 +279,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 130, -1));
 
         jtPrecio.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtPrecio.setEnabled(false);
         jtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtPrecioKeyTyped(evt);
@@ -289,7 +302,12 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 150, -1));
 
         jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        jcbEstado.setEnabled(false);
         jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 480, 110, -1));
+
+        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo", "Comercial", "Vivienda" }));
+        jcbTipo.setEnabled(false);
+        jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 160, 30));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -310,12 +328,12 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
-        ventanaPropietarios vp=new ventanaPropietarios();
+        ventanaInquilinos vi=new ventanaInquilinos();
         escritorio.removeAll();
         escritorio.repaint();
-        vp.setVisible(true);
-        escritorio.add(vp);
-        escritorio.moveToFront(vp);
+        vi.setVisible(true);
+        escritorio.add(vi);
+        escritorio.moveToFront(vi);
     }//GEN-LAST:event_jbVolverActionPerformed
 
     private void jtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDniKeyTyped
@@ -363,7 +381,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        if (jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jtDni.getText().isEmpty() || jtCuit.getText().isEmpty() || jtTipo.getText().isEmpty() || jtTelefono.getText().isEmpty() || jtLugarTrabajo.getText().isEmpty() || jtDniGar.getText().isEmpty() || jtNombreGar.getText().isEmpty() || jtSupMin.getText().isEmpty() || jtPrecio.getText().isEmpty()) {
+        if (jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jtDni.getText().isEmpty() || jtCuit.getText().isEmpty() || jcbTipo.getSelectedIndex()==0 || jtTelefono.getText().isEmpty() || jtLugarTrabajo.getText().isEmpty() || jtDniGar.getText().isEmpty() || jtNombreGar.getText().isEmpty() || jtSupMin.getText().isEmpty() || jtPrecio.getText().isEmpty()) {
             mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Inquilino", "error");
         } else {
 
@@ -373,7 +391,8 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
             } else {
                 auxEstado = 0;
             }
-            Inquilino i = new Inquilino(auxId, jtApellido.getText(), jtNombre.getText(), jtTipo.getText(), jtLugarTrabajo.getText(), jtNombreGar.getText(), Integer.parseInt(jtDni.getText()), Integer.parseInt(jtCuit.getText()), Integer.parseInt(jtTelefono.getText()), Integer.parseInt(jtDniGar.getText()), Integer.parseInt(jtSupMin.getText()), Integer.parseInt(jtPrecio.getText()), auxEstado);
+            String auxTipo=jcbTipo.getSelectedItem().toString();
+            Inquilino i = new Inquilino(auxId, jtApellido.getText(), jtNombre.getText(), auxTipo, jtLugarTrabajo.getText(), jtNombreGar.getText(), Integer.parseInt(jtDni.getText()), Integer.parseInt(jtCuit.getText()), Integer.parseInt(jtTelefono.getText()), Integer.parseInt(jtDniGar.getText()), Integer.parseInt(jtSupMin.getText()), Integer.parseInt(jtPrecio.getText()), auxEstado);
 
             InquilinoData.modificarInquilino(i);
 
@@ -442,14 +461,6 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
        }
     }//GEN-LAST:event_jtCuitKeyTyped
 
-    private void jtTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtTipoKeyTyped
-        char key = evt.getKeyChar();
-        boolean letra = Character.isLetter(key)|| Character.isWhitespace(key);
-        if (!letra) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jtTipoKeyTyped
-
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         Inquilino i = new Inquilino();
         if (jtDni.getText().isEmpty()) {
@@ -462,7 +473,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
                 jtApellido.setText(i.getApellido());
                 jtNombre.setText(i.getNombre());
                 jtTelefono.setText(i.getTelefono()+"");
-                jtTipo.setText(i.getTipo());
+                jcbTipo.setSelectedItem(i.getTipo());
                 jtCuit.setText(i.getCuit()+"");
                 jtLugarTrabajo.setText(i.getLugarTrabajo());
                 jtDniGar.setText(i.getDniGarante()+"");
@@ -475,6 +486,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
                     jcbEstado.setSelectedIndex(1);
                 }
                 jbGuardar.setEnabled(true);
+                editar(true);
             }
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
@@ -501,6 +513,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
     private javax.swing.JComboBox<String> jcbEstado;
+    private javax.swing.JComboBox<String> jcbTipo;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtCuit;
     private javax.swing.JTextField jtDni;
@@ -511,6 +524,5 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtPrecio;
     private javax.swing.JTextField jtSupMin;
     private javax.swing.JTextField jtTelefono;
-    private javax.swing.JTextField jtTipo;
     // End of variables declaration//GEN-END:variables
 }
