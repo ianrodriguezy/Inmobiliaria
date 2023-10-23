@@ -4,6 +4,7 @@
  */
 package inmobiliaria.Vistas;
 
+import Inmobiliaria.AccesoDatos.ContratoData;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -17,7 +18,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     public MenuPrincipal() {
         initComponents();
-        
+        ContratoData.ActualizarVigencia();
     }
     
 

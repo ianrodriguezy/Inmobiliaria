@@ -5,31 +5,31 @@ import java.util.Date;
 
 public class Contrato {
 
-    private int codContrato, vigente;
+    private int codContrato, vigente,estado;
     private Inquilino eLinquilino;
     private Propietario eLpropietario;
-    private Date fechaInicio, fechaRealizacion, fechaFin;
-    private String marca;
+    private LocalDate fechaInicio, fechaRealizacion, fechaFin;
+    private String firmas;
     private Propiedad propiedad;
-    private String vendedor;
+    private Vendedor vendedor;
 
     public Contrato() {
     }
 
-    public Contrato(Inquilino eLinquilino, Propietario eLpropietario, int vigente, Date fechaInicio, Date fechaRealizacion, Date fechaFin, String marca, Propiedad propiedad, String vendedor) {
+    public Contrato(Inquilino eLinquilino, Propietario eLpropietario, int estado, LocalDate fechaInicio, LocalDate fechaRealizacion, LocalDate fechaFin, String firmas, Propiedad propiedad, Vendedor vendedor) {
         this.eLinquilino = eLinquilino;
         this.eLpropietario = eLpropietario;
         this.vigente = vigente;
         this.fechaInicio = fechaInicio;
         this.fechaRealizacion = fechaRealizacion;
         this.fechaFin = fechaFin;
-        this.marca = marca;
+        this.firmas = firmas;
         this.propiedad = propiedad;
         this.vendedor = vendedor;
-
+        this.estado=estado;
     }
 
-    public Contrato(int codContrato, Inquilino eLinquilino, Propietario eLpropietario, int vigente, Date fechaInicio, Date fechaRealizacion, Date fechaFin, String marca, Propiedad propiedad, String vendedor) {
+    public Contrato(int codContrato, Inquilino eLinquilino, Propietario eLpropietario, int estado, LocalDate fechaInicio, LocalDate fechaRealizacion, LocalDate fechaFin, String firmas, Propiedad propiedad, Vendedor vendedor) {
         this.codContrato = codContrato;
         this.eLinquilino = eLinquilino;
         this.eLpropietario = eLpropietario;
@@ -37,9 +37,11 @@ public class Contrato {
         this.fechaInicio = fechaInicio;
         this.fechaRealizacion = fechaRealizacion;
         this.fechaFin = fechaFin;
-        this.marca = marca;
+        this.firmas = firmas;
         this.propiedad = propiedad;
         this.vendedor = vendedor;
+        this.estado=estado;
+        
     }
 
     public int getCodContrato() {
@@ -75,36 +77,36 @@ public class Contrato {
         this.vigente = vigente;
     }
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaRealizacion() {
+    public LocalDate getFechaRealizacion() {
         return fechaRealizacion;
     }
 
-    public void setFechaRealizacion(Date fechaRealizacion) {
+    public void setFechaRealizacion(LocalDate fechaRealizacion) {
         this.fechaRealizacion = fechaRealizacion;
     }
 
-    public Date getFechaFin() {
+    public LocalDate getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(LocalDate fechaFin) {
         this.fechaFin = fechaFin;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getFirmas() {
+        return firmas;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setFirmas(String firmas) {
+        this.firmas = firmas;
     }
 
     public Propiedad getPropiedad() {
@@ -115,12 +117,20 @@ public class Contrato {
         this.propiedad = propiedad;
     }
 
-    public String getVendedor() {
+    public Vendedor getVendedor() {
         return vendedor;
     }
 
-    public void setVendedor(String vendedor) {
+    public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
 }

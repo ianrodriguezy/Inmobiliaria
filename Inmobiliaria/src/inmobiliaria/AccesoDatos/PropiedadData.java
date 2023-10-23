@@ -44,8 +44,8 @@ public class PropiedadData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
-        } catch (SQLException x) {
-            System.out.println("Error " + x.getMessage());
+        } catch (SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
         }
          mostrarMensaje("Alta exitosa.","Creacion de propiedad","info");
         
@@ -77,8 +77,8 @@ public class PropiedadData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
-        } catch (SQLException x) {
-            System.out.println("Error " + x.getMessage());
+        } catch (SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
         }
          mostrarMensaje("Modificación exitosa.","Modificación de propiedad","info");
         
@@ -99,7 +99,7 @@ public class PropiedadData {
             }
             ps.close();
         }catch(SQLException ex) {
-            mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
+            mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
          List<String> listaSinDuplicados = eliminarDuplicados(tipos);
@@ -148,7 +148,7 @@ public class PropiedadData {
             }
             ps.close();
         }catch(SQLException ex) {
-            mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
+            mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
         return propiedades;
@@ -190,7 +190,7 @@ public class PropiedadData {
             }
             ps.close();
         }catch(SQLException ex) {
-            mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
+            mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
         return p;
@@ -232,7 +232,7 @@ public class PropiedadData {
             }
             ps.close();
         }catch(SQLException ex) {
-            mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
+            mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
         return p;
@@ -275,10 +275,53 @@ public class PropiedadData {
             }
             ps.close();
         }catch(SQLException ex) {
-            mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
+            mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
         return propiedades;
     }
     
+     public static List<Propiedad> listarPropiedadesDisponiblesReservadas(){
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        List <Propiedad> propiedades= new ArrayList<>();
+        try{
+            String sql= "SELECT `id_prop`, `titulo`, `accesibilidad`, `caracteristicas`, `direccion`, `estadoProp`, `servicios`, `precioTasado`, `superficie_cubierta`, `superficie_total`, `tipoProp`, `localidad`, `propietario`, `inquilino`, `revisor` FROM `propiedad_inmueble` WHERE estadoProp='Disponible' OR estadoProp='Reservada'";
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){ 
+                Propiedad p = new Propiedad();
+                p.setIdPropiedad(rs.getInt("id_prop"));
+                p.setTitulo(rs.getString("titulo"));
+                p.setAccesibilidad(rs.getString("accesibilidad"));
+                p.setCaracteristicas(rs.getString("caracteristicas"));
+                p.setDireccion(rs.getString("direccion"));
+                p.setEstadoPropiedad(rs.getString("estadoProp"));
+                p.setServicios(rs.getString("servicios"));
+                p.setPrecioTasado(rs.getFloat("precioTasado"));
+                p.setSuperficieCub(rs.getInt("superficie_cubierta"));
+                p.setSuperficieTotal(rs.getInt("superficie_total"));
+                p.setTipoPropiedad(rs.getString("tipoProp"));
+                p.setLocalidad(rs.getString("localidad"));
+                Propietario propietario = new Propietario();
+                propietario.setIdPropietario(rs.getInt("propietario"));
+                p.setDueño(propietario);
+                Inquilino i = new Inquilino();
+                i.setIdInquilino(rs.getInt("inquilino"));
+                p.setOcupante(i);
+                Inspector r=new Inspector();
+                r.setIdInspector(rs.getInt("revisor"));
+                p.setRevisor(r);
+                propiedades.add(p);
+                
+            }
+            ps.close();
+        }catch(SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
+            
+        }
+        
+        return propiedades;
+    }
 }

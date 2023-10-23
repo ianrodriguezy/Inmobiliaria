@@ -39,5 +39,30 @@ public class VendedorData {
         }
         return vendedores;
     }
+   
+   
+   public static Vendedor buscarVendedorPorId(int id) {
+        Vendedor v= new Vendedor();
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        String sql= "SELECT * FROM `vendedor` WHERE id_vendedor="+id;
+        try{
+            
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                v.setIdVendedor(rs.getInt("id_vendedor"));
+                v.setApellido(rs.getString("apellido"));
+                v.setNombre(rs.getString("nombre"));
+            }
+            ps.close();
+        }catch(SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Vendedor, " + ex.getMessage(),"Error de conexión","error");
+            
+        }
+        return v;
+    }
+   
 }
 
