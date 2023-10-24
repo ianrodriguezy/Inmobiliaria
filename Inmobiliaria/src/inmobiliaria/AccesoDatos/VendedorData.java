@@ -52,7 +52,7 @@ public class VendedorData {
             
             ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            if(rs.next()){
                 v.setIdVendedor(rs.getInt("id_vendedor"));
                 v.setApellido(rs.getString("apellido"));
                 v.setNombre(rs.getString("nombre"));
@@ -83,7 +83,7 @@ public class VendedorData {
         }
          mostrarMensaje("Alta exitosa.","Creacion de Vendedor","info");
 } 
-      public static Vendedor buscarVendedorDni(int d) {
+      public static Vendedor buscarVendedorDni(int d,int nuevo) {
         Vendedor v= new Vendedor();
         Connection con = null;
         PreparedStatement ps = null;
@@ -93,12 +93,14 @@ public class VendedorData {
             
             ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            if(rs.next()){
                 v.setIdVendedor(rs.getInt("id_vendedor"));
                 v.setApellido(rs.getString("apellido"));
                 v.setNombre(rs.getString("nombre"));
                 v.setDni(rs.getInt("dni"));
                 v.setTelefono(rs.getInt("telefono"));
+            }else if (nuevo!=1){
+                mostrarMensaje("No existe el Revisor ","Error al buscar","error");
             }
             ps.close();
         }catch(SQLException ex) {
@@ -106,6 +108,33 @@ public class VendedorData {
             
         }
         return v;
+    }
+      
+       public static void modificarInspector(Vendedor v){
+        String sql = "UPDATE vendedor SET apellido = ?, nombre = ?, dni = ?, telefono = ? WHERE id_vendedor="+v.getIdVendedor();
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        try {
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, v.getApellido());
+            ps.setString(2, v.getNombre());
+            ps.setInt(3, v.getDni());
+            ps.setInt(4, v.getTelefono());
+            
+            
+
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                mostrarMensaje("Modificado exitosamente.","Modificacion de Vendedor","info");
+            } else {
+                mostrarMensaje("El Vendedor no existe","Error al eliminar","error");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Vendedor, " + ex.getMessage(),"Error de conexión","error");
+        }
     }
 }
 

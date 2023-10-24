@@ -248,12 +248,12 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
-        ventanaPropietarios vp=new ventanaPropietarios();
+        ventanaRevisores vi=new ventanaRevisores();
         escritorio.removeAll();
         escritorio.repaint();
-        vp.setVisible(true);
-        escritorio.add(vp);
-        escritorio.moveToFront(vp);
+        vi.setVisible(true);
+        escritorio.add(vi);
+        escritorio.moveToFront(vi);
     }//GEN-LAST:event_jbVolverActionPerformed
 
     private void jtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDniKeyTyped

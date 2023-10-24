@@ -127,57 +127,57 @@ public class ventanaVendedores extends javax.swing.JInternalFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         
-        AgregarPropietario ap=new AgregarPropietario();
+        AgregarVendedor av=new AgregarVendedor();
         escritorio.removeAll();
         escritorio.repaint();
-        ap.setVisible(true);
-        escritorio.add(ap);
-        escritorio.moveToFront(ap);
+        av.setVisible(true);
+        escritorio.add(av);
+        escritorio.moveToFront(av);
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        AgregarPropietario ap=new AgregarPropietario();
+         AgregarVendedor av=new AgregarVendedor();
         escritorio.removeAll();
         escritorio.repaint();
-        ap.setVisible(true);
-        escritorio.add(ap);
-        escritorio.moveToFront(ap);
+        av.setVisible(true);
+        escritorio.add(av);
+        escritorio.moveToFront(av);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        ModificarPropietario mp=new ModificarPropietario();
+        ModificarVendedor mv=new ModificarVendedor();
         escritorio.removeAll();
         escritorio.repaint();
-        mp.setVisible(true);
-        escritorio.add(mp);
-        escritorio.moveToFront(mp);
+        mv.setVisible(true);
+        escritorio.add(mv);
+        escritorio.moveToFront(mv);
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        ModificarPropietario mp=new ModificarPropietario();
+        ModificarVendedor mv=new ModificarVendedor();
         escritorio.removeAll();
         escritorio.repaint();
-        mp.setVisible(true);
-        escritorio.add(mp);
-        escritorio.moveToFront(mp);
+        mv.setVisible(true);
+        escritorio.add(mv);
+        escritorio.moveToFront(mv);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        BuscarPropietario bp=new BuscarPropietario();
+        BuscarVendedor bv=new BuscarVendedor();
         escritorio.removeAll();
         escritorio.repaint();
-        bp.setVisible(true);
-        escritorio.add(bp);
-        escritorio.moveToFront(bp);
+        bv.setVisible(true);
+        escritorio.add(bv);
+        escritorio.moveToFront(bv);
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-       BuscarPropietario bp=new BuscarPropietario();
+       BuscarVendedor bv=new BuscarVendedor();
         escritorio.removeAll();
         escritorio.repaint();
-        bp.setVisible(true);
-        escritorio.add(bp);
-        escritorio.moveToFront(bp);
+        bv.setVisible(true);
+        escritorio.add(bv);
+        escritorio.moveToFront(bv);
     }//GEN-LAST:event_jLabel5MouseClicked
 
 

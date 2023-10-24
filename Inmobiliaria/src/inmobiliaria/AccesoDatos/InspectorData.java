@@ -147,32 +147,5 @@ public class InspectorData {
         }
     }
    
-   public static List<Inspector> listarInsp() {
-        List<Inspector> inspectores=new ArrayList<>();
-        Connection con = null;
-        PreparedStatement ps = null;
-        con = Conectar.getConectar();
-        
-        try{
-            String sql= "SELECT * FROM `inspector` ";
-            ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                Inspector i= new Inspector();
-                i.setIdInspector(rs.getInt("id_inspector"));
-                i.setApellido(rs.getString("apellido"));
-                i.setNombre(rs.getString("nombre"));
-                i.setDni(rs.getInt("dni"));
-                i.setTelefono(rs.getInt("telefono"));
-                inspectores.add(i);
-                
-            }
-            ps.close();
-        }catch(SQLException ex) {
-            mostrarMensaje("Error al acceder a la tabla Inspector, " + ex.getMessage(),"Error de conexión","error");
-            
-        }
-        
-        return inspectores;
-    }
+
 }

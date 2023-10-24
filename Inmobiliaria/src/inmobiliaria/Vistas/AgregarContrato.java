@@ -281,9 +281,9 @@ public class AgregarContrato extends javax.swing.JInternalFrame {
             LocalDate fechaRealizacion= LocalDate.now();
             String auxFirmas=(String)jcbFirmas.getSelectedItem();
             Contrato c= new Contrato(inquilino, propietario, auxEstado, fechaInicio, fechaRealizacion, fechaFin, auxFirmas, propiedad, vendedor);
-//            ContratoData.agregarContrato(c);
-//            limpiar();
-             System.out.println(c.getFirmas());
+            ContratoData.agregarContrato(c);
+            limpiar();
+             
         }
 
         
