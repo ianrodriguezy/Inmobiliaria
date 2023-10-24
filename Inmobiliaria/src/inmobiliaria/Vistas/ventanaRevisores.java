@@ -136,16 +136,16 @@ public class ventanaRevisores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        AgregarPropietario ap=new AgregarPropietario();
+         AgregarRevisor ar=new AgregarRevisor();
         escritorio.removeAll();
         escritorio.repaint();
-        ap.setVisible(true);
-        escritorio.add(ap);
-        escritorio.moveToFront(ap);
+        ar.setVisible(true);
+        escritorio.add(ar);
+        escritorio.moveToFront(ar);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        ModificarPropietario mp=new ModificarPropietario();
+        ModificarRevisor mp=new ModificarRevisor();
         escritorio.removeAll();
         escritorio.repaint();
         mp.setVisible(true);
@@ -154,7 +154,7 @@ public class ventanaRevisores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        ModificarPropietario mp=new ModificarPropietario();
+        ModificarRevisor mp=new ModificarRevisor();
         escritorio.removeAll();
         escritorio.repaint();
         mp.setVisible(true);
@@ -172,12 +172,12 @@ public class ventanaRevisores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-       BuscarPropietario bp=new BuscarPropietario();
+       BuscarRevisor br=new BuscarRevisor();
         escritorio.removeAll();
         escritorio.repaint();
-        bp.setVisible(true);
-        escritorio.add(bp);
-        escritorio.moveToFront(bp);
+        br.setVisible(true);
+        escritorio.add(br);
+        escritorio.moveToFront(br);
     }//GEN-LAST:event_jLabel5MouseClicked
 
 

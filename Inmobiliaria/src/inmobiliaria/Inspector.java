@@ -16,7 +16,7 @@ public class Inspector {
         this.dni=dni;
     }
 
-    public Inspector(int idInspector, String nombre, String apellido, int telefono) {
+    public Inspector(int idInspector, String nombre, String apellido,int dni, int telefono) {
         this.idInspector = idInspector;
         this.nombre = nombre;
         this.apellido = apellido;
