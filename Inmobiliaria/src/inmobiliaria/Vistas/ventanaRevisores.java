@@ -163,12 +163,12 @@ public class ventanaRevisores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        BuscarPropietario bp=new BuscarPropietario();
+        BuscarRevisor br=new BuscarRevisor();
         escritorio.removeAll();
         escritorio.repaint();
-        bp.setVisible(true);
-        escritorio.add(bp);
-        escritorio.moveToFront(bp);
+        br.setVisible(true);
+        escritorio.add(br);
+        escritorio.moveToFront(br);
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked

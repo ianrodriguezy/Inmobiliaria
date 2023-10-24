@@ -177,12 +177,12 @@ public class AgregarRevisor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
-        ventanaPropietarios vp=new ventanaPropietarios();
+        ventanaRevisores vi=new ventanaRevisores();
         escritorio.removeAll();
         escritorio.repaint();
-        vp.setVisible(true);
-        escritorio.add(vp);
-        escritorio.moveToFront(vp);
+        vi.setVisible(true);
+        escritorio.add(vi);
+        escritorio.moveToFront(vi);
     }//GEN-LAST:event_jbVolverActionPerformed
 
     private void jtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtApellidoKeyTyped
@@ -210,7 +210,7 @@ public class AgregarRevisor extends javax.swing.JInternalFrame {
             mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Revisor", "error");
         } else {
             
-            if(InspectorData.buscarInspectorDni(Integer.parseInt(jtDni.getText())).getApellido()!=null){
+            if(InspectorData.buscarInspectorDni(Integer.parseInt(jtDni.getText()),1).getApellido()!=null){
                 mostrarMensaje("El Revisor que desea agregar ya existe.", "Error al crear Revisor", "error");
             }else{
             Inspector i= new Inspector( jtNombre.getText(), jtApellido.getText(),Integer.parseInt(jtDni.getText()), Integer.parseInt(jtTelefono.getText()));

@@ -92,22 +92,26 @@ public class InspectorData {
         }
         return i;
     }
-   public static Inspector buscarInspectorDni(int d) {
+   public static Inspector buscarInspectorDni(int d,int nuevo) {
         Inspector i= new Inspector();
         Connection con = null;
         PreparedStatement ps = null;
         con = Conectar.getConectar();
+        
         String sql= "SELECT * FROM `inspector` WHERE dni="+d ;
+        
         try{
             
             ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            if(rs.next()){
                 i.setIdInspector(rs.getInt("id_inspector"));
                 i.setApellido(rs.getString("apellido"));
                 i.setNombre(rs.getString("nombre"));
                 i.setDni(rs.getInt("dni"));
                 i.setTelefono(rs.getInt("telefono"));
+            }else if (nuevo!=1){
+                mostrarMensaje("No existe el Revisor ","Error al buscar","error");
             }
             ps.close();
         }catch(SQLException ex) {
@@ -115,5 +119,34 @@ public class InspectorData {
             
         }
         return i;
+    }
+   
+   public static List<Inspector> listarInsp() {
+        List<Inspector> inspectores=new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        
+        try{
+            String sql= "SELECT * FROM `inspector` ";
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Inspector i= new Inspector();
+                i.setIdInspector(rs.getInt("id_inspector"));
+                i.setApellido(rs.getString("apellido"));
+                i.setNombre(rs.getString("nombre"));
+                i.setDni(rs.getInt("dni"));
+                i.setTelefono(rs.getInt("telefono"));
+                inspectores.add(i);
+                
+            }
+            ps.close();
+        }catch(SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Inspector, " + ex.getMessage(),"Error de conexión","error");
+            
+        }
+        
+        return inspectores;
     }
 }
