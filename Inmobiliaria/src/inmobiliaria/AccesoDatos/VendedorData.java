@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +56,8 @@ public class VendedorData {
                 v.setIdVendedor(rs.getInt("id_vendedor"));
                 v.setApellido(rs.getString("apellido"));
                 v.setNombre(rs.getString("nombre"));
+                v.setDni(rs.getInt("dni"));
+                v.setTelefono(rs.getInt("telefono"));
             }
             ps.close();
         }catch(SQLException ex) {
@@ -63,6 +66,46 @@ public class VendedorData {
         }
         return v;
     }
-   
+      public static void agregarVendedor(Vendedor v){
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        String sql = "INSERT INTO vendedor (`apellido`, `nombre`, `dni`, `telefono`) VALUES ('" + v.getApellido() + "','" + v.getNombre() + "','" + v.getDni() + "','" + v.getTelefono() + "')";
+        con = Conectar.getConectar();
+
+        try {
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+
+        } catch (SQLException x) {
+            System.out.println("Error " + x.getMessage());
+        }
+         mostrarMensaje("Alta exitosa.","Creacion de Vendedor","info");
+} 
+      public static Vendedor buscarVendedorDni(int d) {
+        Vendedor v= new Vendedor();
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        String sql= "SELECT * FROM `vendedor` WHERE dni="+d ;
+        try{
+            
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                v.setIdVendedor(rs.getInt("id_vendedor"));
+                v.setApellido(rs.getString("apellido"));
+                v.setNombre(rs.getString("nombre"));
+                v.setDni(rs.getInt("dni"));
+                v.setTelefono(rs.getInt("telefono"));
+            }
+            ps.close();
+        }catch(SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Vendedor, " + ex.getMessage(),"Error de conexión","error");
+            
+        }
+        return v;
+    }
 }
 
