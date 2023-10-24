@@ -3,16 +3,40 @@ package inmobiliaria;
 
 
 public class Vendedor {
-    private int idVendedor;
+    private int idVendedor,dni,telefono;
     private String nombre,apellido;
 
     public Vendedor() {
     }
 
-    public Vendedor(int idVendedor, String nombre, String apellido) {
+    public Vendedor(int idVendedor, String nombre, String apellido,int dni, int telefono) {
         this.idVendedor = idVendedor;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.dni=dni;
+        this.telefono=telefono;
+    }
+    public Vendedor( String nombre, String apellido,int dni, int telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni=dni;
+        this.telefono=telefono;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
 
     public int getIdVendedor() {
