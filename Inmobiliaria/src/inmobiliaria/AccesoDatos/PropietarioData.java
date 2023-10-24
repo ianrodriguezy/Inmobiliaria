@@ -37,7 +37,7 @@ public static void agregarPropietario(Propietario propietario){
         Connection con = null;
         PreparedStatement ps = null;
 
-        String sql = "INSERT INTO propietario (`apellidoPropietario`, `nombrePropietario`, `domicilio`, `dni`, `telefono`) VALUES ('" + propietario.getApellidoPropietario() + "','" + propietario.getNombrePropietario() + "','" + propietario.getDomicilio() + "','" + propietario.getDni() + "','" + propietario.getTelefono() + "')";
+        String sql = "INSERT INTO propietario (`apellidoPropietario`, `nombrePropietario`, `domicilio`, `dni`, `telefono`,`estado`) VALUES ('" + propietario.getApellidoPropietario() + "','" + propietario.getNombrePropietario() + "','" + propietario.getDomicilio() + "','" + propietario.getDni() + "','" + propietario.getTelefono() +"','" +propietario.getEstado()+ "')";
         con = Conectar.getConectar();
 
         try {

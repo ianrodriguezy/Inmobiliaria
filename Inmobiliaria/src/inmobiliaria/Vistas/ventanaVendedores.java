@@ -7,12 +7,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class ventanaRevisores extends javax.swing.JInternalFrame {
+public class ventanaVendedores extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ventanaPropietarios
      */
-    public ventanaRevisores() {
+    public ventanaVendedores() {
         super("",false,false,false,false);
         
         initComponents();
@@ -20,7 +20,7 @@ public class ventanaRevisores extends javax.swing.JInternalFrame {
     }
 
 
-    public ventanaRevisores( String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
+    public ventanaVendedores( String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
@@ -70,23 +70,23 @@ public class ventanaRevisores extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel5.setText("  BUSCAR REVISOR");
+        jLabel5.setText("  BUSCAR VENDEDOR");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, 290, 90));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 290, 90));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel3.setText("AGREGAR REVISOR");
+        jLabel3.setText("AGREGAR VENDEDOR");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 290, 90));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 290, 90));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/EDITAR PERSONA.png"))); // NOI18N
         jLabel6.setText("jLabel2");
@@ -99,13 +99,13 @@ public class ventanaRevisores extends javax.swing.JInternalFrame {
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel7.setText("  EDITAR REVISOR");
+        jLabel7.setText("  EDITAR VENDEDOR");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 290, 90));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 550, 290, 90));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -127,12 +127,12 @@ public class ventanaRevisores extends javax.swing.JInternalFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         
-        AgregarRevisor ar=new AgregarRevisor();
+        AgregarPropietario ap=new AgregarPropietario();
         escritorio.removeAll();
         escritorio.repaint();
-        ar.setVisible(true);
-        escritorio.add(ar);
-        escritorio.moveToFront(ar);
+        ap.setVisible(true);
+        escritorio.add(ap);
+        escritorio.moveToFront(ap);
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked

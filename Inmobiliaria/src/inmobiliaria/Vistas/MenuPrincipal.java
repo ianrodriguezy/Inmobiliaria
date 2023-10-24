@@ -40,12 +40,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jbVendedor = new javax.swing.JButton();
+        jbPropiedades = new javax.swing.JButton();
+        jbPropietarios = new javax.swing.JButton();
+        jbInquilinos = new javax.swing.JButton();
+        jbContratos = new javax.swing.JButton();
+        jbRevisores = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -64,79 +64,89 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel4.setOpaque(true);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 110, 70));
 
-        jButton1.setBackground(new java.awt.Color(35, 76, 139));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Vendedor");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setFocusable(false);
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 210, 50));
-
-        jButton2.setBackground(new java.awt.Color(35, 76, 139));
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("Propiedades");
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbVendedor.setBackground(new java.awt.Color(35, 76, 139));
+        jbVendedor.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbVendedor.setForeground(new java.awt.Color(204, 204, 204));
+        jbVendedor.setText("Vendedor");
+        jbVendedor.setBorder(null);
+        jbVendedor.setBorderPainted(false);
+        jbVendedor.setFocusable(false);
+        jbVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbVendedorActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 210, 50));
+        jPanel1.add(jbVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 210, 50));
 
-        jButton3.setBackground(new java.awt.Color(35, 76, 139));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(204, 204, 204));
-        jButton3.setText("Propietarios");
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.setFocusable(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jbPropiedades.setBackground(new java.awt.Color(35, 76, 139));
+        jbPropiedades.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbPropiedades.setForeground(new java.awt.Color(204, 204, 204));
+        jbPropiedades.setText("Propiedades");
+        jbPropiedades.setBorder(null);
+        jbPropiedades.setBorderPainted(false);
+        jbPropiedades.setFocusable(false);
+        jbPropiedades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jbPropiedadesActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 210, 50));
+        jPanel1.add(jbPropiedades, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 210, 50));
 
-        jButton4.setBackground(new java.awt.Color(35, 76, 139));
-        jButton4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(204, 204, 204));
-        jButton4.setText("Inquilinos");
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setFocusable(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jbPropietarios.setBackground(new java.awt.Color(35, 76, 139));
+        jbPropietarios.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbPropietarios.setForeground(new java.awt.Color(204, 204, 204));
+        jbPropietarios.setText("Propietarios");
+        jbPropietarios.setBorder(null);
+        jbPropietarios.setBorderPainted(false);
+        jbPropietarios.setFocusable(false);
+        jbPropietarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jbPropietariosActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 210, 50));
+        jPanel1.add(jbPropietarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 210, 50));
 
-        jButton5.setBackground(new java.awt.Color(35, 76, 139));
-        jButton5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(204, 204, 204));
-        jButton5.setText("Contratos");
-        jButton5.setBorder(null);
-        jButton5.setBorderPainted(false);
-        jButton5.setFocusable(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jbInquilinos.setBackground(new java.awt.Color(35, 76, 139));
+        jbInquilinos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbInquilinos.setForeground(new java.awt.Color(204, 204, 204));
+        jbInquilinos.setText("Inquilinos");
+        jbInquilinos.setBorder(null);
+        jbInquilinos.setBorderPainted(false);
+        jbInquilinos.setFocusable(false);
+        jbInquilinos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jbInquilinosActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 210, 50));
+        jPanel1.add(jbInquilinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 210, 50));
 
-        jButton6.setBackground(new java.awt.Color(35, 76, 139));
-        jButton6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(204, 204, 204));
-        jButton6.setText("Revisores");
-        jButton6.setBorder(null);
-        jButton6.setBorderPainted(false);
-        jButton6.setFocusable(false);
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 210, 50));
+        jbContratos.setBackground(new java.awt.Color(35, 76, 139));
+        jbContratos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbContratos.setForeground(new java.awt.Color(204, 204, 204));
+        jbContratos.setText("Contratos");
+        jbContratos.setBorder(null);
+        jbContratos.setBorderPainted(false);
+        jbContratos.setFocusable(false);
+        jbContratos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbContratosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbContratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 210, 50));
+
+        jbRevisores.setBackground(new java.awt.Color(35, 76, 139));
+        jbRevisores.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbRevisores.setForeground(new java.awt.Color(204, 204, 204));
+        jbRevisores.setText("Revisores");
+        jbRevisores.setBorder(null);
+        jbRevisores.setBorderPainted(false);
+        jbRevisores.setFocusable(false);
+        jbRevisores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRevisoresActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbRevisores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 210, 50));
 
         jLabel3.setText("logo");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 160, 130));
@@ -177,16 +187,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jbPropiedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPropiedadesActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         ventanaPropiedades vp = new ventanaPropiedades("",false,false,false,false);
         vp.setVisible(true);
         escritorio.add(vp);
         escritorio.moveToFront(vp);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jbPropiedadesActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jbPropietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPropietariosActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         ventanaPropietarios vp = new ventanaPropietarios("",false,false,false,false);
@@ -195,25 +205,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(vp);
         
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jbPropietariosActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jbInquilinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInquilinosActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         ventanaInquilinos vi = new ventanaInquilinos("",false,false,false,false);
         vi.setVisible(true);
         escritorio.add(vi);
         escritorio.moveToFront(vi);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jbInquilinosActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jbContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbContratosActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         ventanaContratos vc = new ventanaContratos("",false,false,false,false);
         vc.setVisible(true);
         escritorio.add(vc);
         escritorio.moveToFront(vc);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jbContratosActionPerformed
+
+    private void jbRevisoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRevisoresActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ventanaRevisores vr = new ventanaRevisores("",false,false,false,false);
+        vr.setVisible(true);
+        escritorio.add(vr);
+        escritorio.moveToFront(vr);
+    }//GEN-LAST:event_jbRevisoresActionPerformed
+
+    private void jbVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVendedorActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ventanaVendedores vv = new ventanaVendedores("",false,false,false,false);
+        vv.setVisible(true);
+        escritorio.add(vv);
+        escritorio.moveToFront(vv);
+    }//GEN-LAST:event_jbVendedorActionPerformed
 
     
     public static void main(String args[]) {
@@ -250,12 +278,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane escritorio;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -264,5 +286,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton jbContratos;
+    private javax.swing.JButton jbInquilinos;
+    private javax.swing.JButton jbPropiedades;
+    private javax.swing.JButton jbPropietarios;
+    private javax.swing.JButton jbRevisores;
+    private javax.swing.JButton jbVendedor;
     // End of variables declaration//GEN-END:variables
 }

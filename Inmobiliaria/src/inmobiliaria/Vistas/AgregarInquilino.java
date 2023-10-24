@@ -43,7 +43,7 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
         jtNombre.setText("");
         jtDni.setText("");
         jtTelefono.setText("");
-        jtTipo.setText("");
+        jcbTipo.setSelectedIndex(0);
         jtCuit.setText("");
         jtTelefono.setText("");
         jtLugarTrabajo.setText("");
@@ -71,7 +71,6 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
         jtApellido = new javax.swing.JTextField();
         jtNombre = new javax.swing.JTextField();
         jtDni = new javax.swing.JTextField();
-        jtTipo = new javax.swing.JTextField();
         jbVolver = new javax.swing.JButton();
         jbAgregar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
@@ -153,14 +152,6 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 300, 30));
-
-        jtTipo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jtTipo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtTipoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(jtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 300, 30));
 
         jbVolver.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jbVolver.setText("Volver");
@@ -272,8 +263,8 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, 300, 30));
 
-        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 190, 30));
+        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo", "Comercial", "Habitacional", "Temporario" }));
+        jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 190, 30));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -347,18 +338,16 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-        if (jtApellido.getText().isEmpty() ||jtNombre.getText().isEmpty() ||jtDni.getText().isEmpty() ||jtCuit.getText().isEmpty()||jtTipo.getText().isEmpty()|| jtTelefono.getText().isEmpty()||jtLugarTrabajo.getText().isEmpty()||jtDniGar.getText().isEmpty()||jtNombreGar.getText().isEmpty()||jtSupMin.getText().isEmpty()||jtPrecio.getText().isEmpty()) {
+        if (jtApellido.getText().isEmpty() ||jtNombre.getText().isEmpty() ||jtDni.getText().isEmpty() ||jtCuit.getText().isEmpty()||jcbTipo.getSelectedIndex()==0|| jtTelefono.getText().isEmpty()||jtLugarTrabajo.getText().isEmpty()||jtDniGar.getText().isEmpty()||jtNombreGar.getText().isEmpty()||jtSupMin.getText().isEmpty()||jtPrecio.getText().isEmpty()) {
             mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Inquilino", "error");
         } else {
             if(InquilinoData.buscarInquilinoPorDni(Integer.parseInt(jtDni.getText()),1,1)!=null){
                 mostrarMensaje("El Inquilino que desea agregar ya existe.", "Error al crear Inquilino", "error");
             }else{
-            
-            Inquilino i= new Inquilino(jtApellido.getText(), jtNombre.getText(),jtTipo.getText(),jtLugarTrabajo.getText(),jtNombreGar.getText(),  Integer.parseInt(jtDni.getText()),Integer.parseInt(jtCuit.getText()), Integer.parseInt(jtTelefono.getText()),Integer.parseInt(jtDniGar.getText()),Integer.parseInt(jtSupMin.getText()),Integer.parseInt(jtPrecio.getText()),1);
-                System.out.println(i.getDni()+"");
+            String auxTipo=jcbTipo.getSelectedItem().toString();
+            Inquilino i= new Inquilino(jtApellido.getText(), jtNombre.getText(),auxTipo,jtLugarTrabajo.getText(),jtNombreGar.getText(),  Integer.parseInt(jtDni.getText()),Integer.parseInt(jtCuit.getText()), Integer.parseInt(jtTelefono.getText()),Integer.parseInt(jtDniGar.getText()),Integer.parseInt(jtSupMin.getText()),Integer.parseInt(jtPrecio.getText()),1);
             InquilinoData.agregarInquilino(i);
-            
-            
+
             limpiar();
 
         }   }
@@ -424,14 +413,6 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
        }
     }//GEN-LAST:event_jtCuitKeyTyped
 
-    private void jtTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtTipoKeyTyped
-        char key = evt.getKeyChar();
-        boolean letra = Character.isLetter(key)|| Character.isWhitespace(key);
-        if (!letra) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jtTipoKeyTyped
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -462,6 +443,5 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtPrecio;
     private javax.swing.JTextField jtSupMin;
     private javax.swing.JTextField jtTelefono;
-    private javax.swing.JTextField jtTipo;
     // End of variables declaration//GEN-END:variables
 }

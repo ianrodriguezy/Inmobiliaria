@@ -24,10 +24,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Ian
- */
+
 public class AgregarContrato extends javax.swing.JInternalFrame {
 
     List propietarios=new ArrayList<>();
@@ -258,44 +255,48 @@ public class AgregarContrato extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-//         if (jcbPropiedades.getSelectedIndex() == -1 || jcbInquilinos.getSelectedIndex() == -1 || jcbVendedores.getSelectedIndex() == -1 || jcbFirmas.getSelectedIndex() == 0 || jdInicio.getDate() == null || jdFin.getDate() == null) {
-//            mostrarMensaje("Todos o alguno de los campos se encuentran vacios.", "Error al crear Contrato", "error");
-//        } else {
-//            Inquilino inquilino = new Inquilino();
-//            if (jcbInquilinos.getSelectedIndex() != -1) {
-//                inquilino = (Inquilino) inquilinos.get(jcbInquilinos.getSelectedIndex() - 1);
-//            } else {
-//                inquilino.setIdInquilino(1);
-//            }
-//            Propiedad propiedad = new Propiedad();
-//            propiedad = (Propiedad) propiedades.get(jcbPropiedades.getSelectedIndex() - 1);
-//            Propietario propietario = new Propietario();
-//            propietario = (Propietario) propiedad.getDueño();
-//            Vendedor vendedor = new Vendedor();
-//            vendedor = (Vendedor) vendedores.get(jcbVendedores.getSelectedIndex() - 1);
-//            int auxEstado;
-//            if(jcbFirmas.getSelectedIndex()==1){
-//                auxEstado=1;
-//            }else{
-//                auxEstado=0;
-//            }
-//            LocalDate fechaInicio = jdInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//            LocalDate fechaFin = jdFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//            LocalDate fechaRealizacion= LocalDate.now();
-//            String auxFirmas=jcbFirmas.getSelectedItem();
-//            Contrato c= new Contrato(inquilino, propietario, auxEstado, fechaInicio, fechaRealizacion, fechaFin, auxFirmas, propiedad, vendedor);
+         if (jcbPropiedades.getSelectedIndex() == -1 || jcbInquilinos.getSelectedIndex() == -1 || jcbVendedores.getSelectedIndex() == -1 || jcbFirmas.getSelectedIndex() == 0 || jdInicio.getDate() == null || jdFin.getDate() == null) {
+            mostrarMensaje("Todos o alguno de los campos se encuentran vacios.", "Error al crear Contrato", "error");
+        } else {
+            Inquilino inquilino = new Inquilino();
+            if (jcbInquilinos.getSelectedIndex() != -1) {
+                inquilino = (Inquilino) inquilinos.get(jcbInquilinos.getSelectedIndex() - 1);
+            } else {
+                inquilino.setIdInquilino(1);
+            }
+            Propiedad propiedad = new Propiedad();
+            propiedad = (Propiedad) propiedades.get(jcbPropiedades.getSelectedIndex() - 1);
+            Propietario propietario = new Propietario();
+            propietario = (Propietario) propiedad.getDueño();
+            Vendedor vendedor = new Vendedor();
+            vendedor = (Vendedor) vendedores.get(jcbVendedores.getSelectedIndex() - 1);
+            int auxEstado;
+            if(jcbFirmas.getSelectedIndex()==1){
+                auxEstado=1;
+            }else{
+                auxEstado=0;
+            }
+            LocalDate fechaInicio = jdInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate fechaFin = jdFin.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate fechaRealizacion= LocalDate.now();
+            String auxFirmas=(String)jcbFirmas.getSelectedItem();
+            Contrato c= new Contrato(inquilino, propietario, auxEstado, fechaInicio, fechaRealizacion, fechaFin, auxFirmas, propiedad, vendedor);
 //            ContratoData.agregarContrato(c);
 //            limpiar();
-//
-//        }
+             System.out.println(c.getFirmas());
+        }
 
-        System.out.println(jcbFirmas.getSelectedIndex());
-        System.out.println(jcbFirmas.getSelectedItem());
+        
+       
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jcbPropiedadesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbPropiedadesItemStateChanged
-        Propiedad p =(Propiedad) jcbPropiedades.getSelectedItem();
-        jtPropietario.setText(PropietarioData.buscarPropietarioPorId(p.getDueño().getIdPropietario()).toString());
+        if (jcbPropiedades.getSelectedIndex() != -1) {
+            Propiedad p = (Propiedad) jcbPropiedades.getSelectedItem();
+            jtPropietario.setText(PropietarioData.buscarPropietarioPorId(p.getDueño().getIdPropietario()).toString());
+        }else{
+            jtPropietario.setText("");
+        }
     }//GEN-LAST:event_jcbPropiedadesItemStateChanged
 
 

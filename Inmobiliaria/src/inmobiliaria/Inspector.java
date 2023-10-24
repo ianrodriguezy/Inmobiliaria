@@ -3,16 +3,41 @@ package inmobiliaria;
 
 
 public class Inspector {
-    private int idInspector;
+    private int idInspector,telefono,dni;
     private String nombre,apellido;
 
     public Inspector() {
     }
 
-    public Inspector(int idInspector, String nombre, String apellido) {
+    public Inspector( String nombre, String apellido,int dni, int telefono) {
+        this.telefono = telefono;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni=dni;
+    }
+
+    public Inspector(int idInspector, String nombre, String apellido, int telefono) {
         this.idInspector = idInspector;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.telefono=telefono;
+        this.dni=dni;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
 
     public int getIdInspector() {

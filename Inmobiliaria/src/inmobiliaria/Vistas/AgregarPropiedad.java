@@ -370,29 +370,27 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
             evt.consume();
         }
         
-        if(jtSupTotal.getText().length()>=4){
+        if(jtSupTotal.getText().length()>=8){
            evt.consume();
        }
     }//GEN-LAST:event_jtSupTotalKeyTyped
 
     private void jtAccesibilidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtAccesibilidadKeyTyped
-        char key = evt.getKeyChar();
-        boolean letra = Character.isLetter(key)|| Character.isWhitespace(key);
-        if (!letra) {
-            evt.consume();
-        }
+        if(jtAccesibilidad.getText().length()>=60){
+           evt.consume();
+       }
     }//GEN-LAST:event_jtAccesibilidadKeyTyped
 
     private void jtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDireccionKeyTyped
-        char key = evt.getKeyChar();
-        boolean letra = Character.isLetter(key)|| Character.isWhitespace(key);
-        if (!letra) {
-            evt.consume();
-        }
+       if(jtDireccion.getText().length()>=60){
+           evt.consume();
+       }
     }//GEN-LAST:event_jtDireccionKeyTyped
 
     private void jtServiciosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtServiciosKeyTyped
-        
+        if(jtServicios.getText().length()>=60){
+           evt.consume();
+       }
     }//GEN-LAST:event_jtServiciosKeyTyped
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
@@ -433,7 +431,9 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jtLocalidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtLocalidadKeyTyped
-        // TODO add your handling code here:
+        if(jtLocalidad.getText().length()>=11){
+           evt.consume();
+       }
     }//GEN-LAST:event_jtLocalidadKeyTyped
 
     private void jtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioKeyTyped
@@ -443,9 +443,9 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
             evt.consume();
         }
         
-//        if(jtPrecio.getText().length()>=11){
-//           evt.consume();
-//       }
+        if(jtPrecio.getText().length()>=11){
+           evt.consume();
+       }
     }//GEN-LAST:event_jtPrecioKeyTyped
 
     private void jtSupCubKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtSupCubKeyTyped
@@ -455,20 +455,23 @@ public class AgregarPropiedad extends javax.swing.JInternalFrame {
             evt.consume();
         }
         
-        if(jtSupCub.getText().length()>=4){
+        if(jtSupCub.getText().length()>=8){
            evt.consume();
        }
     }//GEN-LAST:event_jtSupCubKeyTyped
 
     private void jtCaracteristicasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCaracteristicasKeyTyped
-        // TODO add your handling code here:
+        if(jtCaracteristicas.getText().length()>=120){
+           evt.consume();
+       }
     }//GEN-LAST:event_jtCaracteristicasKeyTyped
 
     private void jtTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtTituloKeyTyped
-        // TODO add your handling code here:
+        if(jtTitulo.getText().length()>=60){
+           evt.consume();
     }//GEN-LAST:event_jtTituloKeyTyped
 
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
