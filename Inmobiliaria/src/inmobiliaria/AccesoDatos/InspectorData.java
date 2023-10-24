@@ -27,7 +27,7 @@ public class InspectorData {
         Connection con = null;
         PreparedStatement ps = null;
 
-        String sql = "INSERT INTO inspector (`apellido`, `nombre`, `telefono`) VALUES ('" + i.getApellido() + "','" + i.getNombre() + "','"   +i.getTelefono() + "')";
+        String sql = "INSERT INTO inspector (`apellido`, `nombre`, `dni`, `telefono`) VALUES ('" + i.getApellido() + "','" + i.getNombre() + "','" + i.getDni() + "','" +i.getTelefono() + "')";
         con = Conectar.getConectar();
 
         try {

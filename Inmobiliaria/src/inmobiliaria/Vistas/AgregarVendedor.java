@@ -7,8 +7,10 @@ package inmobiliaria.Vistas;
 import Inmobiliaria.AccesoDatos.PropietarioData;
 import static Inmobiliaria.AccesoDatos.PropietarioData.mostrarMensaje;
 import inmobiliaria.AccesoDatos.InspectorData;
+import inmobiliaria.AccesoDatos.VendedorData;
 import inmobiliaria.Inspector;
 import inmobiliaria.Propietario;
+import inmobiliaria.Vendedor;
 import static inmobiliaria.Vistas.MenuPrincipal.escritorio;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -81,8 +83,8 @@ public class AgregarVendedor extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel3.setText("Agregar Revisor");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 190, 40));
+        jLabel3.setText("Agregar Vendedor");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 210, 40));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(35, 76, 139));
@@ -177,12 +179,12 @@ public class AgregarVendedor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
-        ventanaPropietarios vp=new ventanaPropietarios();
+        ventanaVendedores vv=new ventanaVendedores();
         escritorio.removeAll();
         escritorio.repaint();
-        vp.setVisible(true);
-        escritorio.add(vp);
-        escritorio.moveToFront(vp);
+        vv.setVisible(true);
+        escritorio.add(vv);
+        escritorio.moveToFront(vv);
     }//GEN-LAST:event_jbVolverActionPerformed
 
     private void jtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtApellidoKeyTyped
@@ -207,15 +209,15 @@ public class AgregarVendedor extends javax.swing.JInternalFrame {
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         if ( jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jtTelefono.getText().isEmpty()||jtDni.getText().isEmpty()) {
-            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Revisor", "error");
+            mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al crear Vendedor", "error");
         } else {
             
-            if(InspectorData.buscarInspectorDni(Integer.parseInt(jtDni.getText())).getApellido()!=null){
-                mostrarMensaje("El Revisor que desea agregar ya existe.", "Error al crear Revisor", "error");
+            if(VendedorData.buscarVendedorDni(Integer.parseInt(jtDni.getText())).getApellido()!=null){
+                mostrarMensaje("El Vendedor que desea agregar ya existe.", "Error al crear Vendedor", "error");
             }else{
-            Inspector i= new Inspector( jtNombre.getText(), jtApellido.getText(),Integer.parseInt(jtDni.getText()), Integer.parseInt(jtTelefono.getText()));
+            Vendedor v= new Vendedor( jtNombre.getText(), jtApellido.getText(),Integer.parseInt(jtDni.getText()), Integer.parseInt(jtTelefono.getText()));
             
-            InspectorData.agregarInspector(i);
+            VendedorData.agregarVendedor(v);
             
             limpiar();
 
