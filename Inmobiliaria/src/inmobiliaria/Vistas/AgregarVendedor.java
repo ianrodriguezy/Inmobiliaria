@@ -19,12 +19,12 @@ import javax.swing.JPanel;
  *
  * @author Ian
  */
-public class AgregarRevisor extends javax.swing.JInternalFrame {
+public class AgregarVendedor extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ventanaPropietarios
      */
-    public AgregarRevisor() {
+    public AgregarVendedor() {
         super("",false,false,false,false);
         
         initComponents();
@@ -32,7 +32,7 @@ public class AgregarRevisor extends javax.swing.JInternalFrame {
     }
 
 
-    public AgregarRevisor( String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
+    public AgregarVendedor( String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
