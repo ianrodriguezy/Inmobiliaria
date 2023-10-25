@@ -63,10 +63,10 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
         modeloP.addColumn("Propietario");
         modeloP.addColumn("Precio");
         jtPropiedades.setModel(modeloP);
-        jtPropiedades.getColumnModel().getColumn(0).setPreferredWidth(8);
-        jtPropiedades.getColumnModel().getColumn(1).setPreferredWidth(50);
-        jtPropiedades.getColumnModel().getColumn(2).setPreferredWidth(50);
-        jtPropiedades.getColumnModel().getColumn(4).setPreferredWidth(20);
+        jtPropiedades.getColumnModel().getColumn(0).setPreferredWidth(5);
+        jtPropiedades.getColumnModel().getColumn(1).setPreferredWidth(110);
+        jtPropiedades.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jtPropiedades.getColumnModel().getColumn(3).setPreferredWidth(8);
     }
     
     private DefaultTableModel modeloC = new DefaultTableModel() {
@@ -75,22 +75,21 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
         }
     };
     
-    private void cargarTablaP(Propietario propietario){
+    private void cargarTablaP(int id){
         
-        if(propietario==null){
-           borrarFilasP();
-        }else{
+        
             borrarFilasP();
-            for (Propiedad p : PropiedadData.buscarPropiedadPorPropietario(propietario.getIdPropietario())){
+            for (Propiedad p : PropiedadData.buscarPropiedadPorOcupante(id)){
                 
                 modeloP.addRow(new Object []{
                     p.getIdPropiedad(),
                     p.getTitulo(),
-                    p.getEstadoPropiedad(),
-                    InquilinoData.buscarInquilinoPorId(p.getOcupante().getIdInquilino()).getApellido()+", "+InquilinoData.buscarInquilinoPorId(p.getOcupante().getIdInquilino()).getNombre() 
+                    p.getDueño().getApellidoPropietario()+", "+p.getDueño().getNombrePropietario(),
+                    p.getPrecioTasado()
+                    
                 });
             }}
-    }
+    
 //    private void cargarModeloC (){
 //        modelo.addColumn("ID");
 //        modelo.addColumn("Nombre");
@@ -475,7 +474,7 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
                 jtPrecio.setText(i.getPrecioAprox()+"");
                 jtSupMin.setText(i.getSupMin()+"");
                 auxid=i.getIdInquilino();
-                //cargarTablaP(p);
+                cargarTablaP(i.getIdInquilino());
             
             }else{
                 limpiar();
