@@ -6,6 +6,7 @@ import inmobiliaria.Inquilino;
 import inmobiliaria.Propiedad;
 import inmobiliaria.Propietario;
 import inmobiliaria.Vendedor;
+import inmobiliaria.AccesoDatos.VendedorData;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -13,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -144,7 +147,7 @@ public class ContratoData {
             ResultSet rs = ps.getGeneratedKeys();
 
         } catch (SQLException ex) {
-            System.out.println("Error" + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
         }
 
     }
@@ -175,11 +178,91 @@ public class ContratoData {
             ResultSet rs = ps.getGeneratedKeys();
 
         } catch (SQLException ex) {
-            System.out.println("Error" + ex.getMessage());
+            mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
         }
         if(mod==1){
             mostrarMensaje("Modificacion exitosa.", "Modicacion del contrato", "info");
         }
 
+    }
+     
+    public static List<Contrato> listarContratosPorVendedor(int id){
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "SELECT `codContrato`, `fechaRealizacion`, `fechaInicio`, `fechaFinal`, `firmas`, `vendedor`, `eLinquilino`, `propiedad`, `vigente`, `estado`, `propietario` FROM contratoalquiler WHERE vendedor="+id;
+        con = Conectar.getConectar();
+        List<Contrato> contratos= new ArrayList<>();
+        try{
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Contrato c = new Contrato();
+                c.setCodContrato(rs.getInt("codContrato"));
+                c.setFechaRealizacion(rs.getDate("fechaRealizacion").toLocalDate());
+                c.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                c.setFechaFin(rs.getDate("fechaFinal").toLocalDate());
+                c.setFirmas(rs.getString("firmas"));
+                Vendedor v=new Vendedor();
+                v=VendedorData.buscarVendedorPorId(rs.getInt("vendedor"));
+                c.setVendedor(v);
+                Inquilino i= new Inquilino();
+                i=InquilinoData.buscarInquilinoPorId(rs.getInt("eLinquilino"));
+                c.seteLinquilino(i);
+                Propiedad propiedad=new Propiedad();
+                propiedad=PropiedadData.buscarPropiedadPorId(rs.getInt("propiedad"));
+                c.setPropiedad(propiedad);
+                c.setVigente(rs.getInt("vigente"));
+                c.setEstado(rs.getInt("estado"));
+                Propietario p=new Propietario();
+                p=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
+                c.seteLpropietario(p);
+                contratos.add(c);
+        }
+        }catch(SQLException ex){
+            mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
+        }
+        
+        
+        return contratos;
+    }
+    
+    public static List<Contrato> listarContratosPorPropietario(int id){
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "SELECT `codContrato`, `fechaRealizacion`, `fechaInicio`, `fechaFinal`, `firmas`, `vendedor`, `eLinquilino`, `propiedad`, `vigente`, `estado`, `propietario` FROM contratoalquiler WHERE propietario="+id;
+        con = Conectar.getConectar();
+        List<Contrato> contratos= new ArrayList<>();
+        try{
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Contrato c = new Contrato();
+                c.setCodContrato(rs.getInt("codContrato"));
+                c.setFechaRealizacion(rs.getDate("fechaRealizacion").toLocalDate());
+                c.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                c.setFechaFin(rs.getDate("fechaFinal").toLocalDate());
+                c.setFirmas(rs.getString("firmas"));
+                Vendedor v=new Vendedor();
+                v=VendedorData.buscarVendedorPorId(rs.getInt("vendedor"));
+                c.setVendedor(v);
+                Inquilino i= new Inquilino();
+                i=InquilinoData.buscarInquilinoPorId(rs.getInt("eLinquilino"));
+                c.seteLinquilino(i);
+                Propiedad propiedad=new Propiedad();
+                propiedad=PropiedadData.buscarPropiedadPorId(rs.getInt("propiedad"));
+                c.setPropiedad(propiedad);
+                c.setVigente(rs.getInt("vigente"));
+                c.setEstado(rs.getInt("estado"));
+                Propietario p=new Propietario();
+                p=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
+                c.seteLpropietario(p);
+                contratos.add(c);
+        }
+        }catch(SQLException ex){
+            mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
+        }
+        
+        
+        return contratos;
     }
 }

@@ -100,7 +100,7 @@ public class VendedorData {
                 v.setDni(rs.getInt("dni"));
                 v.setTelefono(rs.getInt("telefono"));
             }else if (nuevo!=1){
-                mostrarMensaje("No existe el Revisor ","Error al buscar","error");
+                mostrarMensaje("No existe el Vendedor ","Error al buscar","error");
             }
             ps.close();
         }catch(SQLException ex) {
@@ -110,7 +110,7 @@ public class VendedorData {
         return v;
     }
       
-       public static void modificarInspector(Vendedor v){
+       public static void modificarVendedor(Vendedor v){
         String sql = "UPDATE vendedor SET apellido = ?, nombre = ?, dni = ?, telefono = ? WHERE id_vendedor="+v.getIdVendedor();
         Connection con = null;
         PreparedStatement ps = null;

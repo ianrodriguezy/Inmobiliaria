@@ -58,8 +58,10 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
         modeloP.addColumn("Estado");
         modeloP.addColumn("Inquilino");
         jtPropiedades.setModel(modeloP);
-        jtPropiedades.getColumnModel().getColumn(0).setPreferredWidth(5);
+        jtPropiedades.getColumnModel().getColumn(0).setPreferredWidth(20);
+        jtPropiedades.getColumnModel().getColumn(1).setPreferredWidth(150);
         jtPropiedades.getColumnModel().getColumn(2).setPreferredWidth(5);
+        jtPropiedades.getColumnModel().getColumn(3).setPreferredWidth(150);
     }
     private DefaultTableModel modeloC = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
@@ -131,8 +133,8 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel5.setText("Ingrese un dni para buscar");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 240, -1));
+        jLabel5.setText("Ingrese un dni para buscar Revisor");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 320, -1));
 
         jtTelefono.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtTelefono.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -227,7 +229,7 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(35, 76, 139));
         jLabel9.setText("Listado de propiedades");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 220, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 220, -1));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);

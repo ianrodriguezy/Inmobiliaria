@@ -13,8 +13,9 @@ import javax.swing.JFrame;
 
 public class LoginData {
     public static boolean ingresar(String user, String pass){
-        String sql = "SELECT usuario, contraseña FROM usuarios";
+        String sql = "SELECT idUsuario,usuario, contraseña FROM usuarios";
         PreparedStatement ps = null;
+        int id;
         String usuario=null;
         String contrasenia=null;
         boolean ingreso=false;
@@ -27,15 +28,17 @@ public class LoginData {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                usuario=rs.getString(1);
-                contrasenia=rs.getString(2);
+                id=rs.getInt(1);
+                usuario=rs.getString(2);
+                contrasenia=rs.getString(3);
                 
             }
             if(user.equals(usuario)&& pass.equals(contrasenia)){
                     mostrarMensaje("Bienvenido " + usuario, "Ingreso", "info");
+                    
                     MenuPrincipal menu = new MenuPrincipal();
-                    menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                    menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//                    menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     menu.setVisible(true);
                     ingreso=true;
                 }

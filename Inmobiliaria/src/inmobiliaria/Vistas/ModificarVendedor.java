@@ -4,16 +4,13 @@
  */
 package inmobiliaria.Vistas;
 
-import Inmobiliaria.AccesoDatos.PropietarioData;
+
 import static Inmobiliaria.AccesoDatos.PropietarioData.mostrarMensaje;
-import inmobiliaria.AccesoDatos.InspectorData;
-import inmobiliaria.Inspector;
-import inmobiliaria.Propietario;
+
+import inmobiliaria.AccesoDatos.VendedorData;
+
+import inmobiliaria.Vendedor;
 import static inmobiliaria.Vistas.MenuPrincipal.escritorio;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 
 public class ModificarVendedor extends javax.swing.JInternalFrame {
@@ -249,8 +246,8 @@ public class ModificarVendedor extends javax.swing.JInternalFrame {
         if (jtDni.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jtTelefono.getText().isEmpty()) {
             mostrarMensaje("Todos o alguno de los campos se encuentran vacios, por favor rellene todos.", "Error al modificar Revisor", "error");
         }else{
-            Inspector i=new Inspector(auxid, jtNombre.getText(), jtApellido.getText(),Integer.parseInt(jtDni.getText()), Integer.parseInt(jtTelefono.getText()));
-            InspectorData.modificarInspector(i);
+            Vendedor v= new Vendedor(auxid, jtNombre.getText(), jtApellido.getText(),Integer.parseInt(jtDni.getText()), Integer.parseInt(jtTelefono.getText()));
+            VendedorData.modificarVendedor(v);
             jbGuardar.setEnabled(false);
             jtApellido.setEnabled(false);
             jtNombre.setEnabled(false);
@@ -262,24 +259,24 @@ public class ModificarVendedor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        Inspector i = new Inspector();
+        Vendedor v = new Vendedor();
         int auxEstado;
         if (jtDni.getText().isEmpty()) {
-            mostrarMensaje("Ingrese un dni para buscar al Inspector.", "Error al buscar", "error");
+            mostrarMensaje("Ingrese un dni para buscar al Vendedor.", "Error al buscar", "error");
         } else {
 
             boolean aux;
-            if (InspectorData.buscarInspectorDni(Integer.parseInt(jtDni.getText()), 0).getApellido() != null) {
-                i = InspectorData.buscarInspectorDni(Integer.parseInt(jtDni.getText()), 0);
+            if (VendedorData.buscarVendedorDni(Integer.parseInt(jtDni.getText()), 0).getApellido() != null) {
+                v = VendedorData.buscarVendedorDni(Integer.parseInt(jtDni.getText()), 0);
 
-                jtDni.setText(i.getDni() + "");
-                jtApellido.setText(i.getApellido());
-                jtNombre.setText(i.getNombre());
-                jtTelefono.setText(i.getTelefono() + "");
+                jtDni.setText(v.getDni() + "");
+                jtApellido.setText(v.getApellido());
+                jtNombre.setText(v.getNombre());
+                jtTelefono.setText(v.getTelefono() + "");
 
-                if (!i.getApellido().isEmpty()) {
+                if (!v.getApellido().isEmpty()) {
                     jbGuardar.setEnabled(true);
-                    this.auxid = i.getIdInspector();
+                    this.auxid = v.getIdVendedor();
                     jtApellido.setEnabled(true);
                     jtNombre.setEnabled(true);
 

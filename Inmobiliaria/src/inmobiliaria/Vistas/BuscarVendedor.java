@@ -4,12 +4,14 @@
  */
 package inmobiliaria.Vistas;
 
+import Inmobiliaria.AccesoDatos.ContratoData;
 import Inmobiliaria.AccesoDatos.InquilinoData;
 import Inmobiliaria.AccesoDatos.PropiedadData;
 import Inmobiliaria.AccesoDatos.PropietarioData;
 import static Inmobiliaria.AccesoDatos.PropietarioData.mostrarMensaje;
 import inmobiliaria.AccesoDatos.InspectorData;
 import inmobiliaria.AccesoDatos.VendedorData;
+import inmobiliaria.Contrato;
 import inmobiliaria.Inspector;
 import inmobiliaria.Propiedad;
 import inmobiliaria.Propietario;
@@ -29,7 +31,7 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
         super("",false,false,false,false);
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
-        cargarModeloP();
+        cargarModeloC();
     }
 
 
@@ -47,52 +49,47 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
         
     }
     
-    private DefaultTableModel modeloP = new DefaultTableModel() {
-        public boolean isCellEditable(int f, int c) {
-            return false;
-        }
-    };
-    
-    
-    private void cargarModeloP (){
-        modeloP.addColumn("ID");
-        modeloP.addColumn("Titulo");
-        modeloP.addColumn("Estado");
-        modeloP.addColumn("Inquilino");
-        jtPropiedades.setModel(modeloP);
-        jtPropiedades.getColumnModel().getColumn(0).setPreferredWidth(5);
-        jtPropiedades.getColumnModel().getColumn(2).setPreferredWidth(5);
-    }
     private DefaultTableModel modeloC = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
             return false;
         }
     };
     
-    private void cargarTablaP(Propietario propietario){
+    
+    private void cargarModeloC (){
+        modeloC.addColumn("ID");
+        modeloC.addColumn("Titulo");
+        modeloC.addColumn("Fecha");
+        modeloC.addColumn("Propietario");
+        modeloC.addColumn("Vigente");
+        modeloC.addColumn("Estado");
+        jtContratos.setModel(modeloC);
+        jtContratos.getColumnModel().getColumn(0).setPreferredWidth(10);
+        jtContratos.getColumnModel().getColumn(1).setPreferredWidth(150);
+        jtContratos.getColumnModel().getColumn(2).setPreferredWidth(10);
+        jtContratos.getColumnModel().getColumn(3).setPreferredWidth(150);
+        jtContratos.getColumnModel().getColumn(4).setPreferredWidth(10);
+        jtContratos.getColumnModel().getColumn(5).setPreferredWidth(10);
+    }
+   
+    
+    private void cargarTablaC(int id){
         
-        if(propietario==null){
-           borrarFilasP();
-        }else{
+        
             borrarFilasP();
-            for (Propiedad p : PropiedadData.buscarPropiedadPorPropietario(propietario.getIdPropietario())){
+            for (Contrato c : ContratoData.listarContratosPorVendedor(id)){
                 
-                modeloP.addRow(new Object []{
-                    p.getIdPropiedad(),
-                    p.getTitulo(),
-                    p.getEstadoPropiedad(),
-                    InquilinoData.buscarInquilinoPorId(p.getOcupante().getIdInquilino()).getApellido()+", "+InquilinoData.buscarInquilinoPorId(p.getOcupante().getIdInquilino()).getNombre() 
+                modeloC.addRow(new Object []{
+                    c.getCodContrato(),
+                    c.getPropiedad().getTitulo(),
+                    c.getFechaRealizacion(),
+                    c.geteLpropietario().getApellidoPropietario()+", "+c.geteLpropietario().getNombrePropietario(),
+                    c.getVigente(),
+                    c.getEstado(),
                 });
             }}
-    }
-//    private void cargarModeloC (){
-//        modelo.addColumn("ID");
-//        modelo.addColumn("Nombre");
-//        modelo.addColumn("Año");
-//        jtablaMaterias.setModel(modelo);
-//        
-//    }
     
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -110,7 +107,7 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jbBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtPropiedades = new javax.swing.JTable();
+        jtContratos = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -133,8 +130,8 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel5.setText("Ingrese un dni para buscar");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 240, -1));
+        jLabel5.setText("Ingrese un dni para buscar Vendedor");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 310, -1));
 
         jtTelefono.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtTelefono.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -206,7 +203,7 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 50, 50));
 
-        jtPropiedades.setModel(new javax.swing.table.DefaultTableModel(
+        jtContratos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -217,7 +214,7 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jtPropiedades);
+        jScrollPane2.setViewportView(jtContratos);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 870, 300));
 
@@ -228,8 +225,8 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel9.setText("Listado de propiedades");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 220, -1));
+        jLabel9.setText("Listado de Contratos");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 220, -1));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -304,10 +301,10 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbLimpiarActionPerformed
     private void borrarFilasP() {
         int f;
-        int filas = jtPropiedades.getRowCount() - 1;
+        int filas = jtContratos.getRowCount() - 1;
 
         for (f = filas; f >= 0; f--) {
-            modeloP.removeRow(f);
+            modeloC.removeRow(f);
         }
     }
 
@@ -326,7 +323,7 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
             jtNombre.setText(v.getNombre());
             jtTelefono.setText(v.getTelefono()+"");
             
-            cargarTablaP(i);
+            cargarTablaC(v.getIdVendedor());
             if(!v.getApellido().isEmpty()){
                 this.auxid=v.getIdVendedor();
             }
@@ -338,22 +335,9 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
             
             
         }
-    }
-        private void cargarTablaP(Inspector i){
+    
+    
         
-        if(i==null){
-           borrarFilasP();
-        }else{
-            borrarFilasP();
-            for (Propiedad p : PropiedadData.buscarPropiedadPorRevisor(i.getIdInspector())){
-                
-                modeloP.addRow(new Object []{
-                    p.getIdPropiedad(),
-                    p.getTitulo(),
-                    p.getEstadoPropiedad(),
-                    InquilinoData.buscarInquilinoPorId(p.getOcupante().getIdInquilino()).getApellido()+", "+InquilinoData.buscarInquilinoPorId(p.getOcupante().getIdInquilino()).getNombre() 
-                });
-            }}
     
 
     }//GEN-LAST:event_jbBuscarActionPerformed
@@ -373,9 +357,9 @@ public class BuscarVendedor extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
     private javax.swing.JTextField jtApellido;
+    private javax.swing.JTable jtContratos;
     private javax.swing.JTextField jtDni;
     private javax.swing.JTextField jtNombre;
-    private javax.swing.JTable jtPropiedades;
     private javax.swing.JTextField jtTelefono;
     // End of variables declaration//GEN-END:variables
 }

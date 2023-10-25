@@ -4,10 +4,12 @@
  */
 package inmobiliaria.Vistas;
 
+import Inmobiliaria.AccesoDatos.ContratoData;
 import Inmobiliaria.AccesoDatos.InquilinoData;
 import Inmobiliaria.AccesoDatos.PropiedadData;
 import Inmobiliaria.AccesoDatos.PropietarioData;
 import static Inmobiliaria.AccesoDatos.PropietarioData.mostrarMensaje;
+import inmobiliaria.Contrato;
 import inmobiliaria.Propiedad;
 import inmobiliaria.Propietario;
 import static inmobiliaria.Vistas.MenuPrincipal.escritorio;
@@ -26,6 +28,7 @@ public class BuscarPropietario extends javax.swing.JInternalFrame {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         cargarModeloP();
+        cargarModeloC();
     }
 
 
@@ -81,14 +84,36 @@ public class BuscarPropietario extends javax.swing.JInternalFrame {
                 });
             }}
     }
-//    private void cargarModeloC (){
-//        modelo.addColumn("ID");
-//        modelo.addColumn("Nombre");
-//        modelo.addColumn("Año");
-//        jtablaMaterias.setModel(modelo);
-//        
-//    }
-    
+private void cargarModeloC (){
+        modeloC.addColumn("ID");
+        modeloC.addColumn("Titulo");
+        modeloC.addColumn("Fecha");
+        modeloC.addColumn("Inquilino");
+        modeloC.addColumn("Vig");
+        modeloC.addColumn("Est");
+        jtContratos.setModel(modeloC);
+        jtContratos.getColumnModel().getColumn(0).setPreferredWidth(7);
+        jtContratos.getColumnModel().getColumn(1).setPreferredWidth(110);
+        jtContratos.getColumnModel().getColumn(2).setPreferredWidth(35);
+        jtContratos.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jtContratos.getColumnModel().getColumn(4).setPreferredWidth(7);
+        jtContratos.getColumnModel().getColumn(5).setPreferredWidth(7);
+    }
+    private void cargarTablaC(int id){
+        
+        
+            borrarFilasC();
+            for (Contrato c : ContratoData.listarContratosPorPropietario(id)){
+                
+                modeloC.addRow(new Object []{
+                    c.getCodContrato(),
+                    c.getPropiedad().getTitulo(),
+                    c.getFechaRealizacion(),
+                    c.geteLinquilino().getApellido()+", "+c.geteLinquilino().getNombre(),
+                    c.getVigente(),
+                    c.getEstado(),
+                });
+            }}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -332,6 +357,7 @@ public class BuscarPropietario extends javax.swing.JInternalFrame {
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         limpiar();
         borrarFilasP();
+        borrarFilasC();
     }//GEN-LAST:event_jbLimpiarActionPerformed
     private void borrarFilasP() {
         int f;
@@ -339,6 +365,14 @@ public class BuscarPropietario extends javax.swing.JInternalFrame {
 
         for (f = filas; f >= 0; f--) {
             modeloP.removeRow(f);
+        }
+    }
+    private void borrarFilasC() {
+        int f;
+        int filas = jtContratos.getRowCount() - 1;
+
+        for (f = filas; f >= 0; f--) {
+            modeloC.removeRow(f);
         }
     }
 
@@ -358,6 +392,7 @@ public class BuscarPropietario extends javax.swing.JInternalFrame {
             jtDomicilio.setText(p.getDomicilio());
             jtTelefono.setText(p.getTelefono()+"");
             cargarTablaP(p);
+            cargarTablaC(p.getIdPropietario());
             if(!p.getApellidoPropietario().isEmpty()){
                 this.auxid=p.getIdPropietario();
             }

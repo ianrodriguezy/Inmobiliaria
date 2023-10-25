@@ -42,7 +42,7 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
         jtDni.setText("");
         jtTelefono.setText("");
         jtLugarTrabajo.setText("");
-        jcbTipo.setSelectedIndex(0); 
+        jtTipo.setText(""); 
         jtCuit.setText("");
         jtDniGar.setText("");
         jtNombreGar.setText("");
@@ -60,8 +60,8 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
     private void cargarModeloP (){
         modeloP.addColumn("ID");
         modeloP.addColumn("Titulo");
-        modeloP.addColumn("Estado");
-        modeloP.addColumn("Inquilino");
+        modeloP.addColumn("Direccion");
+        modeloP.addColumn("Propietario");
         jtPropiedades.setModel(modeloP);
         jtPropiedades.getColumnModel().getColumn(0).setPreferredWidth(5);
         jtPropiedades.getColumnModel().getColumn(2).setPreferredWidth(5);
@@ -124,7 +124,6 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
         jtCuit = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jcbTipo = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jtDniGar = new javax.swing.JTextField();
         jtNombreGar = new javax.swing.JTextField();
@@ -133,6 +132,7 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         jtSupMin = new javax.swing.JTextField();
         jtPrecio = new javax.swing.JTextField();
+        jtTipo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -194,7 +194,7 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
                 jtNombreKeyTyped(evt);
             }
         });
-        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 300, 30));
+        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 300, 30));
 
         jtDni.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtDni.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -278,8 +278,8 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel9.setText("Listado de propiedades");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 220, -1));
+        jLabel9.setText("Listado de propiedades ocupadas");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 280, -1));
 
         jtCuit.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtCuit.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -300,10 +300,6 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(35, 76, 139));
         jLabel11.setText("Tipo            :");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 100, -1));
-
-        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo", "Comercial", "Vivienda" }));
-        jcbTipo.setEnabled(false);
-        jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 170, 30));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(35, 76, 139));
@@ -364,6 +360,16 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, 140, 30));
+
+        jtTipo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jtTipo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jtTipo.setEnabled(false);
+        jtTipo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtTipoKeyTyped(evt);
+            }
+        });
+        jPanel1.add(jtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 300, 30));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -459,7 +465,7 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
                 jtDni.setText(i.getDni()+"");
                 jtTelefono.setText(i.getTelefono()+"");
                 jtLugarTrabajo.setText(i.getLugarTrabajo());
-                jcbTipo.setSelectedItem(i.getTipo());
+                jtTipo.setText(i.getTipo());
                 jtCuit.setText(i.getCuit()+"");
                 jtDniGar.setText(i.getDniGarante()+"");
                 jtNombreGar.setText(i.getNombreGarante());
@@ -527,6 +533,10 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtNombreGarKeyTyped
 
+    private void jtTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtTipoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtTipoKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -550,7 +560,6 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
-    private javax.swing.JComboBox<String> jcbTipo;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTable jtContratos;
     private javax.swing.JTextField jtCuit;
@@ -563,5 +572,6 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
     private javax.swing.JTable jtPropiedades;
     private javax.swing.JTextField jtSupMin;
     private javax.swing.JTextField jtTelefono;
+    private javax.swing.JTextField jtTipo;
     // End of variables declaration//GEN-END:variables
 }
