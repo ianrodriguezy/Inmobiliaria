@@ -60,12 +60,15 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
     private void cargarModeloP (){
         modeloP.addColumn("ID");
         modeloP.addColumn("Titulo");
-        modeloP.addColumn("Direccion");
         modeloP.addColumn("Propietario");
+        modeloP.addColumn("Precio");
         jtPropiedades.setModel(modeloP);
-        jtPropiedades.getColumnModel().getColumn(0).setPreferredWidth(5);
-        jtPropiedades.getColumnModel().getColumn(2).setPreferredWidth(5);
+        jtPropiedades.getColumnModel().getColumn(0).setPreferredWidth(8);
+        jtPropiedades.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jtPropiedades.getColumnModel().getColumn(2).setPreferredWidth(50);
+        jtPropiedades.getColumnModel().getColumn(4).setPreferredWidth(20);
     }
+    
     private DefaultTableModel modeloC = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
             return false;
