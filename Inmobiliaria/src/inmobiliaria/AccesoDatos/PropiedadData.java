@@ -450,4 +450,25 @@ public class PropiedadData {
         
         return propiedades;
     }
+      
+      public static void ActualizarPrecio(Propiedad p){
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        String sql = "UPDATE propiedad_inmueble SET precioTasado=? WHERE id_prop="+p.getIdPropiedad();
+        con = Conectar.getConectar();
+
+        try {
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); 
+            ps.setFloat(1,p.getPrecioTasado());
+            
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+
+        } catch (SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
+        }
+         
+        
+    }
 }
