@@ -532,6 +532,13 @@ public class ModificarContrato extends javax.swing.JInternalFrame {
             Contrato c= new Contrato();
             c.setCodContrato(Integer.parseInt(jtCodigo.getText()));
             c.setFechaRealizacion(jdcFechaR.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            c.setFechaInicio(jdcFechaI.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            c.setFechaFin(jdcFechaF.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            c.setFirmas(jcbFirmas.getSelectedItem().toString());
+            c.seteLinquilino((Inquilino)jcbInquilinos.getSelectedItem());
+            c.setVendedor((Vendedor)jcbVendedor.getSelectedItem());            
+            c.setEstado(jcbEstado.getSelectedIndex()-1);
+            c.setVigente(Integer.parseInt(jtVigente.getText()));
             
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
