@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 public class ContratoData {
 
-    public static void agregarContrato(Contrato c) { //Agregué los atributos basicos, hay que ver que mas tenemos en cuenta
+    public static void agregarContrato(Contrato c,int reno) { //Agregué los atributos basicos, hay que ver que mas tenemos en cuenta
         Connection con = null;
         PreparedStatement ps = null;
         String sql = "INSERT INTO `contratoalquiler`( `fechaRealizacion`, `fechaInicio`, `fechaFinal`, `firmas`, `vendedor`, `eLinquilino`, `propiedad`, `vigente`,`estado`, `propietario`) VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -49,8 +49,11 @@ public class ContratoData {
         } catch (SQLException ex) {
             System.out.println("Error" + ex.getMessage());
         }
+        if(reno==1){
+            mostrarMensaje("Renovación exitosa.", "Creacion del contrato", "info");
+        }else{
         mostrarMensaje("Alta exitosa.", "Creacion del contrato", "info");
-
+    }
     }
 
     public static Contrato buscarContratoporCod(int cod) {
@@ -71,19 +74,15 @@ public class ContratoData {
                 c.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
                 c.setFechaFin(rs.getDate("fechaFinal").toLocalDate());
                 c.setFirmas(rs.getString("firmas"));
-                Vendedor v=new Vendedor();
-                v.setIdVendedor(rs.getInt("vendedor"));
+                Vendedor v=VendedorData.buscarVendedorPorId(rs.getInt("vendedor"));
                 c.setVendedor(v);
-                Inquilino i=new Inquilino();
-                i.setIdInquilino(rs.getInt("eLinquilino"));
+                Inquilino i=InquilinoData.buscarInquilinoPorId(rs.getInt("eLinquilino")); 
                 c.seteLinquilino(i);
-                Propiedad p= new Propiedad();
-                p.setIdPropiedad(rs.getInt("propiedad"));
+                Propiedad p= PropiedadData.buscarPropiedadPorId(rs.getInt("propiedad")); 
                 c.setPropiedad(p);
                 c.setVigente(rs.getInt("vigente"));
                 c.setEstado(rs.getInt("estado"));
-                Propietario propietario=new Propietario();
-                propietario.setIdPropietario(rs.getInt("propietario"));
+                Propietario propietario=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 c.seteLpropietario(propietario);
                 
             }

@@ -8,8 +8,10 @@ import javax.swing.ImageIcon;
 public class Login extends javax.swing.JFrame {
 
     public Login() {
+        super("Ingreso Ian Rodriguez Propiedades");
         initComponents();
-        //setIconImage(new ImageIcon(getClass().getResource("/contenido/icon.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/contenido/logo32p.png")).getImage());
+        
         this.setLocationRelativeTo(null);
         
         

@@ -542,8 +542,6 @@ public class ModificarContrato extends javax.swing.JInternalFrame {
             Propiedad p=c.getPropiedad();
             p.setPrecioTasado(Float.parseFloat(jtPrecio.getText()));
             PropiedadData.ActualizarPrecio(p);
-            System.out.println(c.getVendedor().getIdVendedor());
-            System.out.println(v.getIdVendedor());
             ContratoData.ModificarContrato(c, 1);
             limpiarTodo();
             editar(false);

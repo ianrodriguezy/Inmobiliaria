@@ -17,6 +17,8 @@ import inmobiliaria.Propiedad;
 import inmobiliaria.Propietario;
 import inmobiliaria.Vendedor;
 import static inmobiliaria.Vistas.MenuPrincipal.escritorio;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -192,6 +194,7 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
         jpVendedor = new javax.swing.JEditorPane();
         jbLimpiar1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jbRenovar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -217,7 +220,7 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
                 jbEditarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 700, 120, 40));
+        jPanel1.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 700, 120, 40));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
@@ -308,12 +311,22 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
                 jbLimpiar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jbLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 700, 120, 40));
+        jPanel1.add(jbLimpiar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 700, 120, 40));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(35, 76, 139));
         jLabel8.setText("Buscar por propietario :");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 190, -1));
+
+        jbRenovar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbRenovar.setText("Renovar");
+        jbRenovar.setEnabled(false);
+        jbRenovar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRenovarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbRenovar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 700, 120, 40));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -364,7 +377,7 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
             cargarTablaP(ContratoData.listarContratosPorPropiedad(propiedad.getIdPropiedad()));
             jcbPropietarios.setSelectedIndex(-1);
             jbEditar.setEnabled(false);
-            
+            jbRenovar.setEnabled(false);
         }
     }//GEN-LAST:event_jcbPropiedadItemStateChanged
 
@@ -379,6 +392,7 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
             cargarTablaP(ContratoData.listarContratosPorPropietario(p.getIdPropietario()));
             jcbPropiedad.setSelectedIndex(0);
             jbEditar.setEnabled(false);
+            jbRenovar.setEnabled(false);
         }
     }//GEN-LAST:event_jcbPropietariosItemStateChanged
 
@@ -394,6 +408,14 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
             Propiedad p= PropiedadData.buscarPropiedadPorId(c.getPropiedad().getIdPropiedad());
             jpPrecio1.setText(p.getPrecioTasado()+"");
             jbEditar.setEnabled(true);
+            LocalDate fActual=LocalDate.now();
+            LocalDate fLimite=fActual.plus(60,ChronoUnit.DAYS);
+            if(c.getFechaFin().isAfter(fActual) && c.getFechaFin().isBefore(fLimite)){
+                mostrarMensaje("El contrato que selecciono se esta por vencer, puede renovarlo " ,"Vencimiento de contrato","info");
+                jbRenovar.setEnabled(true);
+            }else{
+                jbRenovar.setEnabled(false);
+            }
         }
     }//GEN-LAST:event_jtablaContratosMouseClicked
 
@@ -402,6 +424,15 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
         jcbPropietarios.setSelectedIndex(-1);
             jcbPropiedad.setSelectedIndex(-1);
     }//GEN-LAST:event_jbLimpiar1ActionPerformed
+
+    private void jbRenovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRenovarActionPerformed
+        RenovarContrato rc=new RenovarContrato((int)jtablaContratos.getValueAt(jtablaContratos.getSelectedRow(), 0));
+        escritorio.removeAll();
+        escritorio.repaint();
+        rc.setVisible(true);
+        escritorio.add(rc);
+        escritorio.moveToFront(rc);
+    }//GEN-LAST:event_jbRenovarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -419,6 +450,7 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbLimpiar1;
+    private javax.swing.JButton jbRenovar;
     private javax.swing.JButton jbVolver;
     private javax.swing.JComboBox<Propiedad> jcbPropiedad;
     private javax.swing.JComboBox<Propietario> jcbPropietarios;

@@ -448,9 +448,10 @@ public class PropiedadData {
             
         }
         
+
         return propiedades;
     }
-      
+     
       public static void ActualizarPrecio(Propiedad p){
         Connection con = null;
         PreparedStatement ps = null;

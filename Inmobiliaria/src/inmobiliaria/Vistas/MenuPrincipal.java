@@ -22,6 +22,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     public MenuPrincipal(int u) {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/contenido/logo32p.png")).getImage());
+        
+        this.setLocationRelativeTo(null);
         ContratoData.comprobarVigencia();
         String ruta;
         
@@ -73,6 +76,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ian Rodriguez Propiedades");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
