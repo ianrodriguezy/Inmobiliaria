@@ -17,6 +17,7 @@ import inmobiliaria.Propiedad;
 import inmobiliaria.Propietario;
 import inmobiliaria.Vendedor;
 import static inmobiliaria.Vistas.MenuPrincipal.escritorio;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -530,7 +531,7 @@ public class ModificarContrato extends javax.swing.JInternalFrame {
         }else{
             Contrato c= new Contrato();
             c.setCodContrato(Integer.parseInt(jtCodigo.getText()));
-            c.setFechaRealizacion(jdcFechaR.getDate());
+            c.setFechaRealizacion(jdcFechaR.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
