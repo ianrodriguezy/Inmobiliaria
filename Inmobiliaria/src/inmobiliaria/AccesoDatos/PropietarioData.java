@@ -181,4 +181,31 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo,int mod) {
         }
         return propietarios;
     }
+    
+    public static List<Propietario> listarPropietarioConContrato() {
+        List<Propietario> propietarios=new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        try{
+            String sql= "SELECT propietario.id_propietario, propietario.apellidoPropietario, propietario.nombrePropietario, propietario.domicilio, propietario.dni, propietario.telefono, propietario.estado FROM propietario INNER JOIN contratoalquiler ON propietario.id_propietario=contratoalquiler.propietario ";
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Propietario p= new Propietario();
+                p.setIdPropietario(rs.getInt("id_propietario"));
+                p.setApellidoPropietario(rs.getString("apellidoPropietario"));
+                p.setNombrePropietario(rs.getString("nombrePropietario"));
+                p.setDomicilio(rs.getString("domicilio"));
+                p.setDni(rs.getInt("dni"));
+                p.setTelefono(rs.getInt("telefono")); 
+                propietarios.add(p);
+            }
+            ps.close();
+        }catch(SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Propietario y Contrato, " + ex.getMessage(),"Error de conexión","error");
+            
+        }
+        return propietarios;
+    }
 }

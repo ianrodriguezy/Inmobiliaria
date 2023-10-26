@@ -16,7 +16,7 @@ public class Inmobiliaria {
         Conectar.getConectar();
 //        Login log = new Login();
 //        log.setVisible(true);
-        MenuPrincipal menu = new MenuPrincipal();
+        MenuPrincipal menu = new MenuPrincipal(1);
         menu.setVisible(true);
         
     }

@@ -98,7 +98,7 @@ public class ContratoData {
     }
     
     
-     public static void ActualizarVigencia() {
+     public static void comprobarVigencia() {
         Contrato c = null;
         String sql = "SELECT `codContrato`, `fechaRealizacion`, `fechaInicio`, `fechaFinal`,  `vigente`, `estado` FROM `contratoalquiler` " ;
         Connection con = null;
@@ -264,5 +264,67 @@ public class ContratoData {
         
         
         return contratos;
+    }
+    
+    public static List<Contrato> listarContratosPorPropiedad(int id){
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "SELECT `codContrato`, `fechaRealizacion`, `fechaInicio`, `fechaFinal`, `firmas`, `vendedor`, `eLinquilino`, `propiedad`, `vigente`, `estado`, `propietario` FROM contratoalquiler WHERE propiedad="+id;
+        con = Conectar.getConectar();
+        List<Contrato> contratos= new ArrayList<>();
+        try{
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Contrato c = new Contrato();
+                c.setCodContrato(rs.getInt("codContrato"));
+                c.setFechaRealizacion(rs.getDate("fechaRealizacion").toLocalDate());
+                c.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                c.setFechaFin(rs.getDate("fechaFinal").toLocalDate());
+                c.setFirmas(rs.getString("firmas"));
+                Vendedor v=new Vendedor();
+                v=VendedorData.buscarVendedorPorId(rs.getInt("vendedor"));
+                c.setVendedor(v);
+                Inquilino i= new Inquilino();
+                i=InquilinoData.buscarInquilinoPorId(rs.getInt("eLinquilino"));
+                c.seteLinquilino(i);
+                Propiedad propiedad=new Propiedad();
+                propiedad=PropiedadData.buscarPropiedadPorId(rs.getInt("propiedad"));
+                c.setPropiedad(propiedad);
+                c.setVigente(rs.getInt("vigente"));
+                c.setEstado(rs.getInt("estado"));
+                Propietario p=new Propietario();
+                p=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
+                c.seteLpropietario(p);
+                contratos.add(c);
+        }
+        }catch(SQLException ex){
+            mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
+        }
+        
+        
+        return contratos;
+    }
+    
+    public static void CancelarContrato(Contrato c) { 
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "UPDATE contratoalquiler SET estado=? WHERE codContrato="+c.getCodContrato();
+        con = Conectar.getConectar();
+
+        try {
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, c.getEstado());
+
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            mostrarMensaje("Cancelación exitosa.", "Cancelación del contrato", "info");
+        } catch (SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
+        }
+        
+            
+        
+
     }
 }

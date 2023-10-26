@@ -66,7 +66,7 @@ public class ventanaContratos extends javax.swing.JInternalFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 240, 220));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 240, 220));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(35, 76, 139));
@@ -76,7 +76,7 @@ public class ventanaContratos extends javax.swing.JInternalFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 290, 90));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 290, 90));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(35, 76, 139));
@@ -86,7 +86,7 @@ public class ventanaContratos extends javax.swing.JInternalFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 290, 90));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 290, 90));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/CONTRATO 6.png"))); // NOI18N
         jLabel6.setText("jLabel2");
@@ -145,39 +145,39 @@ public class ventanaContratos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        ModificarPropiedad mp=new ModificarPropiedad();
+        ModificarContrato mc=new ModificarContrato();
         escritorio.removeAll();
         escritorio.repaint();
-        mp.setVisible(true);
-        escritorio.add(mp);
-        escritorio.moveToFront(mp);
+        mc.setVisible(true);
+        escritorio.add(mc);
+        escritorio.moveToFront(mc);
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        ModificarPropiedad mp=new ModificarPropiedad();
+        ModificarContrato mc=new ModificarContrato();
         escritorio.removeAll();
         escritorio.repaint();
-        mp.setVisible(true);
-        escritorio.add(mp);
-        escritorio.moveToFront(mp);
+        mc.setVisible(true);
+        escritorio.add(mc);
+        escritorio.moveToFront(mc);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        BuscarPropiedad bp=new BuscarPropiedad();
+        BuscarContrato bc=new BuscarContrato();
         escritorio.removeAll();
         escritorio.repaint();
-        bp.setVisible(true);
-        escritorio.add(bp);
-        escritorio.moveToFront(bp);
+        bc.setVisible(true);
+        escritorio.add(bc);
+        escritorio.moveToFront(bc);
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-       BuscarPropietario bp=new BuscarPropietario();
+        BuscarContrato bc=new BuscarContrato();
         escritorio.removeAll();
         escritorio.repaint();
-        bp.setVisible(true);
-        escritorio.add(bp);
-        escritorio.moveToFront(bp);
+        bc.setVisible(true);
+        escritorio.add(bc);
+        escritorio.moveToFront(bc);
     }//GEN-LAST:event_jLabel5MouseClicked
 
 

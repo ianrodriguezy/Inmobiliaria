@@ -17,8 +17,25 @@ import javax.swing.event.InternalFrameEvent;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     public MenuPrincipal() {
+    }
+
+    
+    public MenuPrincipal(int u) {
         initComponents();
-        ContratoData.ActualizarVigencia();
+        ContratoData.comprobarVigencia();
+        String ruta;
+        
+        if(u==1){
+            ruta="src/contenido/usuario1.png";
+            ImageIcon icono = new ImageIcon(ruta);
+            jlIcono.setIcon(icono);
+            jlNombre.setText("Franco");
+        }else if(u==2){
+            ruta="src/contenido/usuario2.png";
+            ImageIcon icono = new ImageIcon(ruta);
+            jlIcono.setIcon(icono);
+            jlNombre.setText("Carlos");
+        }
     }
     
 
@@ -39,7 +56,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jlIcono = new javax.swing.JLabel();
         jbVendedor = new javax.swing.JButton();
         jbPropiedades = new javax.swing.JButton();
         jbPropietarios = new javax.swing.JButton();
@@ -48,8 +65,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jbRevisores = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jlNombre = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         escritorio = new javax.swing.JDesktopPane();
@@ -60,9 +78,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setText("icono usuario");
-        jLabel4.setOpaque(true);
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 110, 70));
+        jlIcono.setBackground(new java.awt.Color(48, 53, 121));
+        jlIcono.setOpaque(true);
+        jPanel1.add(jlIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 140, 110));
 
         jbVendedor.setBackground(new java.awt.Color(35, 76, 139));
         jbVendedor.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -148,18 +166,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(jbRevisores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 210, 50));
 
-        jLabel3.setText("logo");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 160, 130));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/logo200x200.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 220, 210));
 
-        jLabel6.setText("nombre inmo");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/textologo.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 680, -1, -1));
 
-        jLabel5.setText("nombre usuario");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 100, 20));
+        jlNombre.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jlNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jlNombre.setText("Carlos");
+        jPanel1.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 90, -1));
 
         jLabel2.setBackground(new java.awt.Color(35, 76, 139));
         jLabel2.setOpaque(true);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 210, 640));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 210, 300));
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setOpaque(true);
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 210, 330));
 
         jLabel1.setBackground(new java.awt.Color(48, 53, 121));
         jLabel1.setOpaque(true);
@@ -281,9 +305,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jbContratos;
@@ -292,5 +315,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbPropietarios;
     private javax.swing.JButton jbRevisores;
     private javax.swing.JButton jbVendedor;
+    private javax.swing.JLabel jlIcono;
+    private javax.swing.JLabel jlNombre;
     // End of variables declaration//GEN-END:variables
 }

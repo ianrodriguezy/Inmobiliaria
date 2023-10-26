@@ -221,5 +221,39 @@ public class InquilinoData {
         }
         return inquilinos;
     }
+    
+    public static List<Inquilino> listarInquilinosSinD() {
+        List<Inquilino> inquilinos=new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        try{
+            String sql= "SELECT * FROM `inquilino` WHERE id_inquilino<>1";
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Inquilino i= new Inquilino();
+                i.setIdInquilino(rs.getInt("id_inquilino"));
+                i.setApellido(rs.getString("apellido"));
+                i.setNombre(rs.getString("nombre"));
+                i.setDni(rs.getInt("dni"));
+                i.setCuit(rs.getInt("cuit"));  
+                i.setTipo(rs.getString("tipo")); 
+                i.setTelefono(rs.getInt("telefono"));
+                i.setLugarTrabajo(rs.getString("lugarTrabajo")); 
+                i.setDniGarante(rs.getInt("dniGarante"));
+                i.setNombreGarante(rs.getString("nombreGarante"));
+                i.setSupMin(rs.getInt("supMinima"));
+                i.setPrecioAprox(rs.getInt("precioAprox"));
+                i.setEstado(rs.getInt("estado"));
+                inquilinos.add(i);
+            }
+            ps.close();
+        }catch(SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Inquilino, " + ex.getMessage(),"Error de conexión","error");
+            
+        }
+        return inquilinos;
+    }
 }
 	

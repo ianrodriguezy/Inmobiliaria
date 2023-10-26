@@ -137,13 +137,13 @@ public class PropiedadData {
                 p.setTipoPropiedad(rs.getString("tipoProp"));
                 p.setLocalidad(rs.getString("localidad"));
                 Propietario propietario = new Propietario();
-                propietario.setIdPropietario(rs.getInt("propietario"));
+                propietario=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 p.setDueño(propietario);
                 Inquilino i = new Inquilino();
-                i.setIdInquilino(rs.getInt("inquilino"));
+                i=InquilinoData.buscarInquilinoPorId(rs.getInt("inquilino"));
                 p.setOcupante(i);
                 Inspector r=new Inspector();
-                r.setIdInspector(rs.getInt("revisor"));
+                r=InspectorData.buscarInspectorPorId(rs.getInt("revisor"));
                 p.setRevisor(r);
                 propiedades.add(p);
             }
@@ -219,13 +219,13 @@ public class PropiedadData {
                 p.setTipoPropiedad(rs.getString("tipoProp"));
                 p.setLocalidad(rs.getString("localidad"));
                 Propietario propietario = new Propietario();
-                propietario.setIdPropietario(rs.getInt("propietario"));
+                propietario=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 p.setDueño(propietario);
                 Inquilino i = new Inquilino();
-                i.setIdInquilino(rs.getInt("inquilino"));
+                i=InquilinoData.buscarInquilinoPorId(rs.getInt("inquilino"));
                 p.setOcupante(i);
                 Inspector r=new Inspector();
-                r.setIdInspector(rs.getInt("revisor"));
+                r=InspectorData.buscarInspectorPorId(rs.getInt("revisor"));
                 p.setRevisor(r);
                 propiedades.add(p);
             }
@@ -260,13 +260,13 @@ public class PropiedadData {
                 p.setTipoPropiedad(rs.getString("tipoProp"));
                 p.setLocalidad(rs.getString("localidad"));
                 Propietario propietario = new Propietario();
-                propietario.setIdPropietario(rs.getInt("propietario"));
+                propietario=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 p.setDueño(propietario);
                 Inquilino i = new Inquilino();
-                i.setIdInquilino(rs.getInt("inquilino"));
+                i=InquilinoData.buscarInquilinoPorId(rs.getInt("inquilino"));
                 p.setOcupante(i);
                 Inspector r=new Inspector();
-                r.setIdInspector(rs.getInt("revisor"));
+                r=InspectorData.buscarInspectorPorId(rs.getInt("revisor"));
                 p.setRevisor(r);
                 
             }
@@ -301,14 +301,14 @@ public class PropiedadData {
                 p.setSuperficieTotal(rs.getInt("superficie_total"));
                 p.setTipoPropiedad(rs.getString("tipoProp"));
                 p.setLocalidad(rs.getString("localidad"));
-                Propietario propietario = new Propietario();
-                propietario.setIdPropietario(rs.getInt("propietario"));
+               Propietario propietario = new Propietario();
+                propietario=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 p.setDueño(propietario);
                 Inquilino i = new Inquilino();
-                i.setIdInquilino(rs.getInt("inquilino"));
+                i=InquilinoData.buscarInquilinoPorId(rs.getInt("inquilino"));
                 p.setOcupante(i);
                 Inspector r=new Inspector();
-                r.setIdInspector(rs.getInt("revisor"));
+                r=InspectorData.buscarInspectorPorId(rs.getInt("revisor"));
                 p.setRevisor(r);
                 
             }
@@ -344,13 +344,13 @@ public class PropiedadData {
                 p.setTipoPropiedad(rs.getString("tipoProp"));
                 p.setLocalidad(rs.getString("localidad"));
                 Propietario propietario = new Propietario();
-                propietario.setIdPropietario(rs.getInt("propietario"));
+                propietario=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 p.setDueño(propietario);
                 Inquilino i = new Inquilino();
-                i.setIdInquilino(rs.getInt("inquilino"));
+                i=InquilinoData.buscarInquilinoPorId(rs.getInt("inquilino"));
                 p.setOcupante(i);
                 Inspector r=new Inspector();
-                r.setIdInspector(rs.getInt("revisor"));
+                r=InspectorData.buscarInspectorPorId(rs.getInt("revisor"));
                 p.setRevisor(r);
                 propiedades.add(p);
                 
@@ -387,13 +387,13 @@ public class PropiedadData {
                 p.setTipoPropiedad(rs.getString("tipoProp"));
                 p.setLocalidad(rs.getString("localidad"));
                 Propietario propietario = new Propietario();
-                propietario.setIdPropietario(rs.getInt("propietario"));
+                propietario=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 p.setDueño(propietario);
                 Inquilino i = new Inquilino();
-                i.setIdInquilino(rs.getInt("inquilino"));
+                i=InquilinoData.buscarInquilinoPorId(rs.getInt("inquilino"));
                 p.setOcupante(i);
                 Inspector r=new Inspector();
-                r.setIdInspector(rs.getInt("revisor"));
+                r=InspectorData.buscarInspectorPorId(rs.getInt("revisor"));
                 p.setRevisor(r);
                 propiedades.add(p);
                 
@@ -401,6 +401,50 @@ public class PropiedadData {
             ps.close();
         }catch(SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
+            
+        }
+        
+        return propiedades;
+    }
+     
+      public static List<Propiedad> listarPropiedadesConContrato(){
+        Connection con = null;
+        PreparedStatement ps = null;
+        con = Conectar.getConectar();
+        List <Propiedad> propiedades= new ArrayList<>();
+        try{
+            String sql= "SELECT propiedad_inmueble.id_prop, propiedad_inmueble.titulo, propiedad_inmueble.accesibilidad, propiedad_inmueble.caracteristicas, propiedad_inmueble.direccion, propiedad_inmueble.estadoProp, propiedad_inmueble.servicios, propiedad_inmueble.precioTasado, propiedad_inmueble.superficie_cubierta, propiedad_inmueble.superficie_total, propiedad_inmueble.tipoProp, propiedad_inmueble.localidad, propiedad_inmueble.propietario, propiedad_inmueble.inquilino, propiedad_inmueble.revisor FROM propiedad_inmueble INNER JOIN contratoalquiler ON propiedad_inmueble.id_prop=contratoalquiler.propiedad";
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){ 
+                Propiedad p = new Propiedad();
+                p.setIdPropiedad(rs.getInt("id_prop"));
+                p.setTitulo(rs.getString("titulo"));
+                p.setAccesibilidad(rs.getString("accesibilidad"));
+                p.setCaracteristicas(rs.getString("caracteristicas"));
+                p.setDireccion(rs.getString("direccion"));
+                p.setEstadoPropiedad(rs.getString("estadoProp"));
+                p.setServicios(rs.getString("servicios"));
+                p.setPrecioTasado(rs.getFloat("precioTasado"));
+                p.setSuperficieCub(rs.getInt("superficie_cubierta"));
+                p.setSuperficieTotal(rs.getInt("superficie_total"));
+                p.setTipoPropiedad(rs.getString("tipoProp"));
+                p.setLocalidad(rs.getString("localidad"));
+                Propietario propietario = new Propietario();
+                propietario=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
+                p.setDueño(propietario);
+                Inquilino i = new Inquilino();
+                i=InquilinoData.buscarInquilinoPorId(rs.getInt("inquilino"));
+                p.setOcupante(i);
+                Inspector r=new Inspector();
+                r=InspectorData.buscarInspectorPorId(rs.getInt("revisor"));
+                p.setRevisor(r);
+                propiedades.add(p);
+                
+            }
+            ps.close();
+        }catch(SQLException ex) {
+            mostrarMensaje("Error al acceder a la tabla Propiedades y ContratoAlquiler, " + ex.getMessage(),"Error de conexión","error");
             
         }
         

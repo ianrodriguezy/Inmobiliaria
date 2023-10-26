@@ -36,11 +36,19 @@ public class LoginData {
             if(user.equals(usuario)&& pass.equals(contrasenia)){
                     mostrarMensaje("Bienvenido " + usuario, "Ingreso", "info");
                     
-                    MenuPrincipal menu = new MenuPrincipal();
-//                    menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//                    menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    if(usuario.equals("Franco")){
+                    MenuPrincipal menu = new MenuPrincipal(1);
                     menu.setVisible(true);
                     ingreso=true;
+                    }else if(usuario.equals("Carlos")){
+                        MenuPrincipal menu = new MenuPrincipal(2);
+                        menu.setVisible(true);
+                    ingreso=true;
+                    }
+//                    menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//                    menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                    menu.setVisible(true);
+//                    ingreso=true;
                 }
             else if(!user.equals(usuario)|| pass.equals(contrasenia)){
                 mostrarMensaje("Usuario o contraseña incorrectos.","Error al ingresar","error");
