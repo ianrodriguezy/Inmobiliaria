@@ -166,8 +166,8 @@ public class ContratoData {
             ps.setDate(1, (Date) fR);
             ps.setDate(2, (Date) fI);
             ps.setDate(3, (Date) fF);
-            ps.setInt(4, c.getVendedor().getIdVendedor());
-            ps.setString(5, c.getFirmas());
+            ps.setString(4, c.getFirmas());
+            ps.setInt(5, c.getVendedor().getIdVendedor());
             ps.setInt(6, c.geteLinquilino().getIdInquilino());
             ps.setInt(7, c.getPropiedad().getIdPropiedad());
             ps.setInt(8, c.getVigente());

@@ -545,6 +545,10 @@ public class ModificarContrato extends javax.swing.JInternalFrame {
             System.out.println(c.getVendedor().getIdVendedor());
             System.out.println(v.getIdVendedor());
             ContratoData.ModificarContrato(c, 1);
+            limpiarTodo();
+            editar(false);
+            jcbPropiedades.setSelectedIndex(-1);
+            jcbPropietarios.setSelectedIndex(-1);
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
