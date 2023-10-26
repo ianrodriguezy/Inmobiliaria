@@ -173,12 +173,11 @@ public class ContratoData {
             ps.setInt(8, c.getVigente());
             ps.setInt(9, c.getEstado());
             ps.setInt(10, c.geteLpropietario().getIdPropietario());
-
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
         } catch (SQLException ex) {
-            mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
+            mostrarMensaje("Error al acceder a la tabla Contrato," + ex.getMessage(),"Error de conexión","error");
         }
         if(mod==1){
             mostrarMensaje("Modificacion exitosa.", "Modicacion del contrato", "info");

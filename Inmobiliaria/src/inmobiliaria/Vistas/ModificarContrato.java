@@ -529,17 +529,22 @@ public class ModificarContrato extends javax.swing.JInternalFrame {
         if(jtCodigo.getText().isEmpty()||jdcFechaR.getDate()==null||jdcFechaI.getDate()==null||jdcFechaF.getDate()==null||jcbFirmas.getSelectedIndex()==0||jcbInquilinos.getSelectedIndex()==-1||jcbVendedor.getSelectedIndex()==-1||jtPrecio.getText().isEmpty()||jcbEstado.getSelectedIndex()==0||jtVigente.getText().isEmpty()){
             mostrarMensaje("Rellene todos los campos para modificar", "Error al modificar contrato", "error");
         }else{
-            Contrato c= new Contrato();
-            c.setCodContrato(Integer.parseInt(jtCodigo.getText()));
+            Contrato c= ContratoData.buscarContratoporCod(Integer.parseInt(jtCodigo.getText()));
             c.setFechaRealizacion(jdcFechaR.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             c.setFechaInicio(jdcFechaI.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             c.setFechaFin(jdcFechaF.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             c.setFirmas(jcbFirmas.getSelectedItem().toString());
-            c.seteLinquilino((Inquilino)jcbInquilinos.getSelectedItem());
-            c.setVendedor((Vendedor)jcbVendedor.getSelectedItem());            
+            Inquilino i= (Inquilino)jcbInquilinos.getSelectedItem();
+            c.seteLinquilino(i);
+            Vendedor v= (Vendedor)jcbVendedor.getSelectedItem();
+            c.setVendedor(v);            
             c.setEstado(jcbEstado.getSelectedIndex()-1);
-            c.setVigente(Integer.parseInt(jtVigente.getText()));
-            
+            Propiedad p=c.getPropiedad();
+            p.setPrecioTasado(Float.parseFloat(jtPrecio.getText()));
+            PropiedadData.ActualizarPrecio(p);
+            System.out.println(c.getVendedor().getIdVendedor());
+            System.out.println(v.getIdVendedor());
+            ContratoData.ModificarContrato(c, 1);
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
