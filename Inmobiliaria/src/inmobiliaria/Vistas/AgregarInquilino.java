@@ -408,7 +408,7 @@ public class AgregarInquilino extends javax.swing.JInternalFrame {
             evt.consume();
         }
         
-        if(jtCuit.getText().length()>=10){
+        if(jtCuit.getText().length()>=11){
            evt.consume();
        }
     }//GEN-LAST:event_jtCuitKeyTyped
