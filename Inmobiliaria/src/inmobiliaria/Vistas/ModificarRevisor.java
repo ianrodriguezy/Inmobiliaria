@@ -26,6 +26,22 @@ public class ModificarRevisor extends javax.swing.JInternalFrame {
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
     }
 
+    public ModificarRevisor(Inspector i) {
+        super("",false,false,false,false);
+        initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        auxid=i.getIdInspector();
+        jtDni.setText(i.getDni() + "");
+        jtApellido.setText(i.getApellido());
+        jtNombre.setText(i.getNombre());
+        jtTelefono.setText(i.getTelefono() + "");
+        jbGuardar.setEnabled(true);
+        this.auxid = i.getIdInspector();
+        jtApellido.setEnabled(true);
+        jtNombre.setEnabled(true);
+
+        jtTelefono.setEnabled(true);
+    }
 
     public ModificarRevisor( String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
@@ -81,10 +97,10 @@ public class ModificarRevisor extends javax.swing.JInternalFrame {
         jLabel4.setText("Nombre     :");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 100, -1));
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel5.setText("Ingrese un dni para buscar");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 240, -1));
+        jLabel5.setText("Modificar Revisor");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 240, -1));
 
         jtTelefono.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtTelefono.setEnabled(false);
@@ -238,10 +254,10 @@ public class ModificarRevisor extends javax.swing.JInternalFrame {
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         limpiar();
         jbGuardar.setEnabled(false);
-            jtApellido.setEnabled(false);
-            jtNombre.setEnabled(false);
-            
-            jtTelefono.setEnabled(false);
+        jtApellido.setEnabled(false);
+        jtNombre.setEnabled(false);
+        jtTelefono.setEnabled(false);
+        
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed

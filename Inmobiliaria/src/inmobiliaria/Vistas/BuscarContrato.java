@@ -175,7 +175,6 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jbVolver = new javax.swing.JButton();
-        jbEditar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jcbPropietarios = new javax.swing.JComboBox<>();
@@ -211,16 +210,6 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 700, 120, 40));
-
-        jbEditar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jbEditar.setText("Editar");
-        jbEditar.setEnabled(false);
-        jbEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEditarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 700, 120, 40));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
@@ -326,7 +315,7 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
                 jbRenovarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbRenovar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 700, 120, 40));
+        jPanel1.add(jbRenovar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 700, 120, 40));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -355,28 +344,16 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
         escritorio.moveToFront(vc);
     }//GEN-LAST:event_jbVolverActionPerformed
 
-    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-        
-//        ModificarPropiedad mp=new ModificarPropiedad((int)jtablaContratos.getValueAt(jtablaContratos.getSelectedRow(), 0));
-//        escritorio.removeAll();
-//        escritorio.repaint();
-//        mp.setVisible(true);
-//        escritorio.add(mp);
-//        escritorio.moveToFront(mp);
-    }//GEN-LAST:event_jbEditarActionPerformed
-
     private void jcbPropiedadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbPropiedadItemStateChanged
         if(jcbPropiedad.getSelectedIndex()==-1){
             limpiarTodo();
             jcbPropietarios.setSelectedIndex(-1);
-            jbEditar.setEnabled(false);
+            
         }else{
             limpiarTodo();
             Propiedad propiedad= (Propiedad)jcbPropiedad.getSelectedItem();
-            
             cargarTablaP(ContratoData.listarContratosPorPropiedad(propiedad.getIdPropiedad()));
             jcbPropietarios.setSelectedIndex(-1);
-            jbEditar.setEnabled(false);
             jbRenovar.setEnabled(false);
         }
     }//GEN-LAST:event_jcbPropiedadItemStateChanged
@@ -384,14 +361,12 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
     private void jcbPropietariosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbPropietariosItemStateChanged
         if(jcbPropietarios.getSelectedIndex()==-1){
             limpiarTodo();
-            jbEditar.setEnabled(false);
             //jcbTipo.setSelectedIndex(0);
         }else{
             limpiarTodo();
             Propietario p=(Propietario)jcbPropietarios.getSelectedItem();
             cargarTablaP(ContratoData.listarContratosPorPropietario(p.getIdPropietario()));
             jcbPropiedad.setSelectedIndex(0);
-            jbEditar.setEnabled(false);
             jbRenovar.setEnabled(false);
         }
     }//GEN-LAST:event_jcbPropietariosItemStateChanged
@@ -407,7 +382,6 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
             jpVendedor.setText(v.getApellido()+", "+v.getNombre());
             Propiedad p= PropiedadData.buscarPropiedadPorId(c.getPropiedad().getIdPropiedad());
             jpPrecio1.setText(p.getPrecioTasado()+"");
-            jbEditar.setEnabled(true);
             LocalDate fActual=LocalDate.now();
             LocalDate fLimite=fActual.plus(60,ChronoUnit.DAYS);
             if(c.getFechaFin().isAfter(fActual) && c.getFechaFin().isBefore(fLimite)){
@@ -448,7 +422,6 @@ public class BuscarContrato extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbLimpiar1;
     private javax.swing.JButton jbRenovar;
     private javax.swing.JButton jbVolver;

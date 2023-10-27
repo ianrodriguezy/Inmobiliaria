@@ -139,6 +139,7 @@ private void cargarModeloC (){
         jtPropiedades = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jbEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -231,7 +232,7 @@ private void cargarModeloC (){
                 jbLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 700, 120, 40));
+        jPanel1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 700, 120, 40));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
@@ -286,6 +287,16 @@ private void cargarModeloC (){
         jLabel9.setForeground(new java.awt.Color(35, 76, 139));
         jLabel9.setText("Listado de propiedades");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 220, -1));
+
+        jbEditar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbEditar.setText("Editar");
+        jbEditar.setEnabled(false);
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 700, 120, 40));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -358,6 +369,7 @@ private void cargarModeloC (){
         limpiar();
         borrarFilasP();
         borrarFilasC();
+        jbEditar.setEnabled(false);
     }//GEN-LAST:event_jbLimpiarActionPerformed
     private void borrarFilasP() {
         int f;
@@ -395,6 +407,7 @@ private void cargarModeloC (){
             cargarTablaC(p.getIdPropietario());
             if(!p.getApellidoPropietario().isEmpty()){
                 this.auxid=p.getIdPropietario();
+                jbEditar.setEnabled(true);
             }
             }else{
                 limpiar();
@@ -406,6 +419,15 @@ private void cargarModeloC (){
         
 
     }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        ModificarPropietario mp=new ModificarPropietario(PropietarioData.buscarPropietarioPorId(auxid));
+        escritorio.removeAll();
+        escritorio.repaint();
+        mp.setVisible(true);
+        escritorio.add(mp);
+        escritorio.moveToFront(mp);
+    }//GEN-LAST:event_jbEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -422,6 +444,7 @@ private void cargarModeloC (){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
     private javax.swing.JTextField jtApellido;

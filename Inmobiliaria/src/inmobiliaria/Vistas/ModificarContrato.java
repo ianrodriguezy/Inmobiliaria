@@ -51,10 +51,8 @@ public class ModificarContrato extends javax.swing.JInternalFrame {
         cargarModelo();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
     }
+    
 
-    
-    
-    
 
     public ModificarContrato( String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
@@ -355,6 +353,11 @@ public class ModificarContrato extends javax.swing.JInternalFrame {
 
         jtPrecio.setEditable(false);
         jtPrecio.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtPrecioKeyTyped(evt);
+            }
+        });
         jPanel1.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, 160, 30));
 
         jLabel15.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -604,6 +607,18 @@ public class ModificarContrato extends javax.swing.JInternalFrame {
             editar(true);
         }
     }//GEN-LAST:event_jtablaContratosMouseClicked
+
+    private void jtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioKeyTyped
+        int key=evt.getKeyChar();
+        boolean num= key>=48 && key<=57|| key==46;
+        if(!num ){
+            evt.consume();
+        }
+        
+        if(jtPrecio.getText().length()>=11){
+           evt.consume();
+       }
+    }//GEN-LAST:event_jtPrecioKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

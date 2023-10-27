@@ -81,16 +81,16 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="18" style="1"/>
+              <Font name="Roboto" size="24" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="8b" green="4c" red="23" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingrese un dni para buscar"/>
+            <Property name="text" type="java.lang.String" value="Modificar Revisor"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="300" y="30" width="240" height="-1"/>
+              <AbsoluteConstraints x="320" y="30" width="240" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

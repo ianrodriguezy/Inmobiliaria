@@ -28,7 +28,31 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
     }
-
+    
+    public ModificarInquilino(Inquilino i) {
+        super("",false,false,false,false);
+        initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        auxId=i.getIdInquilino();
+        jtDni.setText(i.getDni() + "");
+        jtApellido.setText(i.getApellido());
+        jtNombre.setText(i.getNombre());
+        jtTelefono.setText(i.getTelefono() + "");
+        jcbTipo.setSelectedItem(i.getTipo().toString());
+        jtCuit.setText(i.getCuit() + "");
+        jtLugarTrabajo.setText(i.getLugarTrabajo());
+        jtDniGar.setText(i.getDniGarante() + "");
+        jtNombreGar.setText(i.getNombreGarante());
+        jtSupMin.setText(i.getSupMin() + "");
+        jtPrecio.setText(i.getPrecioAprox() + "");
+        if (i.getEstado() == 1) {
+            jcbEstado.setSelectedIndex(0);
+        } else {
+            jcbEstado.setSelectedIndex(1);
+        }
+        jbGuardar.setEnabled(true);
+        editar(true);
+    }
 
     public ModificarInquilino( String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
@@ -396,7 +420,8 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
             Inquilino i = new Inquilino(auxId, jtApellido.getText(), jtNombre.getText(), auxTipo, jtLugarTrabajo.getText(), jtNombreGar.getText(), Integer.parseInt(jtDni.getText()), Integer.parseInt(jtCuit.getText()), Integer.parseInt(jtTelefono.getText()), Integer.parseInt(jtDniGar.getText()), Integer.parseInt(jtSupMin.getText()), Integer.parseInt(jtPrecio.getText()), auxEstado);
 
             InquilinoData.modificarInquilino(i);
-
+            
+            editar(false);
             limpiar();
 
         }

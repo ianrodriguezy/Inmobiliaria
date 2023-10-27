@@ -113,6 +113,7 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
         jtPropiedades = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jbEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -190,7 +191,7 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
                 jbLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 700, 120, 40));
+        jPanel1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 700, 120, 40));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 76, 139));
@@ -230,6 +231,15 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(35, 76, 139));
         jLabel9.setText("Listado de propiedades");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 220, -1));
+
+        jbEditar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbEditar.setText("Editar");
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 700, 120, 40));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
@@ -301,6 +311,7 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         limpiar();
         borrarFilasP();
+        jbEditar.setEnabled(false);
     }//GEN-LAST:event_jbLimpiarActionPerformed
     private void borrarFilasP() {
         int f;
@@ -327,6 +338,7 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
             jtTelefono.setText(i.getTelefono()+"");
             
             cargarTablaP(i);
+            jbEditar.setEnabled(true);
             if(!i.getApellido().isEmpty()){
                 this.auxid=i.getIdInspector();
             }
@@ -334,6 +346,7 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
                 
                 limpiar();
                 borrarFilasP();
+                jbEditar.setEnabled(false);
             }
             
             
@@ -358,6 +371,15 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jbBuscarActionPerformed
 
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        ModificarRevisor mp=new ModificarRevisor(InspectorData.buscarInspectorPorId(auxid));
+        escritorio.removeAll();
+        escritorio.repaint();
+        mp.setVisible(true);
+        escritorio.add(mp);
+        escritorio.moveToFront(mp);
+    }//GEN-LAST:event_jbEditarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -370,6 +392,7 @@ public class BuscarRevisor extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
     private javax.swing.JTextField jtApellido;

@@ -227,6 +227,11 @@ public class RenovarContrato extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 150, -1));
 
         jtDniGar.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jtDniGar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtDniGarKeyTyped(evt);
+            }
+        });
         jPanel1.add(jtDniGar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 230, 30));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -235,6 +240,11 @@ public class RenovarContrato extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 180, -1));
 
         jtNombreGar.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jtNombreGar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNombreGarKeyTyped(evt);
+            }
+        });
         jPanel1.add(jtNombreGar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 390, 30));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -305,8 +315,32 @@ public class RenovarContrato extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioKeyTyped
-        // TODO add your handling code here:
+        int key=evt.getKeyChar();
+        boolean num= key>=48 && key<=57|| key==46;
+        if(!num ){
+            evt.consume();
+        }
+        
+        if(jtPrecio.getText().length()>=11){
+           evt.consume();
+       }
     }//GEN-LAST:event_jtPrecioKeyTyped
+
+    private void jtDniGarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDniGarKeyTyped
+       int key=evt.getKeyChar();
+        boolean num= key>=48 && key<=57;
+        if(!num ){
+            evt.consume();
+        }
+        
+        if(jtPrecio.getText().length()>=8){
+           evt.consume();
+       }
+    }//GEN-LAST:event_jtDniGarKeyTyped
+
+    private void jtNombreGarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreGarKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtNombreGarKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

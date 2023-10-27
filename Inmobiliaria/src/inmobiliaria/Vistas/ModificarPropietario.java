@@ -23,7 +23,28 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
     }
-
+    public ModificarPropietario(Propietario p) {
+        super("",false,false,false,false);
+        initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        auxid=p.getIdPropietario();
+        jtDni.setText(p.getDni()+"");
+        jtApellido.setText(p.getApellidoPropietario());
+        jtNombre.setText(p.getNombrePropietario());
+        jtDomicilio.setText(p.getDomicilio());
+        jtTelefono.setText(p.getTelefono() + "");
+        if (p.getEstado() == 1) {
+            jcbEstado.setSelectedIndex(0);
+        } else {
+            jcbEstado.setSelectedIndex(1);
+        }
+        jbGuardar.setEnabled(true);
+        jtApellido.setEnabled(true);
+        jtNombre.setEnabled(true);
+        jtDomicilio.setEnabled(true);
+        jtTelefono.setEnabled(true);
+        jcbEstado.setEnabled(true);
+    }
 
     public ModificarPropietario( String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
@@ -277,10 +298,11 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
             Propietario p=new Propietario(auxid, jtApellido.getText(), jtNombre.getText(), jtDomicilio.getText(), Integer.parseInt(jtDni.getText()), Integer.parseInt(jtTelefono.getText()),aux);
             PropietarioData.modificarPropietario(p);
             jbGuardar.setEnabled(false);
-            jtApellido.setEnabled(false);;
-            jtNombre.setEnabled(false);;
-            jtDomicilio.setEnabled(false);;
-            jtTelefono.setEnabled(false);;
+            jtApellido.setEnabled(false);
+            jtNombre.setEnabled(false);
+            jtDomicilio.setEnabled(false);
+            jtTelefono.setEnabled(false);
+            jcbEstado.setEnabled(false);
             limpiar();
             
         }     
@@ -310,11 +332,10 @@ public class ModificarPropietario extends javax.swing.JInternalFrame {
                 if (!p.getApellidoPropietario().isEmpty()) {
                     jbGuardar.setEnabled(true);
                     this.auxid = p.getIdPropietario();
-                    jtApellido.setEnabled(true);;
-                    jtNombre.setEnabled(true);;
-                    jtDomicilio.setEnabled(true);;
-                    jtTelefono.setEnabled(true);;
-                    
+                    jtApellido.setEnabled(true);
+                    jtNombre.setEnabled(true);
+                    jtDomicilio.setEnabled(true);
+                    jtTelefono.setEnabled(true);
                 }
             }
 

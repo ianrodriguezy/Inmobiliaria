@@ -13,7 +13,10 @@ import inmobiliaria.Propietario;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import javax.swing.RowFilter.Entry;
 import static org.mariadb.jdbc.pool.Pools.close;
 /**
  *
@@ -455,7 +458,19 @@ close();
             
         }
         close();
+        propiedades=eliminarDuplicadosP(propiedades);
+        return propiedades;
+    }
+       public static List<Propiedad> eliminarDuplicadosP(List<Propiedad> lista) {
+           List <Propiedad> propiedades= new ArrayList<>();
+        Map<Integer,Propiedad> conjunto= new HashMap<Integer,Propiedad>(lista.size());
+        for(Propiedad p: lista){
+            conjunto.put(p.getIdPropiedad(), p);
+        }
+        for (Map.Entry<Integer, Propiedad> p : conjunto.entrySet()) {
+               propiedades.add(p.getValue());
 
+           }
         return propiedades;
     }
      

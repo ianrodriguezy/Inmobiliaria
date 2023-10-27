@@ -22,7 +22,21 @@ public class ModificarVendedor extends javax.swing.JInternalFrame {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
     }
-
+    
+    public ModificarVendedor(Vendedor v) {
+        super("",false,false,false,false);
+        initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        auxid=v.getIdVendedor();
+        jtDni.setText(v.getDni() + "");
+        jtApellido.setText(v.getApellido());
+        jtNombre.setText(v.getNombre());
+        jtTelefono.setText(v.getTelefono() + "");
+        jbGuardar.setEnabled(true);
+        jtApellido.setEnabled(true);
+        jtNombre.setEnabled(true);
+        jtTelefono.setEnabled(true);
+    }
 
     public ModificarVendedor( String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
@@ -78,10 +92,10 @@ public class ModificarVendedor extends javax.swing.JInternalFrame {
         jLabel4.setText("Nombre     :");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 100, -1));
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(35, 76, 139));
-        jLabel5.setText("Ingrese un dni para buscar");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 240, -1));
+        jLabel5.setText("Modificar Vendedor");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 240, -1));
 
         jtTelefono.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jtTelefono.setEnabled(false);

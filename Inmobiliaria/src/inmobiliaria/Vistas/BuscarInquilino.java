@@ -160,6 +160,7 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
         jtSupMin = new javax.swing.JTextField();
         jtPrecio = new javax.swing.JTextField();
         jtTipo = new javax.swing.JTextField();
+        jbEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -398,6 +399,16 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 300, 30));
 
+        jbEditar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbEditar.setText("Editar");
+        jbEditar.setEnabled(false);
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 700, 120, 40));
+
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 790));
@@ -468,6 +479,8 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         limpiar();
         borrarFilasP();
+        borrarFilasC();
+        jbEditar.setEnabled(false);
     }//GEN-LAST:event_jbLimpiarActionPerformed
     private void borrarFilasP() {
         int f;
@@ -509,10 +522,12 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
                 auxid=i.getIdInquilino();
                 cargarTablaP(i.getIdInquilino());
                 cargarTablaC(i.getIdInquilino());
+                jbEditar.setEnabled(true);
             }else{
                 limpiar();
                 borrarFilasP();
                 borrarFilasC();
+                jbEditar.setEnabled(false);
             }
             
             
@@ -573,6 +588,15 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtTipoKeyTyped
 
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        ModificarInquilino mi=new ModificarInquilino(InquilinoData.buscarInquilinoPorId(auxid));
+        escritorio.removeAll();
+        escritorio.repaint();
+        mi.setVisible(true);
+        escritorio.add(mi);
+        escritorio.moveToFront(mi);
+    }//GEN-LAST:event_jbEditarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -594,6 +618,7 @@ public class BuscarInquilino extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbVolver;
     private javax.swing.JTextField jtApellido;

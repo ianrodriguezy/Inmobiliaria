@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import static org.mariadb.jdbc.pool.Pools.close;
@@ -213,6 +215,22 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo,int mod) {
             
         }
         close();
+        
+        propietarios=eliminarDuplicadosP(propietarios);
         return propietarios;
     }
-}
+    
+       public static List<Propietario> eliminarDuplicadosP(List<Propietario> lista) {
+           List <Propietario> propietarios= new ArrayList<>();
+        Map<Integer,Propietario> conjunto= new HashMap<Integer,Propietario>(lista.size());
+        for(Propietario p: lista){
+            conjunto.put(p.getIdPropietario(), p);
+        }
+        for (Map.Entry<Integer, Propietario> p : conjunto.entrySet()) {
+               propietarios.add(p.getValue());
+
+           }
+        return propietarios;
+    }
+    }
+
