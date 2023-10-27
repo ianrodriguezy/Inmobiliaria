@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import static org.mariadb.jdbc.pool.Pools.close;
 
 
 
@@ -34,11 +35,12 @@ public class InspectorData {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-
+            ps.close();
         } catch (SQLException x) {
             System.out.println("Error " + x.getMessage());
         }
          mostrarMensaje("Alta exitosa.","Creacion de Revisor","info");
+         close();
 }
     
    public static List<Inspector> listarInspector() {
@@ -65,6 +67,7 @@ public class InspectorData {
             mostrarMensaje("Error al acceder a la tabla Inspector, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return inspectores;
     }
    
@@ -90,6 +93,7 @@ public class InspectorData {
             mostrarMensaje("Error al acceder a la tabla Inspector, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return i;
     }
    public static Inspector buscarInspectorDni(int d,int nuevo) {
@@ -118,6 +122,7 @@ public class InspectorData {
             mostrarMensaje("Error al acceder a la tabla Inspector, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return i;
     }
    public static void modificarInspector(Inspector i){
@@ -145,6 +150,7 @@ public class InspectorData {
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Inspector, " + ex.getMessage(),"Error de conexión","error");
         }
+        close();
     }
    
 

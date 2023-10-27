@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 import java.util.HashSet;
+import static org.mariadb.jdbc.pool.Pools.close;
 /**
  *
  * @author Ian
@@ -44,12 +45,12 @@ public class PropiedadData {
             ps.setInt(14, p.getRevisor().getIdInspector());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-
+            ps.close();
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
         }
          mostrarMensaje("Alta exitosa.","Creacion de propiedad","info");
-        
+        close();
     }
     
     public static void modificarPropiedad(Propiedad p){
@@ -77,12 +78,12 @@ public class PropiedadData {
             ps.setInt(14, p.getRevisor().getIdInspector());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-
+            ps.close();
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
         }
          mostrarMensaje("Modificación exitosa.","Modificación de propiedad","info");
-        
+        close();
     }
     
     public static List<String> listarTipos() {
@@ -104,7 +105,7 @@ public class PropiedadData {
             
         }
          List<String> listaSinDuplicados = eliminarDuplicados(tipos);
-
+close();
         return listaSinDuplicados;
     }
     
@@ -152,6 +153,7 @@ public class PropiedadData {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return propiedades;
     }
     public static List<Propiedad> buscarPropiedadPorOcupante(int id){
@@ -193,6 +195,7 @@ public class PropiedadData {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return propiedades;
     }
     public static List<Propiedad> buscarPropiedadPorRevisor(int id){
@@ -234,6 +237,7 @@ public class PropiedadData {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return propiedades;
     }
     public static Propiedad buscarPropiedadPorId(int id){
@@ -275,6 +279,7 @@ public class PropiedadData {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return p;
     }
     
@@ -317,6 +322,7 @@ public class PropiedadData {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return p;
     }
     
@@ -360,6 +366,7 @@ public class PropiedadData {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return propiedades;
     }
     
@@ -403,7 +410,7 @@ public class PropiedadData {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
             
         }
-        
+        close();
         return propiedades;
     }
      
@@ -447,7 +454,7 @@ public class PropiedadData {
             mostrarMensaje("Error al acceder a la tabla Propiedades y ContratoAlquiler, " + ex.getMessage(),"Error de conexión","error");
             
         }
-        
+        close();
 
         return propiedades;
     }
@@ -470,6 +477,6 @@ public class PropiedadData {
             mostrarMensaje("Error al acceder a la tabla Propiedades, " + ex.getMessage(),"Error de conexión","error");
         }
          
-        
+        close();
     }
 }

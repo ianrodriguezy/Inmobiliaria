@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static org.mariadb.jdbc.pool.Pools.close;
 
 public class ContratoData {
 
@@ -45,7 +46,7 @@ public class ContratoData {
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-
+            ps.close();
         } catch (SQLException ex) {
             System.out.println("Error" + ex.getMessage());
         }
@@ -54,6 +55,7 @@ public class ContratoData {
         }else{
         mostrarMensaje("Alta exitosa.", "Creacion del contrato", "info");
     }
+        close();
     }
 
     public static Contrato buscarContratoporCod(int cod) {
@@ -91,7 +93,7 @@ public class ContratoData {
         } catch (SQLException ex) {
            mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
         }
-        
+        close();
         return c;        
 
     }
@@ -129,7 +131,7 @@ public class ContratoData {
         } catch (SQLException ex) {
            mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
         }
-        
+        close();
     }
      public static void UpdateVigencia(Contrato c) { 
         Connection con = null;
@@ -144,11 +146,11 @@ public class ContratoData {
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-
+            ps.close();
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
         }
-
+            close();
     }
      
      public static void ModificarContrato(Contrato c,int mod) { 
@@ -174,14 +176,14 @@ public class ContratoData {
             ps.setInt(10, c.geteLpropietario().getIdPropietario());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-
+            ps.close();
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Contrato," + ex.getMessage(),"Error de conexión","error");
         }
         if(mod==1){
             mostrarMensaje("Modificacion exitosa.", "Modicacion del contrato", "info");
         }
-
+        close();
     }
      
     public static List<Contrato> listarContratosPorVendedor(int id){
@@ -215,12 +217,13 @@ public class ContratoData {
                 p=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 c.seteLpropietario(p);
                 contratos.add(c);
+                ps.close();
         }
         }catch(SQLException ex){
             mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
         }
         
-        
+        close();
         return contratos;
     }
     
@@ -255,12 +258,13 @@ public class ContratoData {
                 p=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 c.seteLpropietario(p);
                 contratos.add(c);
+                ps.close();
         }
         }catch(SQLException ex){
             mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
         }
         
-        
+        close();
         return contratos;
     }
     public static List<Contrato> listarContratosPorInquilino(int id){
@@ -294,12 +298,13 @@ public class ContratoData {
                 p=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 c.seteLpropietario(p);
                 contratos.add(c);
+                ps.close();
         }
         }catch(SQLException ex){
             mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
         }
         
-        
+        close();
         return contratos;
     }
     
@@ -334,12 +339,13 @@ public class ContratoData {
                 p=PropietarioData.buscarPropietarioPorId(rs.getInt("propietario"));
                 c.seteLpropietario(p);
                 contratos.add(c);
+                ps.close();
         }
         }catch(SQLException ex){
             mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
         }
         
-        
+        close();
         return contratos;
     }
     
@@ -356,10 +362,11 @@ public class ContratoData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             mostrarMensaje("Cancelación exitosa.", "Cancelación del contrato", "info");
+            ps.close();
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Contrato, " + ex.getMessage(),"Error de conexión","error");
         }
-        
+        close();
             
         
 

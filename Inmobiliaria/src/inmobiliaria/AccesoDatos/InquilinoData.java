@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import static org.mariadb.jdbc.pool.Pools.close;
 
 
 public class InquilinoData {
@@ -45,7 +46,7 @@ public class InquilinoData {
             ps.setInt(12, 1);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-            
+            ps.close();
         } catch (SQLException x) {
             System.out.println("Error " + x.getMessage());
         }
@@ -219,6 +220,7 @@ public class InquilinoData {
             mostrarMensaje("Error al acceder a la tabla Inquilino, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return inquilinos;
     }
     
@@ -253,6 +255,7 @@ public class InquilinoData {
             mostrarMensaje("Error al acceder a la tabla Inquilino, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return inquilinos;
     }
 }

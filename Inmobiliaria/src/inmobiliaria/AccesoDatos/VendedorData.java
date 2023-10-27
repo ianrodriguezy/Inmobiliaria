@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import static org.mariadb.jdbc.pool.Pools.close;
 
 
 public class VendedorData {
@@ -38,6 +39,7 @@ public class VendedorData {
             mostrarMensaje("Error al acceder a la tabla Vendedor, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return vendedores;
     }
    
@@ -64,6 +66,7 @@ public class VendedorData {
             mostrarMensaje("Error al acceder a la tabla Vendedor, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return v;
     }
       public static void agregarVendedor(Vendedor v){
@@ -77,11 +80,12 @@ public class VendedorData {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-
+            ps.close();
         } catch (SQLException x) {
             System.out.println("Error " + x.getMessage());
         }
          mostrarMensaje("Alta exitosa.","Creacion de Vendedor","info");
+         close();
 } 
       public static Vendedor buscarVendedorDni(int d,int nuevo) {
         Vendedor v= new Vendedor();
@@ -99,6 +103,7 @@ public class VendedorData {
                 v.setNombre(rs.getString("nombre"));
                 v.setDni(rs.getInt("dni"));
                 v.setTelefono(rs.getInt("telefono"));
+                ps.close();
             }else if (nuevo!=1){
                 mostrarMensaje("No existe el Vendedor ","Error al buscar","error");
             }
@@ -107,6 +112,7 @@ public class VendedorData {
             mostrarMensaje("Error al acceder a la tabla Vendedor, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return v;
     }
       
@@ -135,6 +141,7 @@ public class VendedorData {
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Vendedor, " + ex.getMessage(),"Error de conexión","error");
         }
+        close();
     }
 }
 

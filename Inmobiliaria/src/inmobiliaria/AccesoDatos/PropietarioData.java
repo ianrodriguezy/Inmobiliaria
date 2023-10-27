@@ -14,12 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import static org.mariadb.jdbc.pool.Pools.close;
 
 /**
  *
  * @author Ian
  */
 public class PropietarioData {
+    
     public static void mostrarMensaje(String mensaje,String titulo,String tipo ){
         JOptionPane optionPane = new JOptionPane(mensaje);
         if(tipo.equals("info")){
@@ -44,10 +46,11 @@ public static void agregarPropietario(Propietario propietario){
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-
+            ps.close();
         } catch (SQLException x) {
             System.out.println("Error " + x.getMessage());
         }
+        close();
          mostrarMensaje("Alta exitosa.","Creacion de propietario","info");
 }
 
@@ -82,7 +85,7 @@ public static Propietario buscarPropietarioPorId(int id) {
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
         }
-
+        close();
         return p;
 
     }
@@ -122,7 +125,7 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo,int mod) {
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
         }
-
+        close();
         return p;
 
     }
@@ -153,6 +156,7 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo,int mod) {
         } catch (SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
         }
+        close();
     }
     
     public static List<Propietario> listarPropietario() {
@@ -173,12 +177,14 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo,int mod) {
                 p.setDni(rs.getInt("dni"));
                 p.setTelefono(rs.getInt("telefono")); 
                 propietarios.add(p);
+                ps.close();
             }
             ps.close();
         }catch(SQLException ex) {
             mostrarMensaje("Error al acceder a la tabla Propietario, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return propietarios;
     }
     
@@ -206,6 +212,7 @@ public static Propietario buscarPropietarioPorDni(int dni, int nuevo,int mod) {
             mostrarMensaje("Error al acceder a la tabla Propietario y Contrato, " + ex.getMessage(),"Error de conexión","error");
             
         }
+        close();
         return propietarios;
     }
 }

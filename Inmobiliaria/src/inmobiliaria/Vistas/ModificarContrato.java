@@ -482,7 +482,7 @@ public class ModificarContrato extends javax.swing.JInternalFrame {
             c.setEstado(0);
             ContratoData.CancelarContrato(c);
         }else{
-            mostrarMensaje("El contrato que desea cancelar ya esta inactivo, ","Error","error");
+            mostrarMensaje("El contrato que desea cancelar ya esta inactivo.","Error","error");
         }
 
     }//GEN-LAST:event_jbCancelarActionPerformed
