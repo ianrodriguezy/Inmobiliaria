@@ -1,0 +1,16 @@
+falta:
+
+ventana buscarContrato(todo)
+terminar ventana buscarInquilino(tablas)
+
+metodos:
+
+Cancelar contrato
+renovar contrato
+multar inquilino
+
+
+
+modificar instancias de menu principal para mostrar diferentes iconos y funciones restringidas.
+
+agregar titulo a la ventana, icono a la ventana
