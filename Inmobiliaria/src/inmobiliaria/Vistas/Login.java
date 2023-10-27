@@ -44,7 +44,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtUsuario.setBackground(new java.awt.Color(68, 198, 228));
+        jtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         jtUsuario.setForeground(new java.awt.Color(0, 0, 0));
         jtUsuario.setBorder(null);
         jtUsuario.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -58,9 +58,9 @@ public class Login extends javax.swing.JFrame {
                 jtUsuarioKeyTyped(evt);
             }
         });
-        jPanel1.add(jtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 150, -1));
+        jPanel1.add(jtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 236, 160, 20));
 
-        jpass.setBackground(new java.awt.Color(68, 198, 228));
+        jpass.setBackground(new java.awt.Color(255, 255, 255));
         jpass.setForeground(new java.awt.Color(0, 0, 0));
         jpass.setBorder(null);
         jpass.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -74,7 +74,7 @@ public class Login extends javax.swing.JFrame {
                 jpassKeyTyped(evt);
             }
         });
-        jPanel1.add(jpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 150, -1));
+        jPanel1.add(jpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 346, 160, 20));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/candado.png"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, -1));
@@ -111,7 +111,7 @@ public class Login extends javax.swing.JFrame {
                 jbSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 80, -1));
+        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 100, -1));
 
         jbIngresar.setText("Ingresar");
         jbIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,12 +119,12 @@ public class Login extends javax.swing.JFrame {
                 jbIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 80, -1));
+        jPanel1.add(jbIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 100, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/usuarioIcono.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondoLogin.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contenido/fondo login.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

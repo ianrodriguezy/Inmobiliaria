@@ -14,10 +14,10 @@ public class Inmobiliaria {
   
     public static void main(String[] args) {
         Conectar.getConectar();
-//        Login log = new Login();
-//        log.setVisible(true);
-        MenuPrincipal menu = new MenuPrincipal(1);
-        menu.setVisible(true);
+        Login log = new Login();
+        log.setVisible(true);
+//        MenuPrincipal menu = new MenuPrincipal(1);
+//        menu.setVisible(true);
         
     }
     
