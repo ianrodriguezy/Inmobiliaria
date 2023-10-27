@@ -19,7 +19,6 @@
         <Method name="Bajainquilino" returnType="void" visibility="public"/>
         <Method name="BuscarInquilino" returnType="void" visibility="public"/>
         <Method name="ModificarDatos" returnType="void" visibility="public"/>
-        <Method name="MultarInquilino" returnType="void" visibility="public"/>
       </Methods>
     </Class>
     <Class name="Propiedad Inmueble" package="" visibility="public" xPosition="327.0" yPosition="81.0">
@@ -87,10 +86,10 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="Alquila" source="Inquilino" target="Propiedad Inmueble" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <UseRelation name="realiza un" source="Inquilino" target="Contrato Alquiler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Alquila" source="Inquilino" target="Propiedad Inmueble" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <HasRelation name="ofrece" source="Propietario" target="Propiedad Inmueble" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="tiene un" source="Propiedad Inmueble" target="Inquilino" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <UseRelation name="esta en un" source="Propiedad Inmueble" target="Contrato Alquiler" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene un" source="Propiedad Inmueble" target="Inquilino" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
