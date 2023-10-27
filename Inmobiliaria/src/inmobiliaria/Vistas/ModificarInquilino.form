@@ -502,10 +502,11 @@
         <Component class="javax.swing.JComboBox" name="jcbTipo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="4">
                 <StringItem index="0" value="Seleccione un tipo"/>
                 <StringItem index="1" value="Comercial"/>
-                <StringItem index="2" value="Vivienda"/>
+                <StringItem index="2" value="Habitacional"/>
+                <StringItem index="3" value="Temporario"/>
               </StringArray>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>

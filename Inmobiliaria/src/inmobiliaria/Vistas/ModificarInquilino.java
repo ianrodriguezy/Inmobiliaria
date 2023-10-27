@@ -329,7 +329,7 @@ public class ModificarInquilino extends javax.swing.JInternalFrame {
         jcbEstado.setEnabled(false);
         jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 480, 110, -1));
 
-        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo", "Comercial", "Vivienda" }));
+        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo", "Comercial", "Habitacional", "Temporario" }));
         jcbTipo.setEnabled(false);
         jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 160, 30));
 
